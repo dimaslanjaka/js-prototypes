@@ -76,6 +76,10 @@ Array.prototype.contains = function (obj) {
 	return false;
 };
 
+Array.prototype.hasIndex = function (n: number) {
+	return typeof this[n] != "undefined";
+};
+
 Array.prototype.first = function (n) {
 	if (!n) {
 		if (this.length === 0) return undefined;

@@ -122,6 +122,15 @@ interface Array<T> {
 	contains(obj: any): boolean;
 
 	/**
+	 * Check if array offset (index) exists
+	 * @param n
+	 * @example
+	 * alert([{},'a','x'].hasIndex(2)); // => true - array has offset 2 is 'x'
+	 * alert([{},'a','x'].hasIndex(3)); // => false
+	 */
+	hasIndex(n: number): boolean;
+
+	/**
 	 * Shuffle arrays.
 	 * @description Randomize array elements
 	 * @example
