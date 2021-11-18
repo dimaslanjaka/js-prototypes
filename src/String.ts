@@ -1,4 +1,5 @@
 /// <reference path="String.d.ts" />
+/// <reference path="globals.d.ts" />
 
 String.prototype.parse_url = function () {
 	let parser = document.createElement("a"),
@@ -56,6 +57,7 @@ String.prototype.CSS = function () {
 String.prototype.trim = function () {
 	return this.replace(/^\s+|\s+$/gm, "");
 };
+
 String.prototype.hexE = function () {
 	let hex: string, i: number;
 
