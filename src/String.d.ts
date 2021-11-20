@@ -11,6 +11,14 @@ interface String {
   truncate: (n: number, useWordBoundary: boolean | null) => string;
 
   /**
+   * Printf
+   * @see {@link https://stackoverflow.com/a/46078375}
+   * @example
+   * console.log("Hello I am " + "%s %s".printf(["foo", "bar"]));
+   */
+  printf: (obj: any[] | string) => string;
+
+  /**
    * Matches a string an object that supports being matched against, and returns an array containing the results of
    * that search.
    * @param matcher An object that supports being matched against.
