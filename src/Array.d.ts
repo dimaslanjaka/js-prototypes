@@ -11,6 +11,12 @@ interface Array<T> {
    * var unique = duplicate.unique(); // [1,2,3,4,5,6]
    */
   unique: () => Array<T>;
+
+  /**
+   * Remove array item from other arrays
+   */
+  hapusItemDariArrayLain: (...arrayLain: any[]) => any[];
+
   /**
    * Pick random array element
    */

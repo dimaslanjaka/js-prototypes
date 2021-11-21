@@ -158,6 +158,17 @@ if (!Array.prototype.hasOwnProperty("every")) {
   };
 }
 
+Array.prototype.hapusItemDariArrayLain = function (this: any[], ...arrayLain) {
+  let thisArr = this;
+  arrayLain.forEach((otherArr) => {
+    thisArr = thisArr.filter(function (el) {
+      return !otherArr.includes(el);
+    });
+  });
+
+  return thisArr;
+};
+
 function array_filter(array: []) {
   return array.filter(function (el) {
     return el != null;
@@ -326,11 +337,26 @@ function deepAssign(...objects: object[]): object {
   return arguments[0];
 }
 
+/**
+ * Remove item from array
+ * @param arr
+ * @param value
+ * @returns
+ */
+function removeItem<T>(arr: Array<T>, value: T): Array<T> {
+  const index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+}
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     array_shuffle,
     array_keys,
     in_array,
-    deepAssign
+    deepAssign,
+    removeItem
   };
 }
