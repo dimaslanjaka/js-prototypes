@@ -145,4 +145,9 @@ interface Array<T> {
    * alert([1,2,3,4,5].shuffle())
    */
   shuffle(): Array<T>;
+
+  /**
+   * Remove null, empty string, or undefined values
+   */
+  removeEmpties(): Array<T>;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable prefer-rest-params */
 /* eslint-disable no-prototype-builtins */
@@ -167,6 +168,22 @@ Array.prototype.hapusItemDariArrayLain = function (this: any[], ...arrayLain) {
   });
 
   return thisArr;
+};
+
+Array.prototype.removeEmpties = function () {
+  const filter = this.filter(function (el) {
+    const notnull =
+      // make sure element is not null
+      el != null &&
+      // make sure element is not undefined
+      typeof el != "undefined";
+    // if element is string, make sure string length not zero
+    if (typeof el == "string") {
+      return notnull && el.trim().length > 0;
+    }
+    return notnull;
+  });
+  return this;
 };
 
 function array_filter(array: []) {
