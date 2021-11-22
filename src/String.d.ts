@@ -123,4 +123,24 @@ interface String {
    * @param replacement
    */
   replaceArr(array: string[], replacement: string): string;
+
+  /**
+   * Convert a string to HTML entities
+   * @see {@link https://stackoverflow.com/a/27020300}
+   * @example
+   * "Test´†®¥¨©˙∫ø…ˆƒ∆÷∑™ƒ∆æøπ£¨ ƒ™en tést".toHtmlEntities();
+   * console.log("Entities:", str);
+   */
+  toHtmlEntities(): string;
+}
+
+interface StringConstructor {
+  /**
+   * Create string from HTML entities
+   * @see {@link https://stackoverflow.com/a/27020300}
+   * @example
+   * var str = "Test´†®¥¨©˙∫ø…ˆƒ∆÷∑™ƒ∆æøπ£¨ ƒ™en tést".toHtmlEntities();
+   * console.log("String:", String.fromHtmlEntities(str));
+   */
+  fromHtmlEntities(str: string): string;
 }
