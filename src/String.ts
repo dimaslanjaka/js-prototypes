@@ -42,7 +42,9 @@ String.prototype.printf = function (obj) {
 
 String.prototype.parse_url = function () {
   const parser = document.createElement("a");
-  let searchObject: Array<object | any>, split: Array<object | any>, i: number;
+  let searchObject: Array<Record<any, any> | any>,
+    split: Array<Record<any, any> | any>,
+    i: number;
   let queries: string[] = [];
   // Let the browser do the work
   parser.href = this.toString();
@@ -177,4 +179,8 @@ String.fromHtmlEntities = function (string) {
     const m = s.match(/\d+/gm)[0];
     return String.fromCharCode(<any>m);
   });
+};
+
+String.prototype.includesArray = function (substrings) {
+  return substrings.some((v) => this.includes(v));
 };

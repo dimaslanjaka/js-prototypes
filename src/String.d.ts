@@ -132,6 +132,13 @@ interface String {
    * console.log("Entities:", str);
    */
   toHtmlEntities(): string;
+
+  /**
+   * Check if string contains some text from array of substrings
+   * @see {@link https://stackoverflow.com/a/5582621}
+   * @param arrayStr
+   */
+  includesArray(arrayStr: string[]): boolean;
 }
 
 interface StringConstructor {
