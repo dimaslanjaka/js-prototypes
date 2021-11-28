@@ -150,4 +150,9 @@ interface Array<T> {
    * Remove null, empty string, or undefined values
    */
   removeEmpties(): Array<T>;
+
+  /**
+   * trim array of strings
+   */
+  trim(): Array<string>;
 }

@@ -31,6 +31,12 @@ Array.prototype.last = function (n) {
   }
 };
 
+Array.prototype.trim = function () {
+  return this.map((str) => {
+    if (typeof str == "string") return str.trim();
+  });
+};
+
 Array.prototype.isEmpty = function () {
   return this.length === 0;
 };
@@ -328,7 +334,7 @@ function array_shuffle(a: Array<any>) {
  * @param objects  The objects to merge together
  * @returns Merged values of defaults and options
  */
-function deepAssign(...objects: object[]): object {
+function deepAssign(...objects: Record<any, unknown>[]): Record<any, unknown> {
   // Make sure there are objects to merge
   const len = objects.length;
   if (len < 1) return;
@@ -343,7 +349,10 @@ function deepAssign(...objects: object[]): object {
         if (
           Object.prototype.toString.call(objects[i][key]) === "[object Object]"
         ) {
-          objects[0][key] = deepAssign(objects[0][key] || {}, objects[i][key]);
+          objects[0][key] = deepAssign(
+            <any>objects[0][key] || {},
+            <any>objects[i][key]
+          );
         } else {
           objects[0][key] = objects[i][key];
         }

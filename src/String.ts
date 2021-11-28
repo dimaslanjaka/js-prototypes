@@ -174,8 +174,8 @@ String.prototype.toHtmlEntities = function () {
   });
 };
 
-String.fromHtmlEntities = function (string) {
-  return (string + "").replace(/&#\d+;/gm, function (s) {
+String.fromHtmlEntities = function (str) {
+  return (str + "").replace(/&#\d+;/gm, function (s) {
     const m = s.match(/\d+/gm)[0];
     return String.fromCharCode(<any>m);
   });
