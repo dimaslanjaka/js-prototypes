@@ -65,7 +65,7 @@ Array.prototype.random = function () {
   return this[Math.floor(Math.random() * this.length)];
 };
 
-Array.prototype.unique = function () {
+Array.prototype.unique = function (this: Array<any>) {
   const a = this.concat();
   for (let i = 0; i < a.length; ++i) {
     for (let j = i + 1; j < a.length; ++j) {
@@ -74,6 +74,27 @@ Array.prototype.unique = function () {
   }
 
   return a;
+};
+
+Array.prototype.uniqueObjectKey = function (
+  this: Array<Record<string, unknown>>,
+  key,
+  removeNull = true
+) {
+  if (!key) return this;
+  const resArr = [];
+  this.filter(function (item) {
+    const i = resArr.findIndex((x) => x[key] == item[key]);
+    if (i <= -1) {
+      if (removeNull) {
+        if (item[key]) resArr.push(item);
+      } else {
+        resArr.push(item);
+      }
+    }
+    return null;
+  });
+  return resArr;
 };
 
 Array.prototype.contains = function (obj) {

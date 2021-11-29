@@ -13,6 +13,14 @@ interface Array<T> {
   unique: () => Array<T>;
 
   /**
+   * Unique array of objects by key
+   * @see {@link https://stackoverflow.com/a/51537887}
+   * @param key object key to check
+   * @param removeNull remove null and undefined (default=true)
+   */
+  uniqueObjectKey: (key: string, removeNull?: boolean) => Array<T>;
+
+  /**
    * Remove array item from other arrays
    */
   hapusItemDariArrayLain: (...arrayLain: any[]) => any[];
