@@ -28,7 +28,7 @@ interface Array<T> {
   /**
    * Pick random array element
    */
-  random: <T extends keyof any>() => T;
+  random: <T>() => T;
 
   /**
    * Add Element
