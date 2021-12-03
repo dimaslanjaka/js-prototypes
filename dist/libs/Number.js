@@ -44,3 +44,23 @@ function strpad(val) {
         return "0" + val;
     }
 }
+/**
+ * is variable number?
+ * @param n
+ * @returns
+ */
+function isInt(n) {
+    return Number(n) === n && n % 1 === 0;
+}
+/**
+ * is variable float?
+ * @param n
+ * @returns
+ */
+function isFloat(n) {
+    return Number(n) === n && n % 1 !== 0;
+}
+if (typeof module.exports != 'undefined') {
+    global.isInt = isInt;
+    global.isFloat = isFloat;
+}

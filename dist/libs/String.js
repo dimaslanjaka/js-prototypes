@@ -1,6 +1,48 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable prefer-rest-params */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference path="String.d.ts" />
+/// <reference path="globals.d.ts" />
+String.prototype.printf = function (obj) {
+    /*const isNode = new Function(
+      "try {return this===global;}catch(e){return false;}"
+    );
+  
+    if (isNode()) {
+      const util = require("util");
+      return util.format(this, obj);
+    }*/
+    var useArguments = false;
+    var _arguments = arguments;
+    var i = -1;
+    if (typeof _arguments[0] == "string") {
+        useArguments = true;
+    }
+    if (obj instanceof Array || useArguments) {
+        return this.replace(/%s/g, function (a, b) {
+            i++;
+            if (useArguments) {
+                if (typeof _arguments[i] == "string") {
+                    return _arguments[i];
+                }
+                else {
+                    throw new Error("Arguments element is an invalid type");
+                }
+            }
+            return obj[i];
+        });
+    }
+    else {
+        return this.replace(/{([^{}]*)}/g, function (a, b) {
+            var r = obj[b];
+            return typeof r === "string" || typeof r === "number" ? r : a;
+        });
+    }
+};
 String.prototype.parse_url = function () {
-    var parser = document.createElement("a"), searchObject, queries, split, i;
+    var parser = document.createElement("a");
+    var searchObject, split, i;
+    var queries = [];
     // Let the browser do the work
     parser.href = this.toString();
     // Convert query string to object
@@ -18,7 +60,7 @@ String.prototype.parse_url = function () {
         search: parser.search,
         searchObject: searchObject,
         hash: parser.hash,
-        protohost: parser.protocol + "//" + parser.host,
+        protohost: parser.protocol + "//" + parser.host
     };
 };
 /**
@@ -84,4 +126,28 @@ String.prototype.isEmpty = function () {
         return this.length === 0 || !this.trim();
     }
     return false;
+};
+String.prototype.replaceArr = function (array, replacement) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    var ori = this;
+    array.map(function (str) {
+        ori = ori.replace(str, replacement);
+    });
+    return ori;
+};
+String.prototype.toHtmlEntities = function () {
+    return this.replace(/./gm, function (s) {
+        // return "&#" + s.charCodeAt(0) + ";";
+        return s.match(/[a-z0-9\s]+/i) ? s : "&#" + s.charCodeAt(0) + ";";
+    });
+};
+String.fromHtmlEntities = function (str) {
+    return (str + "").replace(/&#\d+;/gm, function (s) {
+        var m = s.match(/\d+/gm)[0];
+        return String.fromCharCode(m);
+    });
+};
+String.prototype.includesArray = function (substrings) {
+    var _this = this;
+    return substrings.some(function (v) { return _this.includes(v); });
 };

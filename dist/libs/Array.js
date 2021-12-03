@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable prefer-rest-params */
+/* eslint-disable no-prototype-builtins */
 /// <reference path="./Array.d.ts" />
 Array.prototype.shuffle = function () {
     var i = this.length, j, temp;
@@ -23,6 +27,12 @@ Array.prototype.last = function (n) {
             start = 0;
         return this.slice(start, this.length);
     }
+};
+Array.prototype.trim = function () {
+    return this.map(function (str) {
+        if (typeof str == "string")
+            return str.trim();
+    });
 };
 Array.prototype.isEmpty = function () {
     return this.length === 0;
@@ -56,6 +66,26 @@ Array.prototype.unique = function () {
         }
     }
     return a;
+};
+Array.prototype.uniqueObjectKey = function (key, removeNull) {
+    if (removeNull === void 0) { removeNull = true; }
+    if (!key)
+        return this;
+    var resArr = [];
+    this.filter(function (item) {
+        var i = resArr.findIndex(function (x) { return x[key] == item[key]; });
+        if (i <= -1) {
+            if (removeNull) {
+                if (item[key])
+                    resArr.push(item);
+            }
+            else {
+                resArr.push(item);
+            }
+        }
+        return null;
+    });
+    return resArr;
 };
 Array.prototype.contains = function (obj) {
     var i = this.length;
@@ -116,16 +146,16 @@ Array.prototype.exists = function (n) {
 if (!Array.prototype.hasOwnProperty("every")) {
     Array.prototype.every = function (fun /*, thisp */) {
         "use strict";
-        var t, len, i, thisp;
+        var t = Object(this);
+        var len = t.length >>> 0;
+        var i;
+        var thisp = arguments[1];
         if (this == null) {
             throw new TypeError();
         }
-        t = Object(this);
-        len = t.length >>> 0;
         if (typeof fun !== "function") {
             throw new TypeError();
         }
-        thisp = arguments[1];
         for (i = 0; i < len; i++) {
             if (i in t && !fun.call(thisp, t[i], i, t)) {
                 return false;
@@ -134,6 +164,34 @@ if (!Array.prototype.hasOwnProperty("every")) {
         return true;
     };
 }
+Array.prototype.hapusItemDariArrayLain = function () {
+    var arrayLain = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        arrayLain[_i] = arguments[_i];
+    }
+    var thisArr = this;
+    arrayLain.forEach(function (otherArr) {
+        thisArr = thisArr.filter(function (el) {
+            return !otherArr.includes(el);
+        });
+    });
+    return thisArr;
+};
+Array.prototype.removeEmpties = function () {
+    var filter = this.filter(function (el) {
+        var notnull = 
+        // make sure element is not null
+        el != null &&
+            // make sure element is not undefined
+            typeof el != "undefined";
+        // if element is string, make sure string length not zero
+        if (typeof el == "string") {
+            return notnull && el.trim().length > 0;
+        }
+        return notnull;
+    });
+    return this;
+};
 function array_filter(array) {
     return array.filter(function (el) {
         return el != null;
@@ -151,7 +209,7 @@ function array_rand(arrays, unique) {
     var index = Math.floor(Math.random() * arrays.length);
     return {
         index: index,
-        value: arrays[index],
+        value: arrays[index]
     };
 }
 /**
@@ -294,11 +352,25 @@ function deepAssign() {
     }
     return arguments[0];
 }
+/**
+ * Remove item from array
+ * @param arr
+ * @param value
+ * @returns
+ */
+function removeItem(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
+}
 if (typeof module !== "undefined" && module.exports) {
     module.exports = {
         array_shuffle: array_shuffle,
         array_keys: array_keys,
         in_array: in_array,
         deepAssign: deepAssign,
+        removeItem: removeItem
     };
 }

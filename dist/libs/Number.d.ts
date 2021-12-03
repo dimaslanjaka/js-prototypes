@@ -28,3 +28,15 @@ declare function oddoreven(n: string, type: string): boolean;
  * @param {number} val
  */
 declare function strpad(val: number): string | number;
+/**
+ * is variable number?
+ * @param n
+ * @returns
+ */
+declare function isInt(n: any): boolean;
+/**
+ * is variable float?
+ * @param n
+ * @returns
+ */
+declare function isFloat(n: any): boolean;

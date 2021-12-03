@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference types="jquery" />
 /// <reference lib="dom" />
-/// <reference path="./lib.dom.d.ts" />
 
 declare const $: JQuery;
 
 type jQuery = JQuery;
 
 interface XMLHttpRequest extends XMLHttpRequestEventTarget {
-	responseJSON: Array<any> | Object | null;
+	responseJSON: Array<any> | Record<string, unknown> | null;
 }
 
 interface EventTarget {
@@ -25,11 +25,11 @@ interface HTMLScriptElement extends HTMLElement {
 
 interface HTMLElement
 	extends Element,
-		DocumentAndElementEventHandlers,
-		ElementCSSInlineStyle,
-		ElementContentEditable,
-		GlobalEventHandlers,
-		HTMLOrSVGElement {
+	DocumentAndElementEventHandlers,
+	ElementCSSInlineStyle,
+	ElementContentEditable,
+	GlobalEventHandlers,
+	HTMLOrSVGElement {
 	mozMatchesSelector: (selectors: string) => boolean;
 	msMatchesSelector: (selectors: string) => boolean;
 
@@ -72,14 +72,14 @@ interface createElementOpt {
  * * if you use without tagName you will get a document fragment
  * @example
  * document.body.appendChild(createElement({
-  tagName: "div",
-  className: "my-class",
-  text: "Blah blah",
-  attributes: {
-    "id": "element id",
-    "data-truc": "value"
-  },
-  childs: [{ `recursif call` }]
+	tagName: "div",
+	className: "my-class",
+	text: "Blah blah",
+	attributes: {
+		"id": "element id",
+		"data-truc": "value"
+	},
+	childs: [{ `recursif call` }]
 }))
  */
 declare function createElement(params: createElementOpt);
@@ -113,12 +113,12 @@ interface Window {
 
 interface Document
 	extends Node,
-		DocumentAndElementEventHandlers,
-		DocumentOrShadowRoot,
-		GlobalEventHandlers,
-		NonElementParentNode,
-		ParentNode,
-		XPathEvaluatorBase {
+	DocumentAndElementEventHandlers,
+	DocumentOrShadowRoot,
+	GlobalEventHandlers,
+	NonElementParentNode,
+	ParentNode,
+	XPathEvaluatorBase {
 	/**
 	 * window.addEventListener
 	 *
