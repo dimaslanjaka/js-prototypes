@@ -138,7 +138,7 @@ Array.prototype.compact = function () {
   return this;
 };
 
-Array.prototype.deleteAt = function (this: any[], index) {
+Array.prototype.deleteAt = function <T>(this: T[], index): T {
   if (index < 0) index = this.length + index;
 
   // If element is non-existent, return undefined:
@@ -154,6 +154,7 @@ Array.prototype.unset = function (value) {
     // Make sure the value exists
     this.splice(this.indexOf(value), 1);
   }
+  return this;
 };
 
 Array.prototype.exists = function (n: number) {

@@ -12,7 +12,7 @@ Object.size = function (obj) {
 };
 
 Object.child = function (str, callback) {
-  const self: any = this;
+  const self: object = this;
   if (self.hasOwnProperty(str)) {
     if (typeof callback == "function") {
       return callback(self[str]);

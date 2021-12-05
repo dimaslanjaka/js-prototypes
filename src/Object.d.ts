@@ -41,7 +41,7 @@ interface ObjectConstructor {
    * @param callback function callback
    * @author Dimas Lanjaka <dimaslanjaka@gmail.com>
    */
-  child(str: string | number, callback: Function): any;
+  child(str: string | number, callback: (arg: any) => any): any;
 
   /**
    * check object has child, if not exist return alternative value

@@ -100,7 +100,7 @@ interface Array<T> {
    * arr.unset('c');
    * console.log(arr); // ['a','b']
    */
-  unset(n: any): void;
+  unset(n: any): Array<T>;
 
   /**
    * Deletes the element at the specified index, returning that element, or undefined  if the index is out of range.
@@ -110,7 +110,8 @@ interface Array<T> {
    *   var a = ["ant", "bat", "cat", "dog"]
    *   a.deleteAt(2)    // => "cat"
    *   a                // => ["ant", "bat", "dog"]
-   *   a.deleteAt(99)   // => undefined
+   *   a.deleteAt(99)   // => undefined (because index 99 not found)
+   *   if(a.deleteAt(1)) console.log('item with index 1 removed') // conditional
    */
   deleteAt(n: number): Array<T>;
 
