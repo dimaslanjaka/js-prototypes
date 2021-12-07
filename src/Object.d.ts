@@ -19,6 +19,8 @@ interface Object {
    * Check is empty
    */
   isEmpty(): boolean;
+
+  replaceKeyFrom(anotherObj): any;
 }
 
 interface ObjectConstructor {
