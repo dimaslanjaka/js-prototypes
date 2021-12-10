@@ -1,6 +1,6 @@
 {
   "name": "js-prototypes",
-  "version": "1.0.0",
+  "version": "1.0.12",
   "description": "",
   "main": "dist/release/bundle.js",
   "scripts": {
