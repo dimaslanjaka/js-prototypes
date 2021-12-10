@@ -1,3 +1,8 @@
+
+/* eslint-disable @typescript-eslint/no-this-alias */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable prefer-rest-params */
+/* eslint-disable no-prototype-builtins */
 /// <reference path="./Array.d.ts" />
 Array.prototype.shuffle = function () {
     var i = this.length, j, temp;
@@ -23,6 +28,12 @@ Array.prototype.last = function (n) {
             start = 0;
         return this.slice(start, this.length);
     }
+};
+Array.prototype.trim = function () {
+    return this.map(function (str) {
+        if (typeof str == "string")
+            return str.trim();
+    });
 };
 Array.prototype.isEmpty = function () {
     return this.length === 0;
@@ -56,6 +67,26 @@ Array.prototype.unique = function () {
         }
     }
     return a;
+};
+Array.prototype.uniqueObjectKey = function (key, removeNull) {
+    if (removeNull === void 0) { removeNull = true; }
+    if (!key)
+        return this;
+    var resArr = [];
+    this.filter(function (item) {
+        var i = resArr.findIndex(function (x) { return x[key] == item[key]; });
+        if (i <= -1) {
+            if (removeNull) {
+                if (item[key])
+                    resArr.push(item);
+            }
+            else {
+                resArr.push(item);
+            }
+        }
+        return null;
+    });
+    return resArr;
 };
 Array.prototype.contains = function (obj) {
     var i = this.length;
@@ -109,6 +140,7 @@ Array.prototype.unset = function (value) {
         // Make sure the value exists
         this.splice(this.indexOf(value), 1);
     }
+    return this;
 };
 Array.prototype.exists = function (n) {
     return typeof this[n] !== "undefined";
@@ -116,16 +148,16 @@ Array.prototype.exists = function (n) {
 if (!Array.prototype.hasOwnProperty("every")) {
     Array.prototype.every = function (fun /*, thisp */) {
         "use strict";
-        var t, len, i, thisp;
+        var t = Object(this);
+        var len = t.length >>> 0;
+        var i;
+        var thisp = arguments[1];
         if (this == null) {
             throw new TypeError();
         }
-        t = Object(this);
-        len = t.length >>> 0;
         if (typeof fun !== "function") {
             throw new TypeError();
         }
-        thisp = arguments[1];
         for (i = 0; i < len; i++) {
             if (i in t && !fun.call(thisp, t[i], i, t)) {
                 return false;
@@ -134,6 +166,34 @@ if (!Array.prototype.hasOwnProperty("every")) {
         return true;
     };
 }
+Array.prototype.hapusItemDariArrayLain = function () {
+    var arrayLain = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        arrayLain[_i] = arguments[_i];
+    }
+    var thisArr = this;
+    arrayLain.forEach(function (otherArr) {
+        thisArr = thisArr.filter(function (el) {
+            return !otherArr.includes(el);
+        });
+    });
+    return thisArr;
+};
+Array.prototype.removeEmpties = function () {
+    var filter = this.filter(function (el) {
+        var notnull = 
+        // make sure element is not null
+        el != null &&
+            // make sure element is not undefined
+            typeof el != "undefined";
+        // if element is string, make sure string length not zero
+        if (typeof el == "string") {
+            return notnull && el.trim().length > 0;
+        }
+        return notnull;
+    });
+    return this;
+};
 function array_filter(array) {
     return array.filter(function (el) {
         return el != null;
@@ -151,7 +211,7 @@ function array_rand(arrays, unique) {
     var index = Math.floor(Math.random() * arrays.length);
     return {
         index: index,
-        value: arrays[index],
+        value: arrays[index]
     };
 }
 /**
@@ -294,12 +354,26 @@ function deepAssign() {
     }
     return arguments[0];
 }
+/**
+ * Remove item from array
+ * @param arr
+ * @param value
+ * @returns
+ */
+function removeItem(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
+}
 if (typeof module !== "undefined" && module.exports) {
     module.exports = {
         array_shuffle: array_shuffle,
         array_keys: array_keys,
         in_array: in_array,
         deepAssign: deepAssign,
+        removeItem: removeItem
     };
 }
 
@@ -385,7 +459,29 @@ function strpad(val) {
         return "0" + val;
     }
 }
+/**
+ * is variable number?
+ * @param n
+ * @returns
+ */
+function isInt(n) {
+    return Number(n) === n && n % 1 === 0;
+}
+/**
+ * is variable float?
+ * @param n
+ * @returns
+ */
+function isFloat(n) {
+    return Number(n) === n && n % 1 !== 0;
+}
+if (typeof module.exports != 'undefined') {
+    global.isInt = isInt;
+    global.isFloat = isFloat;
+}
 
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference path="Object.d.ts" />
 Object.size = function (obj) {
     var size = 0, key;
@@ -430,6 +526,22 @@ Object.each = function (callback) {
 Object.isEmpty = function () {
     return this.length === 0;
 };
+Object.replaceKeyFrom = function (anotherObj) {
+    return Object.entries(this).reduce(function (op, _a) {
+        var key = _a[0], value = _a[1];
+        var newKey = anotherObj[key];
+        op[newKey || key] = value;
+        return op;
+    }, {});
+    /*if (typeof anotherObj == 'object') {
+      for (const key in anotherObj) {
+        if (Object.prototype.hasOwnProperty.call(anotherObj, key)) {
+          const element = anotherObj[key];
+          def[key] = element;
+        }
+      }
+    }*/
+};
 /**
  * Join object to separated string
  * @param obj Object
@@ -465,9 +577,51 @@ function extend_object(arg1, arg2) {
     return result;
 }
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable prefer-rest-params */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference path="String.d.ts" />
+/// <reference path="globals.d.ts" />
+String.prototype.printf = function (obj) {
+    /*const isNode = new Function(
+      "try {return this===global;}catch(e){return false;}"
+    );
+  
+    if (isNode()) {
+      const util = require("util");
+      return util.format(this, obj);
+    }*/
+    var useArguments = false;
+    var _arguments = arguments;
+    var i = -1;
+    if (typeof _arguments[0] == "string") {
+        useArguments = true;
+    }
+    if (obj instanceof Array || useArguments) {
+        return this.replace(/%s/g, function (a, b) {
+            i++;
+            if (useArguments) {
+                if (typeof _arguments[i] == "string") {
+                    return _arguments[i];
+                }
+                else {
+                    throw new Error("Arguments element is an invalid type");
+                }
+            }
+            return obj[i];
+        });
+    }
+    else {
+        return this.replace(/{([^{}]*)}/g, function (a, b) {
+            var r = obj[b];
+            return typeof r === "string" || typeof r === "number" ? r : a;
+        });
+    }
+};
 String.prototype.parse_url = function () {
-    var parser = document.createElement("a"), searchObject, queries, split, i;
+    var parser = document.createElement("a");
+    var searchObject, split, i;
+    var queries = [];
     // Let the browser do the work
     parser.href = this.toString();
     // Convert query string to object
@@ -485,7 +639,7 @@ String.prototype.parse_url = function () {
         search: parser.search,
         searchObject: searchObject,
         hash: parser.hash,
-        protohost: parser.protocol + "//" + parser.host,
+        protohost: parser.protocol + "//" + parser.host
     };
 };
 /**
@@ -552,3 +706,34 @@ String.prototype.isEmpty = function () {
     }
     return false;
 };
+String.prototype.replaceArr = function (array, replacement) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    var ori = this;
+    array.map(function (str) {
+        ori = ori.replace(str, replacement);
+    });
+    return ori;
+};
+String.prototype.toHtmlEntities = function () {
+    return this.replace(/./gm, function (s) {
+        // return "&#" + s.charCodeAt(0) + ";";
+        return s.match(/[a-z0-9\s]+/i) ? s : "&#" + s.charCodeAt(0) + ";";
+    });
+};
+String.fromHtmlEntities = function (str) {
+    return (str + "").replace(/&#\d+;/gm, function (s) {
+        var m = s.match(/\d+/gm)[0];
+        return String.fromCharCode(m);
+    });
+};
+String.prototype.includesArray = function (substrings) {
+    var _this = this;
+    return substrings.some(function (v) { return _this.includes(v); });
+};
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./Array");
+require("./String");
+require("./Object");
+require("./Number");

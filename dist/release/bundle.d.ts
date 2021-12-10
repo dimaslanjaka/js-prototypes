@@ -1,3 +1,6 @@
+/// <reference types="node" />
+declare type anyOf = Buffer & string & object & symbol & null & undefined & Record<string, any> & (() => any) & boolean & boolean[] & keyof [false];
+
 /// <reference path="../../src/Array.d.ts" />
 declare function array_filter(array: []): never[];
 /**
@@ -60,7 +63,14 @@ declare function array_shuffle(a: Array<any>): any[];
  * @param objects  The objects to merge together
  * @returns Merged values of defaults and options
  */
-declare function deepAssign(...objects: object[]): object;
+declare function deepAssign(...objects: Record<any, unknown>[]): Record<any, unknown>;
+/**
+ * Remove item from array
+ * @param arr
+ * @param value
+ * @returns
+ */
+declare function removeItem<T>(arr: Array<T>, value: T): Array<T>;
 
 /// <reference path="../../src/Date.d.ts" />
 declare function datetime_local(date: any): string;
@@ -97,6 +107,18 @@ declare function oddoreven(n: string, type: string): boolean;
  * @param {number} val
  */
 declare function strpad(val: number): string | number;
+/**
+ * is variable number?
+ * @param n
+ * @returns
+ */
+declare function isInt(n: any): boolean;
+/**
+ * is variable float?
+ * @param n
+ * @returns
+ */
+declare function isFloat(n: any): boolean;
 
 /// <reference path="../../src/Object.d.ts" />
 /**
@@ -104,13 +126,19 @@ declare function strpad(val: number): string | number;
  * @param obj Object
  * @returns Joined string
  */
-declare function object_join(obj: object): string;
+declare function object_join(obj: Record<any, unknown>): string;
 /**
  * Extend Object
  * @param arg1
  * @param arg2
  * @returns
  */
-declare function extend_object<T1 extends object, T2 extends object>(arg1: T1, arg2: T2): T1 & T2;
+declare function extend_object<T1 extends Record<any, unknown>, T2 extends Record<any, unknown>>(arg1: T1, arg2: T2): T1 & T2;
 
 /// <reference path="../../src/String.d.ts" />
+/// <reference path="../../src/globals.d.ts" />
+
+import "./Array";
+import "./String";
+import "./Object";
+import "./Number";
