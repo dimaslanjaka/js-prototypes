@@ -620,7 +620,9 @@ String.prototype.printf = function (obj) {
 };
 String.prototype.parse_url = function () {
     var parser = document.createElement("a");
-    var searchObject, split, i;
+    var searchObject;
+    var split;
+    var i;
     var queries = [];
     // Let the browser do the work
     parser.href = this.toString();
@@ -639,7 +641,7 @@ String.prototype.parse_url = function () {
         search: parser.search,
         searchObject: searchObject,
         hash: parser.hash,
-        protohost: parser.protocol + "//" + parser.host
+        protohost: parser.protocol + "//" + parser.host,
     };
 };
 /**
@@ -696,9 +698,7 @@ String.prototype.truncate = function (n, useWordBoundary) {
         return this;
     }
     var subString = this.substr(0, n - 1); // the original check
-    return ((useWordBoundary
-        ? subString.substr(0, subString.lastIndexOf(" "))
-        : subString) + "&hellip;");
+    return (useWordBoundary ? subString.substr(0, subString.lastIndexOf(" ")) : subString) + "&hellip;";
 };
 String.prototype.isEmpty = function () {
     if (this != null || typeof this != "undefined") {
