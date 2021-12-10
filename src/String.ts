@@ -42,9 +42,9 @@ String.prototype.printf = function (obj) {
 
 String.prototype.parse_url = function () {
   const parser = document.createElement("a");
-  let searchObject: Array<Record<any, any> | any>,
-    split: Array<Record<any, any> | any>,
-    i: number;
+  let searchObject: Array<Record<any, any> | any>;
+  let split: Array<Record<any, any> | any>;
+  let i: number;
   let queries: string[] = [];
   // Let the browser do the work
   parser.href = this.toString();
@@ -63,7 +63,7 @@ String.prototype.parse_url = function () {
     search: parser.search,
     searchObject: searchObject,
     hash: parser.hash,
-    protohost: parser.protocol + "//" + parser.host
+    protohost: parser.protocol + "//" + parser.host,
   };
 };
 
@@ -78,17 +78,17 @@ String.prototype.CSS = function () {
   const n = document.getElementsByTagName("head")[0];
   window.addEventListener
     ? window.addEventListener(
-      "load",
-      function () {
-        n.parentNode.insertBefore(e, n);
-      },
-      !1
-    )
+        "load",
+        function () {
+          n.parentNode.insertBefore(e, n);
+        },
+        !1
+      )
     : window.attachEvent
-      ? window.attachEvent("onload", function () {
+    ? window.attachEvent("onload", function () {
         n.parentNode.insertBefore(e, n);
       })
-      : (window.onload = function () {
+    : (window.onload = function () {
         n.parentNode.insertBefore(e, n);
       });
 };
@@ -126,25 +126,16 @@ String.prototype.capitalize = function () {
 
 String.prototype.rot13 = function () {
   return this.replace(/[a-zA-Z]/g, function (c: any) {
-    return String.fromCharCode(
-      (c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
-    );
+    return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
   });
 };
 
-String.prototype.truncate = function (
-  n: number,
-  useWordBoundary: boolean | null
-) {
+String.prototype.truncate = function (n: number, useWordBoundary: boolean | null) {
   if (this.length <= n) {
     return this;
   }
   const subString = this.substr(0, n - 1); // the original check
-  return (
-    (useWordBoundary
-      ? subString.substr(0, subString.lastIndexOf(" "))
-      : subString) + "&hellip;"
-  );
+  return (useWordBoundary ? subString.substr(0, subString.lastIndexOf(" ")) : subString) + "&hellip;";
 };
 
 String.prototype.isEmpty = function () {
@@ -154,11 +145,7 @@ String.prototype.isEmpty = function () {
   return false;
 };
 
-String.prototype.replaceArr = function (
-  this: string,
-  array: string[],
-  replacement: string
-) {
+String.prototype.replaceArr = function (this: string, array: string[], replacement: string) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   let ori = this;
   array.map((str) => {
