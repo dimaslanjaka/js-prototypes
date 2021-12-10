@@ -1,1 +1,4 @@
-import "./globals.d.ts";
+import "./Array";
+import "./String";
+import "./Object";
+import "./Number";
