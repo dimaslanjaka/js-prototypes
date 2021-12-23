@@ -6,9 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": {
-    "src","dist","*.json","packages"
-  },
+  "files": [
+    "src",
+    "dist",
+    "*.json",
+    "packages"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dimaslanjaka/js-prototypes.git"
