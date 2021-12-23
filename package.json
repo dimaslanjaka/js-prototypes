@@ -10,7 +10,8 @@
     "src",
     "dist",
     "*.json",
-    "packages"
+    "packages",
+    "gulpfile.ts"
   ],
   "repository": {
     "type": "git",
