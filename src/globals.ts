@@ -1,4 +1,5 @@
-import "./Array";
-import "./String";
-import "./Object";
-import "./Number";
+["Number", "Object", "String", "Array"].forEach((m) => {
+  try {
+    require("./" + m);
+  } catch (e) {}
+});

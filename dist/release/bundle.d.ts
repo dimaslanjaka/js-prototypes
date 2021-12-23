@@ -42,7 +42,4 @@ declare function extend_object<T1 extends Record<any, unknown>, T2 extends Recor
 /// <reference path="../../src/String.d.ts" />
 /// <reference path="../../src/globals.d.ts" />
 
-import "./Array";
-import "./String";
-import "./Object";
-import "./Number";
+
