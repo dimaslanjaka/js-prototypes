@@ -587,10 +587,3 @@ String.prototype.includesArray = function (substrings) {
     var _this = this;
     return substrings.some(function (v) { return _this.includes(v); });
 };
-
-["Number", "Object", "String", "Array"].forEach(function (m) {
-    try {
-        require("./" + m);
-    }
-    catch (e) { }
-});
