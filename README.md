@@ -3,7 +3,7 @@
 instalation
 
 ```shell
-npm i https://github.com/dimaslanjaka/js-prototypes
+npm i git+https://github.com/dimaslanjaka/js-prototypes.git
 ```
 
 usage
