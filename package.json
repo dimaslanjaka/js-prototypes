@@ -9,7 +9,7 @@
   "files": [
     "src",
     "dist",
-    "*.json",
+    "*.{json,md}",
     "packages",
     "gulpfile.ts"
   ],
