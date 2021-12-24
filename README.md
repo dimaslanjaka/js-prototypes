@@ -17,7 +17,13 @@ import "js-prototypes/src/String";
 import "js-prototypes/src/globals";
 
 // or via node javascript
-import "js-prototypes/dist/libs/globals"; 
+import "js-prototypes/dist/libs/globals";
+
+//// BROWSER MODULE
+// or
+import "js-prototypes/dist/release/bundle.js"
+// or
+import "js-prototypes";
 ```
 
 html browser usage
