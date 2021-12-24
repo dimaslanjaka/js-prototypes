@@ -19,9 +19,17 @@ import "js-prototypes/src/globals";
 // or via node javascript
 import "js-prototypes/dist/libs/globals";
 
-//// BROWSER
+//// BROWSER MODULE
 // or
 import "js-prototypes/dist/release/bundle.js"
 // or
 import "js-prototypes";
+```
+
+html browser usage
+```html
+<script src="https://raw.githack.com/dimaslanjaka/js-prototypes/master/dist/release/bundle.js" />
+<script>
+  console.log(typeof [].addAll); // function
+</script>
 ```
