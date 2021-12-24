@@ -22,7 +22,7 @@ import "js-prototypes/dist/libs/globals";
 
 html browser usage
 ```html
-<script src="https://raw.githack.com/dimaslanjaka/js-prototypes/master/dist/release/bundle.js" />
+<script src="https://raw.githack.com/dimaslanjaka/js-prototypes/master/dist/release/bundle.js"></script>
 <script>
   console.log(typeof [].addAll); // function
 </script>
