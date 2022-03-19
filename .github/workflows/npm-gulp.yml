@@ -3,8 +3,6 @@ name: NodeJS with Gulp
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -22,12 +20,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Install dependencies
+      run: npm i -g gulp-cli typescript npm && npm install
+
     - name: Build
-      run: |
-        npm i -g gulp-cli typescript npm
-        npm install
-        gulp
-    - name: Deploy 🚀
+      run: npm run build
+      
+    - name: Re-deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: master # The branch the action should deploy to.
