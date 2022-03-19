@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/dimaslanjaka/js-prototypes.git"
   },
-  "keywords": [],
+  "keywords": ["native", "javascript", "prototypes"],
   "author": "",
   "license": "ISC",
   "bugs": {
