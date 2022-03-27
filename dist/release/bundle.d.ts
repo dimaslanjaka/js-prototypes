@@ -269,6 +269,8 @@ declare function datetime_local(date: any): string;
 
 
 
+
+
 declare interface Number {
     getMS(type: string): number;
     /**
@@ -401,6 +403,13 @@ interface String {
   truncate: (n: number, useWordBoundary: boolean | null) => string;
 
   /**
+   * Replace all occurrences of a string
+   * * Shim ES2021 prototype
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll}
+   */
+  replaceAll: (search: string | RegExp, replacement: string) => string;
+
+  /**
    * Printf
    * @see {@link https://stackoverflow.com/a/46078375}
    * @example
@@ -413,9 +422,7 @@ interface String {
    * that search.
    * @param matcher An object that supports being matched against.
    */
-  match(matcher: {
-    [Symbol.match](string: string): RegExpMatchArray | null;
-  }): RegExpMatchArray | null;
+  match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null }): RegExpMatchArray | null;
 
   /**
    * Replaces text in a string, using an object that supports replacement within a string.
@@ -437,10 +444,7 @@ interface String {
    */
   replace(
     searchValue: {
-      [Symbol.replace](
-        string: string,
-        replacer: (substring: string, ...args: any[]) => string
-      ): string;
+      [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string;
     },
     replacer: (substring: string, ...args: any[]) => string
   ): string;
@@ -456,10 +460,7 @@ interface String {
    * @param splitter An object that can split a string.
    * @param limit A value used to limit the number of elements returned in the array.
    */
-  split(
-    splitter: { [Symbol.split](string: string, limit?: number): string[] },
-    limit?: number
-  ): string[];
+  split(splitter: { [Symbol.split](string: string, limit?: number): string[] }, limit?: number): string[];
 
   /**
    * Parse url into part object

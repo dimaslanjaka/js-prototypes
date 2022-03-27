@@ -447,6 +447,21 @@ if (typeof document != "undefined") {
     };
 }
 
+if (!("toJSON" in Error.prototype)) {
+    // https://stackoverflow.com/a/18391400/6404439
+    Object.defineProperty(Error.prototype, "toJSON", {
+        value: function () {
+            var alt = {};
+            Object.getOwnPropertyNames(this).forEach(function (key) {
+                alt[key] = this[key];
+            }, this);
+            return alt;
+        },
+        configurable: true,
+        writable: true
+    });
+}
+
 Number.prototype.getMS = function (type) {
     var self = this;
     return this * 60 * 1000;
@@ -691,7 +706,7 @@ String.prototype.parse_url = function () {
         search: parser.search,
         searchObject: searchObject,
         hash: parser.hash,
-        protohost: parser.protocol + "//" + parser.host,
+        protohost: parser.protocol + "//" + parser.host
     };
 };
 /**
@@ -780,3 +795,9 @@ String.prototype.includesArray = function (substrings) {
     var _this = this;
     return substrings.some(function (v) { return _this.includes(v); });
 };
+if (typeof "".replaceAll != "function") {
+    String.prototype.replaceAll = function (search, replacement) {
+        var find = typeof search == "string" ? new RegExp(search, "g") : search;
+        return this.replace(find, replacement);
+    };
+}
