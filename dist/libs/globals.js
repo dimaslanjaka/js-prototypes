@@ -5,4 +5,5 @@ require("./Number");
 require("./Array");
 require("./Object");
 require("./String");
+require("./Function");
 require("collections");

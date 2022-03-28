@@ -3,9 +3,17 @@
     "**/node_modules": true
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true // let ESLint take formating and linting
+  },
+  "[json]": {
+    "editor.formatOnSave": true, // enable json formating with default vscode formatter
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.formatOnSave": false, // disable default vscode formatter
 }

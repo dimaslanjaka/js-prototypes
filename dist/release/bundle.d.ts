@@ -271,6 +271,29 @@ declare function datetime_local(date: any): string;
 
 
 
+interface Callable {
+  (text: string): void;
+  /**
+   * indicator if this function was called
+   */
+  wasCalled?: boolean;
+}
+
+interface ClassCallable extends Callable {
+  new(...args: any[]): ClassDecorator;
+}
+
+interface Function {
+  once: (param: any) => any;
+}
+/**
+ * Run the function only once
+ * @param fn
+ * @see {@link https://stackoverflow.com/a/41000535/6404439}
+ * @returns
+ */
+declare function runOnce(fn: Callable): (...args: any) => any;
+
 declare interface Number {
     getMS(type: string): number;
     /**

@@ -1,0 +1,6 @@
+[submodule "packages/collections"]
+	path = packages/collections
+	url = https://github.com/montagejs/collections
+[submodule "packages/lodash"]
+	path = packages/lodash
+	url = https://github.com/lodash/lodash

@@ -1,3 +1,4 @@
+
 // used exclusively to generate collections.min.js for browsers
 
 var Shim = require("./shim");
@@ -5,7 +6,7 @@ var Shim = require("./shim");
 /*jshint evil:true */
 // reassigning causes eval to not use lexical scope.
 var globalEval = eval,
-  global = globalEval("this");
+    global = globalEval('this');
 /*jshint evil:false */
 
 global.List = require("./list");
@@ -24,3 +25,4 @@ global.FastSet = require("./fast-set");
 global.FastMap = require("./fast-map");
 global.Dict = require("./dict");
 global.Iterator = require("./iterator");
+
