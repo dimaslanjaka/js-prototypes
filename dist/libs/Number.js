@@ -1,16 +1,16 @@
 Number.prototype.getMS = function (type) {
-    var self = this;
+    const self = this;
     return this * 60 * 1000;
 };
 Number.prototype.addHour = function (source) {
-    var self = this;
-    var Hour = this * 60 * 1000; /* ms */
+    const self = this;
+    const Hour = this * 60 * 1000; /* ms */
     if (!source)
         source = new Date();
     return new Date(source.getTime() + Hour).getTime();
 };
 Number.prototype.AddZero = function (b, c) {
-    var l = String(b || 10).length - String(this).length + 1;
+    const l = String(b || 10).length - String(this).length + 1;
     return l > 0 ? new Array(l).join(c || "0") + this : this;
 };
 /**
@@ -22,13 +22,13 @@ function oddoreven(n, type) {
     if (!type) {
         type = "odd";
     }
-    var time = !n ? new Date().getDay() : Number(n);
+    const time = !n ? new Date().getDay() : Number(n);
     if (!/^-?\d+jQuery/.test(time.toString())) {
         alert("arguments is not number, please remove quote");
         return null;
     }
-    var hasil = time % 2;
-    var rType = /^(odd|ganjil)$/.test(type) ? "1" : "0";
+    const hasil = time % 2;
+    const rType = /^(odd|ganjil)$/.test(type) ? "1" : "0";
     //return hasil == (type == ('odd' || 'ganjil') ? 1 : 0);
     return hasil.toString() == rType.toString();
 }

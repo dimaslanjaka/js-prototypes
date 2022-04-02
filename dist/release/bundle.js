@@ -10,33 +10,8 @@ if (typeof module.exports != 'undefined') {
 /* eslint-disable prefer-rest-params */
 /* eslint-disable no-prototype-builtins */
 
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Array.prototype.shuffle = function () {
-    var i = this.length, j, temp;
+    let i = this.length, j, temp;
     if (i == 0)
         return this;
     while (--i) {
@@ -54,14 +29,14 @@ Array.prototype.last = function (n) {
         return this[this.length - 1];
     }
     else {
-        var start = this.length - n;
+        let start = this.length - n;
         if (start < 0)
             start = 0;
         return this.slice(start, this.length);
     }
 };
 Array.prototype.trim = function () {
-    return this.map(function (str) {
+    return this.map((str) => {
         if (typeof str == 'string')
             return str.trim();
     });
@@ -80,7 +55,7 @@ Array.prototype.add = function (element) {
     return this;
 };
 Array.prototype.addAll = function (others) {
-    var self = this;
+    const self = this;
     others.forEach(function (e) {
         self.push(e);
     });
@@ -90,9 +65,9 @@ Array.prototype.random = function () {
     return this[Math.floor(Math.random() * this.length)];
 };
 Array.prototype.unique = function () {
-    var a = this.concat();
-    for (var i = 0; i < a.length; ++i) {
-        for (var j = i + 1; j < a.length; ++j) {
+    const a = this.concat();
+    for (let i = 0; i < a.length; ++i) {
+        for (let j = i + 1; j < a.length; ++j) {
             if (a[i] === a[j])
                 a.splice(j--, 1);
         }
@@ -100,16 +75,15 @@ Array.prototype.unique = function () {
     return a;
 };
 Array.prototype.uniqueStringArray = function () {
-    var filter = new Map(this.map(function (s) { return [s.toLowerCase(), s]; }));
-    return __spreadArray([], __read(filter.values()), false);
+    const filter = new Map(this.map((s) => [s.toLowerCase(), s]));
+    return [...filter.values()];
 };
-Array.prototype.uniqueObjectKey = function (key, removeNull) {
-    if (removeNull === void 0) { removeNull = true; }
+Array.prototype.uniqueObjectKey = function (key, removeNull = true) {
     if (!key)
         return this;
-    var resArr = [];
+    const resArr = [];
     this.filter(function (item) {
-        var i = resArr.findIndex(function (x) { return x[key] == item[key]; });
+        const i = resArr.findIndex((x) => x[key] == item[key]);
         if (i <= -1) {
             if (removeNull) {
                 if (item[key])
@@ -124,7 +98,7 @@ Array.prototype.uniqueObjectKey = function (key, removeNull) {
     return resArr;
 };
 Array.prototype.contains = function (obj) {
-    var i = this.length;
+    let i = this.length;
     while (i--) {
         if (this[i] === obj) {
             return true;
@@ -149,7 +123,7 @@ Array.prototype.first = function (n) {
 };
 Array.prototype.compact = function () {
     //var changes = false;
-    for (var i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.length; i++) {
         // If element is non-existent, undefined or null, remove it.
         if (!this[i]) {
             this.splice(i, 1);
@@ -166,7 +140,7 @@ Array.prototype.deleteAt = function (index) {
     // If element is non-existent, return undefined:
     if (!this.hasOwnProperty(index))
         return undefined;
-    var elem = this[index];
+    const elem = this[index];
     this.splice(index, 1);
     return elem;
 };
@@ -183,10 +157,10 @@ Array.prototype.exists = function (n) {
 if (!Array.prototype.hasOwnProperty('every')) {
     Array.prototype.every = function (fun /*, thisp */) {
         'use strict';
-        var t = Object(this);
-        var len = t.length >>> 0;
-        var i;
-        var thisp = arguments[1];
+        const t = Object(this);
+        const len = t.length >>> 0;
+        let i;
+        const thisp = arguments[1];
         if (this == null) {
             throw new TypeError();
         }
@@ -202,17 +176,13 @@ if (!Array.prototype.hasOwnProperty('every')) {
     };
 }
 Array.prototype.move = function (from, to) {
-    var itemRemoved = this.splice(from, 1); // splice() returns the remove element as an array
+    const itemRemoved = this.splice(from, 1); // splice() returns the remove element as an array
     this.splice(to, 0, itemRemoved[0]); // Insert itemRemoved into the target index
     return this;
 };
-Array.prototype.hapusItemDariArrayLain = function () {
-    var arrayLain = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        arrayLain[_i] = arguments[_i];
-    }
-    var thisArr = this;
-    arrayLain.forEach(function (otherArr) {
+Array.prototype.hapusItemDariArrayLain = function (...arrayLain) {
+    let thisArr = this;
+    arrayLain.forEach((otherArr) => {
         thisArr = thisArr.filter(function (el) {
             return !otherArr.includes(el);
         });
@@ -220,8 +190,8 @@ Array.prototype.hapusItemDariArrayLain = function () {
     return thisArr;
 };
 Array.prototype.removeEmpties = function () {
-    var filter = this.filter(function (el) {
-        var notnull = 
+    const filter = this.filter(function (el) {
+        const notnull = 
         // make sure element is not null
         el != null &&
             // make sure element is not undefined
@@ -234,54 +204,52 @@ Array.prototype.removeEmpties = function () {
     });
     return filter;
 };
-var array_ext = /** @class */ (function () {
-    function array_ext() {
-    }
-    array_ext.array_filter = function (array) {
+class array_ext {
+    static array_filter(array) {
         return array.filter(function (el) {
             return el != null;
         });
-    };
+    }
     /**
      * pick random from array
      * @param {Array<any>} arrays
      * @param {boolean} unique Unique the arrays
      */
-    array_ext.array_rand = function (arrays, unique) {
+    static array_rand(arrays, unique) {
         if (unique) {
             arrays = array_ext.array_unique(arrays);
         }
-        var index = Math.floor(Math.random() * arrays.length);
+        const index = Math.floor(Math.random() * arrays.length);
         return {
             index: index,
             value: arrays[index],
         };
-    };
+    }
     /**
      * Array unique
      * @param {Array<any>} arrays
      */
-    array_ext.array_unique = function (arrays) {
+    static array_unique(arrays) {
         return arrays.filter(function (item, pos, self) {
             return self.indexOf(item) == pos;
         });
-    };
+    }
     /**
      * Unset array
      * @param {Array<any>} arrayName
      * @param {String|number} key
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    array_ext.array_unset = function (arrayName, key) {
-        var x;
-        var tmpArray = [];
+    static array_unset(arrayName, key) {
+        let x;
+        const tmpArray = [];
         for (x in arrayName) {
             if (x != key) {
                 tmpArray[x] = arrayName[x];
             }
         }
         return tmpArray;
-    };
+    }
     /**
      * PHP shuffle array equivalent
      * @param array
@@ -291,8 +259,8 @@ var array_ext = /** @class */ (function () {
      * console.log(arr); //return random
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    array_ext.shuffle = function (array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+    static shuffle(array) {
+        let currentIndex = array.length, temporaryValue, randomIndex;
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
             // Pick a remaining element...
@@ -304,25 +272,25 @@ var array_ext = /** @class */ (function () {
             array[randomIndex] = temporaryValue;
         }
         return array;
-    };
-    array_ext.arrayCompare = function (a1, a2) {
+    }
+    static arrayCompare(a1, a2) {
         if (a1.length != a2.length)
             return false;
-        var length = a2.length;
-        for (var i = 0; i < length; i++) {
+        const length = a2.length;
+        for (let i = 0; i < length; i++) {
             if (a1[i] !== a2[i])
                 return false;
         }
         return true;
-    };
+    }
     /**
      * in_array PHP equivalent
      * @param needle string etc
      * @param haystack
      */
-    array_ext.inArray = function (needle, haystack) {
-        var length = haystack.length;
-        for (var i = 0; i < length; i++) {
+    static inArray(needle, haystack) {
+        const length = haystack.length;
+        for (let i = 0; i < length; i++) {
             if (typeof haystack[i] == 'object') {
                 if (array_ext.arrayCompare(haystack[i], needle))
                     return true;
@@ -333,28 +301,28 @@ var array_ext = /** @class */ (function () {
             }
         }
         return false;
-    };
+    }
     /**
      * in_array PHP equivalent
      * @param needle string etc
      * @param haystack
      */
-    array_ext.in_array = function (needle, haystack) {
+    static in_array(needle, haystack) {
         return array_ext.inArray(needle, haystack);
-    };
+    }
     /**
      * get all keys
      * @param haystack string etc
      */
-    array_ext.array_keys = function (haystack) {
+    static array_keys(haystack) {
         return Object.keys(haystack);
-    };
+    }
     /**
      * Shuffles array in place.
      * @param a items An array containing the items.
      */
-    array_ext.array_shuffle = function (a) {
-        var j, x, i;
+    static array_shuffle(a) {
+        let j, x, i;
         for (i = a.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
             x = a[i];
@@ -362,27 +330,23 @@ var array_ext = /** @class */ (function () {
             a[j] = x;
         }
         return a;
-    };
+    }
     /**
      * Deep merge two or more objects into the first.
      * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
      * @param objects  The objects to merge together
      * @returns Merged values of defaults and options
      */
-    array_ext.deepAssign = function () {
-        var objects = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            objects[_i] = arguments[_i];
-        }
+    static deepAssign(...objects) {
         // Make sure there are objects to merge
-        var len = objects.length;
+        const len = objects.length;
         if (len < 1)
             return;
         if (len < 2)
             return objects[0];
         // Merge all objects into first
-        for (var i = 1; i < len; i++) {
-            for (var key in objects[i]) {
+        for (let i = 1; i < len; i++) {
+            for (const key in objects[i]) {
                 if (objects[i].hasOwnProperty(key)) {
                     // If it's an object, recursively merge
                     // Otherwise, push to key
@@ -396,22 +360,21 @@ var array_ext = /** @class */ (function () {
             }
         }
         return arguments[0];
-    };
+    }
     /**
      * Remove item from array
      * @param arr
      * @param value
      * @returns
      */
-    array_ext.removeItem = function (arr, value) {
-        var index = arr.indexOf(value);
+    static removeItem(arr, value) {
+        const index = arr.indexOf(value);
         if (index > -1) {
             arr.splice(index, 1);
         }
         return arr;
-    };
-    return array_ext;
-}());
+    }
+}
 if (typeof window != 'undefined' && window instanceof Window) {
     window.array_shuffle = array_ext.array_shuffle;
     window.array_filter = array_ext.array_filter;
@@ -435,57 +398,33 @@ else if (typeof global == 'object') {
 // export node module
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = array_ext;
+    exports = array_ext;
 }
 
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * Get all method from class
  * @param toCheck
  * @returns
  */
-var getAllMethods = function (toCheck) {
+const getAllMethods = function (toCheck) {
     if (!toCheck)
         return [];
     try {
-        var props = [];
-        var obj = toCheck;
+        const props = [];
+        let obj = toCheck;
         do {
-            props.push.apply(props, __spreadArray([], __read(Object.getOwnPropertyNames(obj)), false));
+            props.push(...Object.getOwnPropertyNames(obj));
         } while ((obj = Object.getPrototypeOf(obj)));
         return props
             .sort()
-            .filter(function (e, i, arr_fname) {
-            var c = toCheck[e];
-            var fname = arr_fname[i + 1];
+            .filter((e, i, arr_fname) => {
+            const c = toCheck[e];
+            const fname = arr_fname[i + 1];
             if (e != fname && typeof c == 'function')
                 return true;
         })
-            .filter(function (fname) {
+            .filter((fname) => {
             return ![
                 '__defineGetter__',
                 '__defineSetter__',
@@ -502,13 +441,13 @@ var getAllMethods = function (toCheck) {
         });
     }
     catch (e) {
-        return Object.getOwnPropertyNames(toCheck).filter(function (prop) { return typeof toCheck[prop] === 'function'; });
+        return Object.getOwnPropertyNames(toCheck).filter((prop) => typeof toCheck[prop] === 'function');
     }
 };
 
 Date.prototype.isHourAgo = function (hour) {
     hour = hour * 60 * 1000; /* ms */
-    var hourago = Date.now() - hour;
+    const hourago = Date.now() - hour;
     return hour > hourago;
 };
 if (!Date.now) {
@@ -525,14 +464,11 @@ Date.prototype.addHours2 = function (hrs) {
     this.setHours(this.getHours() + hrs);
     return this;
 };
-var date_ext = /** @class */ (function () {
-    function date_ext() {
-    }
-    date_ext.datetime_local = function (date) {
+class date_ext {
+    static datetime_local(date) {
         return new Date(date).toJSON().slice(0, 19);
-    };
-    return date_ext;
-}());
+    }
+}
 if (typeof window != 'undefined' && window instanceof Window) {
     window.datetime_local = date_ext.datetime_local;
 }
@@ -547,8 +483,7 @@ if (typeof module != 'undefined' && typeof module == 'object') {
 }
 
 if (typeof document != 'undefined') {
-    Document.prototype.listen = function (eventType, listener, options) {
-        if (options === void 0) { options = {}; }
+    Document.prototype.listen = function (eventType, listener, options = {}) {
         if (this.addEventListener) {
             this.addEventListener(eventType, listener, options);
         }
@@ -562,7 +497,7 @@ if (!('toJSON' in Error.prototype)) {
     // https://stackoverflow.com/a/18391400/6404439
     Object.defineProperty(Error.prototype, 'toJSON', {
         value: function () {
-            var alt = {};
+            const alt = {};
             Object.getOwnPropertyNames(this).forEach(function (key) {
                 alt[key] = this[key];
             }, this);
@@ -591,12 +526,8 @@ Function.prototype.once = function (param) {
  * @returns
  */
 function runOnce(fn) {
-    var done = false;
-    return function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    let done = false;
+    return function (...args) {
         if (!done) {
             done = true;
             return fn.apply(this, args);
@@ -605,7 +536,7 @@ function runOnce(fn) {
 }
 if (typeof module.exports != 'undefined') {
     module.exports = {
-        runOnce: runOnce,
+        runOnce,
     };
 }
 
@@ -616,18 +547,18 @@ if (typeof module.exports != 'undefined') {
 };*/
 
 Number.prototype.getMS = function (type) {
-    var self = this;
+    const self = this;
     return this * 60 * 1000;
 };
 Number.prototype.addHour = function (source) {
-    var self = this;
-    var Hour = this * 60 * 1000; /* ms */
+    const self = this;
+    const Hour = this * 60 * 1000; /* ms */
     if (!source)
         source = new Date();
     return new Date(source.getTime() + Hour).getTime();
 };
 Number.prototype.AddZero = function (b, c) {
-    var l = String(b || 10).length - String(this).length + 1;
+    const l = String(b || 10).length - String(this).length + 1;
     return l > 0 ? new Array(l).join(c || "0") + this : this;
 };
 /**
@@ -639,13 +570,13 @@ function oddoreven(n, type) {
     if (!type) {
         type = "odd";
     }
-    var time = !n ? new Date().getDay() : Number(n);
+    const time = !n ? new Date().getDay() : Number(n);
     if (!/^-?\d+jQuery/.test(time.toString())) {
         alert("arguments is not number, please remove quote");
         return null;
     }
-    var hasil = time % 2;
-    var rType = /^(odd|ganjil)$/.test(type) ? "1" : "0";
+    const hasil = time % 2;
+    const rType = /^(odd|ganjil)$/.test(type) ? "1" : "0";
     //return hasil == (type == ('odd' || 'ganjil') ? 1 : 0);
     return hasil.toString() == rType.toString();
 }
@@ -685,33 +616,8 @@ if (typeof module.exports != 'undefined') {
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.size = function (obj) {
-    var size = 0, key;
+    let size = 0, key;
     for (key in obj) {
         if (obj.hasOwnProperty(key))
             size++;
@@ -719,7 +625,7 @@ Object.size = function (obj) {
     return size;
 };
 Object.child = function (str, callback) {
-    var self = this;
+    const self = this;
     if (self.hasOwnProperty(str)) {
         if (typeof callback == 'function') {
             return callback(self[str]);
@@ -733,7 +639,7 @@ Object.child = function (str, callback) {
     }
 };
 Object.alt = function (str, alternative) {
-    var self = this;
+    const self = this;
     if (self.hasOwnProperty(str)) {
         return self[str];
     }
@@ -745,7 +651,7 @@ Object.has = function (str) {
     return this.hasOwnProperty(str);
 };
 Object.each = function (callback) {
-    for (var key in this) {
+    for (const key in this) {
         //callback.call(scope, key, this[key]);
         callback.call(this[key]);
     }
@@ -754,9 +660,8 @@ Object.isEmpty = function () {
     return this.length === 0;
 };
 Object.replaceKeyFrom = function (anotherObj) {
-    return Object.entries(this).reduce(function (op, _a) {
-        var _b = __read(_a, 2), key = _b[0], value = _b[1];
-        var newKey = anotherObj[key];
+    return Object.entries(this).reduce((op, [key, value]) => {
+        const newKey = anotherObj[key];
         op[newKey || key] = value;
         return op;
     }, {});
@@ -769,9 +674,7 @@ Object.replaceKeyFrom = function (anotherObj) {
       }
     }*/
 };
-var object_ext = /** @class */ (function () {
-    function object_ext() {
-    }
+class object_ext {
     /**
      * Join object to separated string
      * * [].join() equivalent
@@ -779,58 +682,47 @@ var object_ext = /** @class */ (function () {
      * @param separator default comma(,)
      * @returns Joined string
      */
-    object_ext.object_join = function (obj, separator) {
-        if (separator === void 0) { separator = ','; }
+    static object_join(obj, separator = ',') {
         return Object.keys(obj)
             .map(function (k) {
             return obj[k];
         })
             .join(separator);
-    };
+    }
     /**
      * Simple object check.
      * @param item
      * @returns
      */
-    object_ext.isObject = function (item) {
+    static isObject(item) {
         return item && typeof item === 'object' && !Array.isArray(item);
-    };
+    }
     /**
      * Deep merge two objects.
      * @param target
      * @param ...sources
      */
-    object_ext.mergeDeep = function (target) {
-        var _a, _b;
-        var sources = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            sources[_i - 1] = arguments[_i];
-        }
+    static mergeDeep(target, ...sources) {
         if (!sources.length)
             return target;
-        var source = sources.shift();
+        const source = sources.shift();
         if (object_ext.isObject(target) && object_ext.isObject(source)) {
-            for (var key in source) {
+            for (const key in source) {
                 if (object_ext.isObject(source[key])) {
                     if (!target[key])
-                        Object.assign(target, (_a = {}, _a[key] = {}, _a));
+                        Object.assign(target, { [key]: {} });
                     object_ext.mergeDeep(target[key], source[key]);
                 }
                 else {
-                    Object.assign(target, (_b = {}, _b[key] = source[key], _b));
+                    Object.assign(target, { [key]: source[key] });
                 }
             }
         }
-        return object_ext.mergeDeep.apply(object_ext, __spreadArray([target], __read(sources), false));
-    };
-    return object_ext;
-}());
-Object.prototype.merge = function () {
-    var others = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        others[_i] = arguments[_i];
+        return object_ext.mergeDeep(target, ...sources);
     }
-    return object_ext.mergeDeep.apply(object_ext, __spreadArray([this], __read(others), false));
+}
+Object.prototype.merge = function (...others) {
+    return object_ext.mergeDeep(this, ...others);
 };
 if (typeof window != 'undefined' && window instanceof Window) {
     window.object_join = object_ext.object_join;
@@ -865,9 +757,9 @@ String.prototype.printf = function (obj) {
       const util = require("util");
       return util.format(this, obj);
     }*/
-    var useArguments = false;
-    var _arguments = arguments;
-    var i = -1;
+    let useArguments = false;
+    const _arguments = arguments;
+    let i = -1;
     if (typeof _arguments[0] == 'string') {
         useArguments = true;
     }
@@ -887,24 +779,30 @@ String.prototype.printf = function (obj) {
     }
     else {
         return this.replace(/{([^{}]*)}/g, function (a, b) {
-            var r = obj[b];
+            const r = obj[b];
             return typeof r === 'string' || typeof r === 'number' ? r : a;
         });
     }
 };
 String.prototype.parse_url = function () {
-    var parser = document.createElement('a');
-    var searchObject;
-    var split;
-    var i;
-    var queries = [];
+    let parser;
+    if (typeof module != 'undefined' && module.exports) {
+        parser = new URL(this);
+    }
+    else if (typeof document != 'undefined') {
+        parser = document.createElement('a');
+    }
+    const searchObject = [];
+    let split = [];
+    let queries = [];
     // Let the browser do the work
     parser.href = this.toString();
     // Convert query string to object
     queries = parser.search.replace(/^\?/, '').split('&');
-    for (i = 0; i < queries.length; i++) {
+    for (let i = 0; i < queries.length; i++) {
         split = queries[i].split('=');
-        searchObject[split[0]] = split[1];
+        if (split.length)
+            searchObject[split[0]] = split[1];
     }
     return {
         protocol: parser.protocol,
@@ -922,10 +820,10 @@ String.prototype.parse_url = function () {
  * Load css
  */
 String.prototype.CSS = function () {
-    var e = document.createElement('link');
+    const e = document.createElement('link');
     e.rel = 'stylesheet';
     e.href = this.toString();
-    var n = document.getElementsByTagName('head')[0];
+    const n = document.getElementsByTagName('head')[0];
     window.addEventListener
         ? window.addEventListener('load', function () {
             n.parentNode.insertBefore(e, n);
@@ -942,8 +840,8 @@ String.prototype.trim = function () {
     return this.replace(/^\s+|\s+$/gm, '');
 };
 String.prototype.hexE = function () {
-    var hex, i;
-    var result = '';
+    let hex, i;
+    let result = '';
     for (i = 0; i < this.length; i++) {
         hex = this.charCodeAt(i).toString(16);
         result += ('000' + hex).slice(-4);
@@ -951,9 +849,9 @@ String.prototype.hexE = function () {
     return result;
 };
 String.prototype.hexD = function () {
-    var j;
-    var hexes = this.match(/.{1,4}/g) || [];
-    var back = '';
+    let j;
+    const hexes = this.match(/.{1,4}/g) || [];
+    let back = '';
     for (j = 0; j < hexes.length; j++) {
         back += String.fromCharCode(parseInt(hexes[j], 16));
     }
@@ -971,7 +869,7 @@ String.prototype.truncate = function (n, useWordBoundary) {
     if (this.length <= n) {
         return this;
     }
-    var subString = this.substr(0, n - 1); // the original check
+    const subString = this.substr(0, n - 1); // the original check
     return (useWordBoundary ? subString.substr(0, subString.lastIndexOf(' ')) : subString) + '&hellip;';
 };
 String.prototype.isEmpty = function () {
@@ -982,8 +880,8 @@ String.prototype.isEmpty = function () {
 };
 String.prototype.replaceArr = function (array, replacement) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    var ori = this;
-    array.map(function (str) {
+    let ori = this;
+    array.map((str) => {
         ori = ori.replace(str, replacement);
     });
     return ori;
@@ -996,17 +894,16 @@ String.prototype.toHtmlEntities = function () {
 };
 String.fromHtmlEntities = function (str) {
     return (str + '').replace(/&#\d+;/gm, function (s) {
-        var m = s.match(/\d+/gm)[0];
+        const m = s.match(/\d+/gm)[0];
         return String.fromCharCode(m);
     });
 };
 String.prototype.includesArray = function (substrings) {
-    var _this = this;
-    return substrings.some(function (v) { return _this.includes(v); });
+    return substrings.some((v) => this.includes(v));
 };
 if (typeof ''.replaceAll != 'function') {
     String.prototype.replaceAll = function (search, replacement) {
-        var find = typeof search == 'string' ? new RegExp(search, 'g') : search;
+        const find = typeof search == 'string' ? new RegExp(search, 'g') : search;
         return this.replace(find, replacement);
     };
 }

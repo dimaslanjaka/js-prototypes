@@ -194,18 +194,22 @@ String.prototype.printf = function (obj) {
 };
 
 String.prototype.parse_url = function () {
-  const parser = document.createElement('a');
-  let searchObject: Array<Record<any, any> | any>;
-  let split: Array<Record<any, any> | any>;
-  let i: number;
+  let parser: URL | HTMLAnchorElement;
+  if (typeof module != 'undefined' && module.exports) {
+    parser = new URL(this);
+  } else if (typeof document != 'undefined') {
+    parser = document.createElement('a');
+  }
+  const searchObject: Array<Record<any, any> | any> = [];
+  let split: Array<Record<any, any> | any> = [];
   let queries: string[] = [];
   // Let the browser do the work
   parser.href = this.toString();
   // Convert query string to object
   queries = parser.search.replace(/^\?/, '').split('&');
-  for (i = 0; i < queries.length; i++) {
+  for (let i = 0; i < queries.length; i++) {
     split = queries[i].split('=');
-    searchObject[split[0]] = split[1];
+    if (split.length) searchObject[split[0]] = split[1];
   }
   return {
     protocol: parser.protocol,

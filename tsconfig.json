@@ -8,6 +8,7 @@
 		"declaration": true,
 		"removeComments": false,
 		"allowJs": true,
+		"noImplicitAny": false,
 		"downlevelIteration": true,
 		"typeRoots": [
 			"./node_modules/@types",
@@ -16,7 +17,7 @@
 		"types": [
 			"node"
 		],
-		"target": "ES5",
+		"target": "ES6",
 		"lib": [
 			"DOM",
 			"ES5",

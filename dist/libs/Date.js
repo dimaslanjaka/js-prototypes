@@ -1,6 +1,6 @@
 Date.prototype.isHourAgo = function (hour) {
     hour = hour * 60 * 1000; /* ms */
-    var hourago = Date.now() - hour;
+    const hourago = Date.now() - hour;
     return hour > hourago;
 };
 if (!Date.now) {
@@ -17,14 +17,11 @@ Date.prototype.addHours2 = function (hrs) {
     this.setHours(this.getHours() + hrs);
     return this;
 };
-var date_ext = /** @class */ (function () {
-    function date_ext() {
-    }
-    date_ext.datetime_local = function (date) {
+class date_ext {
+    static datetime_local(date) {
         return new Date(date).toJSON().slice(0, 19);
-    };
-    return date_ext;
-}());
+    }
+}
 if (typeof window != 'undefined' && window instanceof Window) {
     window.datetime_local = date_ext.datetime_local;
 }

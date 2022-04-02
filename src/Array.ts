@@ -606,4 +606,5 @@ if (typeof window != 'undefined' && window instanceof Window) {
 // export node module
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = array_ext;
+  exports = array_ext;
 }

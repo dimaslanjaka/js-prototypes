@@ -16,12 +16,8 @@ Function.prototype.once = function (param) {
  * @returns
  */
 function runOnce(fn) {
-    var done = false;
-    return function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    let done = false;
+    return function (...args) {
         if (!done) {
             done = true;
             return fn.apply(this, args);
@@ -30,6 +26,6 @@ function runOnce(fn) {
 }
 if (typeof module.exports != 'undefined') {
     module.exports = {
-        runOnce: runOnce,
+        runOnce,
     };
 }

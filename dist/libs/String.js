@@ -12,9 +12,9 @@ String.prototype.printf = function (obj) {
       const util = require("util");
       return util.format(this, obj);
     }*/
-    var useArguments = false;
-    var _arguments = arguments;
-    var i = -1;
+    let useArguments = false;
+    const _arguments = arguments;
+    let i = -1;
     if (typeof _arguments[0] == 'string') {
         useArguments = true;
     }
@@ -34,24 +34,30 @@ String.prototype.printf = function (obj) {
     }
     else {
         return this.replace(/{([^{}]*)}/g, function (a, b) {
-            var r = obj[b];
+            const r = obj[b];
             return typeof r === 'string' || typeof r === 'number' ? r : a;
         });
     }
 };
 String.prototype.parse_url = function () {
-    var parser = document.createElement('a');
-    var searchObject;
-    var split;
-    var i;
-    var queries = [];
+    let parser;
+    if (typeof module != 'undefined' && module.exports) {
+        parser = new URL(this);
+    }
+    else if (typeof document != 'undefined') {
+        parser = document.createElement('a');
+    }
+    const searchObject = [];
+    let split = [];
+    let queries = [];
     // Let the browser do the work
     parser.href = this.toString();
     // Convert query string to object
     queries = parser.search.replace(/^\?/, '').split('&');
-    for (i = 0; i < queries.length; i++) {
+    for (let i = 0; i < queries.length; i++) {
         split = queries[i].split('=');
-        searchObject[split[0]] = split[1];
+        if (split.length)
+            searchObject[split[0]] = split[1];
     }
     return {
         protocol: parser.protocol,
@@ -69,10 +75,10 @@ String.prototype.parse_url = function () {
  * Load css
  */
 String.prototype.CSS = function () {
-    var e = document.createElement('link');
+    const e = document.createElement('link');
     e.rel = 'stylesheet';
     e.href = this.toString();
-    var n = document.getElementsByTagName('head')[0];
+    const n = document.getElementsByTagName('head')[0];
     window.addEventListener
         ? window.addEventListener('load', function () {
             n.parentNode.insertBefore(e, n);
@@ -89,8 +95,8 @@ String.prototype.trim = function () {
     return this.replace(/^\s+|\s+$/gm, '');
 };
 String.prototype.hexE = function () {
-    var hex, i;
-    var result = '';
+    let hex, i;
+    let result = '';
     for (i = 0; i < this.length; i++) {
         hex = this.charCodeAt(i).toString(16);
         result += ('000' + hex).slice(-4);
@@ -98,9 +104,9 @@ String.prototype.hexE = function () {
     return result;
 };
 String.prototype.hexD = function () {
-    var j;
-    var hexes = this.match(/.{1,4}/g) || [];
-    var back = '';
+    let j;
+    const hexes = this.match(/.{1,4}/g) || [];
+    let back = '';
     for (j = 0; j < hexes.length; j++) {
         back += String.fromCharCode(parseInt(hexes[j], 16));
     }
@@ -118,7 +124,7 @@ String.prototype.truncate = function (n, useWordBoundary) {
     if (this.length <= n) {
         return this;
     }
-    var subString = this.substr(0, n - 1); // the original check
+    const subString = this.substr(0, n - 1); // the original check
     return (useWordBoundary ? subString.substr(0, subString.lastIndexOf(' ')) : subString) + '&hellip;';
 };
 String.prototype.isEmpty = function () {
@@ -129,8 +135,8 @@ String.prototype.isEmpty = function () {
 };
 String.prototype.replaceArr = function (array, replacement) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    var ori = this;
-    array.map(function (str) {
+    let ori = this;
+    array.map((str) => {
         ori = ori.replace(str, replacement);
     });
     return ori;
@@ -143,17 +149,16 @@ String.prototype.toHtmlEntities = function () {
 };
 String.fromHtmlEntities = function (str) {
     return (str + '').replace(/&#\d+;/gm, function (s) {
-        var m = s.match(/\d+/gm)[0];
+        const m = s.match(/\d+/gm)[0];
         return String.fromCharCode(m);
     });
 };
 String.prototype.includesArray = function (substrings) {
-    var _this = this;
-    return substrings.some(function (v) { return _this.includes(v); });
+    return substrings.some((v) => this.includes(v));
 };
 if (typeof ''.replaceAll != 'function') {
     String.prototype.replaceAll = function (search, replacement) {
-        var find = typeof search == 'string' ? new RegExp(search, 'g') : search;
+        const find = typeof search == 'string' ? new RegExp(search, 'g') : search;
         return this.replace(find, replacement);
     };
 }

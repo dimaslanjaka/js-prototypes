@@ -1,4 +1,3 @@
-import './globals';
 import './Error';
 import './Number';
 import './Array';
