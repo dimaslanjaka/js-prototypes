@@ -9,3 +9,8 @@ require("./String");
 require("./Function");
 require("collections");
 //declare namespace prototype {}
+if (typeof module != 'undefined' && module.exports) {
+    module.exports = {
+        prototype_array: require('./Array'),
+    };
+}

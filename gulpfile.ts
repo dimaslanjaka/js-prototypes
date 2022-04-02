@@ -9,23 +9,39 @@ import del from 'del';
 import through from 'through2';
 import { join } from 'path';
 import { readFileSync } from 'fs';
+import sourcemaps from 'gulp-sourcemaps';
+import { exec } from 'child_process';
 
-gulp.task('browser:clean', function () {
-  return del('./dist');
+gulp.task('clean', function () {
+  return del('./docs').then(() => del('./dist'));
 });
 
-gulp.task('browser:tsc', function () {
+gulp.task('tsc:build', function () {
   const tsProject = ts.createProject('tsconfig.json');
   const tsResult = gulp.src('src/**/*.ts').pipe(tsProject());
   //.pipe(gulp.dest("dist/libs"));
   return merge([tsResult.dts.pipe(gulp.dest('dist/libs')), tsResult.js.pipe(gulp.dest('dist/libs'))]);
 });
 
+gulp.task('tsc:docs', function (done) {
+  exec('npm run docs', { cwd: __dirname }, (err, stdout, stderr) => {
+    if (err) {
+      console.log(stderr);
+    } else {
+      console.log(stdout);
+    }
+    done();
+  });
+});
+
+gulp.task('tsc', gulp.series('tsc:build', 'tsc:docs'));
+
 const exclude = ['!**/*.map'];
 const nodesrc = ['**/globals.{js,ts}', '**/node-*.{js,ts}', '**/index.{js,ts}'];
 gulp.task('browser:js', function () {
   return gulp
-    .src(['dist/libs/*.js', ...nodesrc.map((s) => '!' + s)])
+    .src(['dist/libs/*.js', ...nodesrc.map((s) => '!' + s), ...exclude])
+    .pipe(sourcemaps.init())
     .pipe(concat('bundle.js'))
     .pipe(
       through.obj((chunk, enc, cb) => {
@@ -44,6 +60,7 @@ gulp.task('browser:js', function () {
         cb(null, chunk);
       })
     )
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/release'));
 });
 
@@ -77,5 +94,5 @@ gulp.task('browser:dts', function () {
     .pipe(gulp.dest('./dist/release'));
 });
 
-exports.browser = gulp.series('browser:clean', 'browser:tsc', 'browser:js', 'browser:min-js', 'browser:dts');
-exports.default = gulp.series(exports.browser);
+exports.browser = gulp.series('browser:js', 'browser:min-js', 'browser:dts');
+exports.default = gulp.series('clean', 'tsc', exports.browser);

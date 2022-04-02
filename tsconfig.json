@@ -4,6 +4,7 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"outDir": "dist/libs",
+		"rootDir": "src",
 		"moduleResolution": "Node",
 		"declaration": true,
 		"removeComments": false,
@@ -39,5 +40,11 @@
 		"node_modules",
 		"./dist/release/*.js",
 		"./dist/**/*.js"
-	]
+	],
+	"typedocOptions": {
+		"entryPoints": [
+			"src/index.ts"
+		],
+		"out": "docs"
+	}
 }

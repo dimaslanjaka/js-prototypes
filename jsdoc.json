@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/0dd07e7c78d3c4669f4bd9057f721f8bd80eeda9/src/schemas/json/jsdoc-1.0.0.json",
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/typescript",
+    "node_modules/better-docs/category",
+    "node_modules/better-docs/typedef-import"
+  ],
+  "recurseDepth": 10,
+  "source": {
+    "includePattern": "\\.(jsx|js|ts|tsx)$",
+    "excludePattern": "(^|\\/|\\\\)_",
+    "include": [
+      "src",
+      "README.md"
+    ]
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc",
+      "closure"
+    ]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "better-docs": {
+      "name": "Sample Documentation",
+      "logo": "images/logo.png",
+      "title": "WMI",
+      "css": "style.css",
+      "trackingCode": "tracking-code-which-will-go-to-the-HEAD",
+      "hideGenerator": false,
+      "navLinks": [
+        {
+          "label": "Github",
+          "href": "https://github.com/SoftwareBrothers/admin-bro"
+        },
+        {
+          "label": "Example Application",
+          "href": "https://admin-bro-example-app-staging.herokuapp.com/admin"
+        }
+      ]
+    }
+  },
+  "opts": {
+    "template": "node_modules/better-docs",
+    "destination": "./docs/"
+  }
+}

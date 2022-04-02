@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> Class.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,63 +75,59 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>Class.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>js-prototypes</h1>
-<p>instalation</p>
-<pre class="prettyprint source lang-shell"><code>npm i git+https://github.com/dimaslanjaka/js-prototypes.git
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-unused-vars */
+/**
+ * Get all method from class
+ * @param toCheck
+ * @returns
+ */
+const getAllMethods = function (toCheck: { [key: string]: any }) {
+  if (!toCheck) return [];
+  try {
+    const props = [];
+    let obj = toCheck;
+    do {
+      props.push(...Object.getOwnPropertyNames(obj));
+    } while ((obj = Object.getPrototypeOf(obj)));
+    return props
+      .sort()
+      .filter((e, i, arr_fname) => {
+        const c: ClassDecorator = toCheck[e];
+        const fname = arr_fname[i + 1];
+        if (e != fname &amp;&amp; typeof c == 'function') return true;
+      })
+      .filter((fname) => {
+        return ![
+          '__defineGetter__',
+          '__defineSetter__',
+          '__lookupGetter__',
+          '__lookupSetter__',
+          'constructor',
+          'hasOwnProperty',
+          'isPrototypeOf',
+          'propertyIsEnumerable',
+          'toLocaleString',
+          'toString',
+          'valueOf',
+        ].includes(fname);
+      });
+  } catch (e) {
+    return Object.getOwnPropertyNames(toCheck).filter((prop) => typeof toCheck[prop] === 'function');
+  }
+};
 </code></pre>
-<p>usage</p>
-<pre class="prettyprint source lang-ts"><code>// global automated shim to all prototypes (recommended)
-import &quot;js-prototypes&quot;
-
-// import custom prototypes (typescript)
-import &quot;js-prototypes/src/String&quot;;
-import &quot;js-prototypes/src/Array&quot;;
-import &quot;js-prototypes/src/Object&quot;;
-
-// import custom prototypes (javascript)
-import &quot;js-prototypes/dist/String&quot;;
-import &quot;js-prototypes/dist/Array&quot;;
-import &quot;js-prototypes/dist/Object&quot;;
-
-// import global prototypes (javascript)
-import &quot;js-prototypes/dist/libs/globals&quot;;
-</code></pre>
-<p>html browser usage</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://raw.githack.com/dimaslanjaka/js-prototypes/master/dist/release/bundle.js&quot;>&lt;/script>
-&lt;script>
-  console.log(typeof [].addAll); // function
-&lt;/script>
-</code></pre></article>
+        </article>
     </section>
-
-
 
 
 

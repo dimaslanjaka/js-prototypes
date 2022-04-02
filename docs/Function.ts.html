@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> Function.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,63 +75,63 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>Function.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>js-prototypes</h1>
-<p>instalation</p>
-<pre class="prettyprint source lang-shell"><code>npm i git+https://github.com/dimaslanjaka/js-prototypes.git
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-unused-vars */
+/// &lt;reference no-default-lib="true"/>
+/// &lt;reference path="./globals.d.ts" />
+
+interface Callable {
+  (text: string): void;
+  /**
+   * indicator if this function was called
+   */
+  wasCalled?: boolean;
+}
+
+export interface ClassCallable extends Callable {
+  new (...args: any[]): ClassDecorator;
+}
+
+Function.prototype.once = function (this: Callable, param?) {
+  if (!this.wasCalled) {
+    this.apply(param);
+    this.wasCalled = true;
+  }
+};
+
+/**
+ * Run the function only once
+ * @param fn
+ * @see {@link https://stackoverflow.com/a/41000535/6404439}
+ * @returns
+ */
+function runOnce(fn: Callable) {
+  let done = false;
+  return function (...args: any) {
+    if (!done) {
+      done = true;
+      return fn.apply(this, args);
+    }
+  };
+}
+
+if (typeof module.exports != 'undefined') {
+  module.exports = {
+    runOnce,
+  };
+}
 </code></pre>
-<p>usage</p>
-<pre class="prettyprint source lang-ts"><code>// global automated shim to all prototypes (recommended)
-import &quot;js-prototypes&quot;
-
-// import custom prototypes (typescript)
-import &quot;js-prototypes/src/String&quot;;
-import &quot;js-prototypes/src/Array&quot;;
-import &quot;js-prototypes/src/Object&quot;;
-
-// import custom prototypes (javascript)
-import &quot;js-prototypes/dist/String&quot;;
-import &quot;js-prototypes/dist/Array&quot;;
-import &quot;js-prototypes/dist/Object&quot;;
-
-// import global prototypes (javascript)
-import &quot;js-prototypes/dist/libs/globals&quot;;
-</code></pre>
-<p>html browser usage</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://raw.githack.com/dimaslanjaka/js-prototypes/master/dist/release/bundle.js&quot;>&lt;/script>
-&lt;script>
-  console.log(typeof [].addAll); // function
-&lt;/script>
-</code></pre></article>
+        </article>
     </section>
-
-
 
 
 

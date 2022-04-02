@@ -8,3 +8,9 @@ import './Function';
 import 'collections';
 
 //declare namespace prototype {}
+
+if (typeof module != 'undefined' && module.exports) {
+  module.exports = {
+    prototype_array: require('./Array'),
+  };
+}
