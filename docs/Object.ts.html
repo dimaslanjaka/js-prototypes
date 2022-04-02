@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  tracking-code-which-will-go-to-the-HEAD
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>js-prototypes Object.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.png" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Native Javascript Prototype Extender (helper)</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/SoftwareBrothers/admin-bro"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://admin-bro-example-app-staging.herokuapp.com/admin"
+                        >
+                            Example Application
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Interfaces</h3><ul><li><a href="Array.html">Array</a></li><li><a href="createElementOpt.html">createElementOpt</a></li><li><a href="Function.html">Function</a></li><li><a href="HTMLScriptElement.html">HTMLScriptElement</a></li><li><a href="String.html">String</a></li><li><a href="Window.html">Window</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getAllMethods">getAllMethods</a></li><li><a href="global.html#isFloat">isFloat</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#oddoreven">oddoreven</a></li><li><a href="global.html#runOnce">runOnce</a></li><li><a href="global.html#strpad">strpad</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>Object.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+
+interface Object {
+  length: number;
+
+  /**
+   * Dynamic Key
+   */
+  [str: string]: any;
+
+  /**
+   * Merge this object with another object
+   */
+  merge: (...other: Record&lt;any, unknown>[]) => Record&lt;any, unknown>;
+
+  /**
+   * Iterate Object
+   * @param callback function each element
+   * @example
+   * var a = {'a','n'};
+   * a.each(function(el){
+   *  console.log(el); //a, n each iteration
+   * })
+   */
+  each(callback: (arg0: any) => any): any;
+
+  /**
+   * Check is empty
+   */
+  isEmpty(): boolean;
+
+  replaceKeyFrom(anotherObj: any): any;
+}
+
+interface ObjectConstructor {
+  /**
+   * Dynamic Key
+   */
+  [str: string]: any;
+
+  /**
+   * Count size length of object
+   */
+  size: (obj: any) => number;
+
+  //[pair: string|number]: any;
+
+  /**
+   * Is Object Has Property of key ?
+   * @param key
+   */
+  hasOwnProperty(key: any): boolean;
+
+  /**
+   * check if has child and go for callback
+   * @param str  match child property
+   * @param callback function callback
+   * @author Dimas Lanjaka &lt;dimaslanjaka@gmail.com>
+   */
+  child(str: string | number, callback: (arg: any) => any): any;
+
+  /**
+   * check object has child, if not exist return alternative value
+   * @param str match child property
+   * @param alternative default value callback
+   * @author Dimas Lanjaka &lt;dimaslanjaka@gmail.com>
+   */
+  alt(str: any, alternative: string | number | boolean): any;
+
+  /**
+   * Check object has child
+   * @param str
+   */
+  has(str: string | number): any;
+}
+
+Object.size = function (obj) {
+  let size = 0,
+    key: any;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) size++;
+  }
+  return size;
+};
+
+Object.child = function (str, callback) {
+  const self: object = this;
+  if (self.hasOwnProperty(str)) {
+    if (typeof callback == 'function') {
+      return callback(self[str]);
+    } else {
+      return true;
+    }
+  } else {
+    return undefined;
+  }
+};
+
+Object.alt = function (str, alternative) {
+  const self: any = this;
+  if (self.hasOwnProperty(str)) {
+    return self[str];
+  } else {
+    return alternative;
+  }
+};
+
+Object.has = function (str: string | number) {
+  return this.hasOwnProperty(str);
+};
+
+Object.each = function (callback) {
+  for (const key in this) {
+    //callback.call(scope, key, this[key]);
+    callback.call(this[key]);
+  }
+};
+
+Object.isEmpty = function () {
+  return this.length === 0;
+};
+
+Object.replaceKeyFrom = function (anotherObj) {
+  return Object.entries(this).reduce((op, [key, value]) => {
+    const newKey = anotherObj[key];
+    op[newKey || key] = value;
+    return op;
+  }, {});
+  /*if (typeof anotherObj == 'object') {
+    for (const key in anotherObj) {
+      if (Object.prototype.hasOwnProperty.call(anotherObj, key)) {
+        const element = anotherObj[key];
+        def[key] = element;
+      }
+    }
+  }*/
+};
+
+class object_ext {
+  /**
+   * Join object to separated string
+   * * [].join() equivalent
+   * @param obj Object
+   * @param separator default comma(,)
+   * @returns Joined string
+   */
+  static object_join(obj: Record&lt;any, unknown>, separator = ',') {
+    return Object.keys(obj)
+      .map(function (k) {
+        return obj[k];
+      })
+      .join(separator);
+  }
+
+  /**
+   * Simple object check.
+   * @param item
+   * @returns
+   */
+  static isObject(item: any): boolean {
+    return item &amp;&amp; typeof item === 'object' &amp;&amp; !Array.isArray(item);
+  }
+
+  /**
+   * Deep merge two objects.
+   * @param target
+   * @param ...sources
+   */
+  static mergeDeep(target: Record&lt;any, unknown>, ...sources: Record&lt;any, unknown>[]) {
+    if (!sources.length) return target;
+    const source = sources.shift();
+
+    if (object_ext.isObject(target) &amp;&amp; object_ext.isObject(source)) {
+      for (const key in source) {
+        if (object_ext.isObject(source[key])) {
+          if (!target[key]) Object.assign(target, { [key]: {} });
+          object_ext.mergeDeep(&lt;any>target[key], &lt;any>source[key]);
+        } else {
+          Object.assign(target, { [key]: source[key] });
+        }
+      }
+    }
+
+    return object_ext.mergeDeep(target, ...sources);
+  }
+}
+
+Object.prototype.merge = function (this: Record&lt;any, unknown>, ...others) {
+  return object_ext.mergeDeep(this, ...others);
+};
+
+if (typeof window != 'undefined' &amp;&amp; window instanceof Window) {
+  window.object_join = object_ext.object_join;
+  window.object_merge = object_ext.mergeDeep;
+  window.isObject = object_ext.isObject;
+} else if (typeof global == 'object') {
+  global.object_join = object_ext.object_join;
+  global.object_merge = object_ext.mergeDeep;
+  global.isObject = object_ext.isObject;
+}
+if (typeof module != 'undefined' &amp;&amp; typeof module == 'object') {
+  module.exports = object_ext;
+  module.exports = {
+    object_join: object_ext.object_join,
+    object_merge: object_ext.mergeDeep,
+    isObject: object_ext.isObject,
+  };
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

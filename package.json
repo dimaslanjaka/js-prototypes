@@ -53,10 +53,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-terser": "^2.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "i": "^0.3.7",
     "merge2": "^1.4.1",
+    "node-html-parser": "^5.3.3",
     "nodejs-package-types": "github:dimaslanjaka/nodejs-package-types",
     "npm": "^8.3.0",
     "prettier": "^2.6.1",
@@ -68,7 +70,6 @@
   },
   "dependencies": {
     "collections": "file:packages/collections",
-    "gulp-sourcemaps": "^3.0.0",
     "lodash": "file:packages/lodash"
   }
 }

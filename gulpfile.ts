@@ -11,6 +11,7 @@ import { join } from 'path';
 import { readFileSync } from 'fs';
 import sourcemaps from 'gulp-sourcemaps';
 import { exec } from 'child_process';
+import { parse } from 'node-html-parser';
 
 gulp.task('clean', function () {
   return del('./docs').then(() => del('./dist'));
@@ -92,6 +93,16 @@ gulp.task('browser:dts', function () {
       })
     )
     .pipe(gulp.dest('./dist/release'));
+});
+
+gulp.task('safelink', function () {
+  return gulp.src('docs/**/**').pipe(
+    through.obj((file, enc, next) => {
+      if (file.isNull() || file.isStream()) next();
+      console.log(file.extname);
+      //parse(String(file.contents));
+    })
+  );
 });
 
 exports.browser = gulp.series('browser:js', 'browser:min-js', 'browser:dts');

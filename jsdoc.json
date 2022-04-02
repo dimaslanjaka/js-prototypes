@@ -27,9 +27,9 @@
     "cleverLinks": false,
     "monospaceLinks": false,
     "better-docs": {
-      "name": "Sample Documentation",
+      "name": "Native Javascript Prototype Extender (helper)",
       "logo": "images/logo.png",
-      "title": "WMI",
+      "title": "js-prototypes",
       "css": "style.css",
       "trackingCode": "tracking-code-which-will-go-to-the-HEAD",
       "hideGenerator": false,
