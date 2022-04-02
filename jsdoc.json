@@ -36,11 +36,11 @@
       "navLinks": [
         {
           "label": "Github",
-          "href": "https://github.com/SoftwareBrothers/admin-bro"
+          "href": "https://github.com/dimaslanjaka/js-prototypes"
         },
         {
-          "label": "Example Application",
-          "href": "https://admin-bro-example-app-staging.herokuapp.com/admin"
+          "label": "Blog",
+          "href": "https://webmanajemen.com"
         }
       ]
     }

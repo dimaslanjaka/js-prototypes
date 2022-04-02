@@ -106,4 +106,4 @@ gulp.task('safelink', function () {
 });
 
 exports.browser = gulp.series('browser:js', 'browser:min-js', 'browser:dts');
-exports.default = gulp.series('clean', 'tsc', exports.browser);
+exports.default = gulp.series('tsc', exports.browser);
