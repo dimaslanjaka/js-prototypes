@@ -24,8 +24,8 @@
     ]
   },
   "templates": {
-    "cleverLinks": false,
-    "monospaceLinks": false,
+    "cleverLinks": true,
+    "monospaceLinks": true,
     "better-docs": {
       "name": "Native Javascript Prototype Extender (helper)",
       "logo": "images/logo.png",
@@ -47,6 +47,6 @@
   },
   "opts": {
     "template": "node_modules/better-docs",
-    "destination": "./docs/"
+    "destination": "./tmp/"
   }
 }

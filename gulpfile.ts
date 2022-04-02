@@ -11,10 +11,12 @@ import { join } from 'path';
 import { readFileSync } from 'fs';
 import sourcemaps from 'gulp-sourcemaps';
 import { exec } from 'child_process';
-import { parse } from 'node-html-parser';
+import jsdom from 'gulp-jsdom';
+import './src';
 
-gulp.task('clean', function () {
-  return del('./docs').then(() => del('./dist'));
+gulp.task('clean', async function () {
+  await del('./docs');
+  return await del('./dist');
 });
 
 gulp.task('tsc:build', function () {
@@ -24,16 +26,46 @@ gulp.task('tsc:build', function () {
   return merge([tsResult.dts.pipe(gulp.dest('dist/libs')), tsResult.js.pipe(gulp.dest('dist/libs'))]);
 });
 
-gulp.task('tsc:docs', function (done) {
-  exec('npm run docs', { cwd: __dirname }, (err, stdout, stderr) => {
-    if (err) {
-      console.log(stderr);
-    } else {
-      console.log(stdout);
-    }
-    done();
+function generate(done: unknown) {
+  return new Promise((resolve) => {
+    exec('npm run docs', { cwd: __dirname }, (err, stdout, stderr) => {
+      if (err) {
+        console.log(stderr);
+      } else {
+        console.log(stdout);
+      }
+      resolve(done);
+    });
   });
-});
+}
+
+function safelink(done: (...args: any[]) => void) {
+  gulp
+    .src('**/*.html', { cwd: join(__dirname, 'tmp') })
+    .pipe(
+      jsdom((document: Document) => {
+        const hyperlinks = document.querySelectorAll('a');
+        if (hyperlinks.length)
+          hyperlinks.forEach((a) => {
+            const href = a.getAttribute('href');
+            if (
+              !href ||
+              !href.length ||
+              href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com|github.com\/dimaslanjaka))/g)
+            )
+              return;
+            a.setAttribute(
+              'href',
+              'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
+            );
+          });
+      })
+    )
+    .pipe(gulp.dest('docs'));
+  done();
+}
+
+gulp.task('tsc:docs', gulp.series(generate, safelink));
 
 gulp.task('tsc', gulp.series('tsc:build', 'tsc:docs'));
 
@@ -93,16 +125,6 @@ gulp.task('browser:dts', function () {
       })
     )
     .pipe(gulp.dest('./dist/release'));
-});
-
-gulp.task('safelink', function () {
-  return gulp.src('docs/**/**').pipe(
-    through.obj((file, enc, next) => {
-      if (file.isNull() || file.isStream()) next();
-      console.log(file.extname);
-      //parse(String(file.contents));
-    })
-  );
 });
 
 exports.browser = gulp.series('browser:js', 'browser:min-js', 'browser:dts');
