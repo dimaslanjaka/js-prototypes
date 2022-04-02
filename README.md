@@ -17,8 +17,13 @@ import "js-prototypes/src/String";
 import "js-prototypes/src/Array";
 import "js-prototypes/src/Object";
 
+// import custom prototypes (javascript)
+import "js-prototypes/dist/String";
+import "js-prototypes/dist/Array";
+import "js-prototypes/dist/Object";
+
 // import global prototypes (javascript)
-import "js-prototypes/dist/libs/globals"; 
+import "js-prototypes/dist/libs/globals";
 ```
 
 html browser usage

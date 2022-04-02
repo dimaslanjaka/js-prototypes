@@ -8,7 +8,8 @@
 		"declaration": true,
 		"removeComments": false,
 		"allowJs": true,
-		"noImplicitAny": false,
+		"inlineSources": true,
+		"inlineSourceMap": true,
 		"downlevelIteration": true,
 		"typeRoots": [
 			"./node_modules/@types",

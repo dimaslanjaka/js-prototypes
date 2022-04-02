@@ -21,6 +21,7 @@ gulp.task('browser:tsc', function () {
   return merge([tsResult.dts.pipe(gulp.dest('dist/libs')), tsResult.js.pipe(gulp.dest('dist/libs'))]);
 });
 
+const exclude = ['!**/*.map'];
 const nodesrc = ['**/globals.{js,ts}', '**/node-*.{js,ts}', '**/index.{js,ts}'];
 gulp.task('browser:js', function () {
   return gulp

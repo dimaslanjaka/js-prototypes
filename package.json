@@ -5,7 +5,8 @@
   "main": "dist/release/bundle.js",
   "types": "dist/release/bundle.d.ts",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "docs": "typedoc --entryPointStrategy packages ."
   },
   "files": [
     "src",
