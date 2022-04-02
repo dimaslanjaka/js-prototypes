@@ -1,7 +1,22 @@
-/// <reference path="./Function.d.ts" />
-Function.prototype.once = function (this: Callable, param) {
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/// <reference no-default-lib="true"/>
+/// <reference path="./globals.d.ts" />
+
+interface Callable {
+  (text: string): void;
+  /**
+   * indicator if this function was called
+   */
+  wasCalled?: boolean;
+}
+
+export interface ClassCallable extends Callable {
+  new (...args: any[]): ClassDecorator;
+}
+
+Function.prototype.once = function (this: Callable, param?) {
   if (!this.wasCalled) {
-    this(param);
+    this.apply(param);
     this.wasCalled = true;
   }
 };
@@ -19,5 +34,11 @@ function runOnce(fn: Callable) {
       done = true;
       return fn.apply(this, args);
     }
+  };
+}
+
+if (typeof module.exports != 'undefined') {
+  module.exports = {
+    runOnce,
   };
 }

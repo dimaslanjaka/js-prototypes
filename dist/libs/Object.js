@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
-/// <reference path="Object.d.ts" />
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
     if (!m) return o;
@@ -17,6 +17,15 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 Object.size = function (obj) {
     var size = 0, key;
     for (key in obj) {
@@ -28,7 +37,7 @@ Object.size = function (obj) {
 Object.child = function (str, callback) {
     var self = this;
     if (self.hasOwnProperty(str)) {
-        if (typeof callback == "function") {
+        if (typeof callback == 'function') {
             return callback(self[str]);
         }
         else {
@@ -76,37 +85,84 @@ Object.replaceKeyFrom = function (anotherObj) {
       }
     }*/
 };
-/**
- * Join object to separated string
- * @param obj Object
- * @returns Joined string
- */
-function object_join(obj) {
-    return Object.keys(obj)
-        .map(function (k) {
-        return obj[k];
-    })
-        .join(",");
+var object_ext = /** @class */ (function () {
+    function object_ext() {
+    }
+    /**
+     * Join object to separated string
+     * * [].join() equivalent
+     * @param obj Object
+     * @param separator default comma(,)
+     * @returns Joined string
+     */
+    object_ext.object_join = function (obj, separator) {
+        if (separator === void 0) { separator = ','; }
+        return Object.keys(obj)
+            .map(function (k) {
+            return obj[k];
+        })
+            .join(separator);
+    };
+    /**
+     * Simple object check.
+     * @param item
+     * @returns
+     */
+    object_ext.isObject = function (item) {
+        return item && typeof item === 'object' && !Array.isArray(item);
+    };
+    /**
+     * Deep merge two objects.
+     * @param target
+     * @param ...sources
+     */
+    object_ext.mergeDeep = function (target) {
+        var _a, _b;
+        var sources = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            sources[_i - 1] = arguments[_i];
+        }
+        if (!sources.length)
+            return target;
+        var source = sources.shift();
+        if (object_ext.isObject(target) && object_ext.isObject(source)) {
+            for (var key in source) {
+                if (object_ext.isObject(source[key])) {
+                    if (!target[key])
+                        Object.assign(target, (_a = {}, _a[key] = {}, _a));
+                    object_ext.mergeDeep(target[key], source[key]);
+                }
+                else {
+                    Object.assign(target, (_b = {}, _b[key] = source[key], _b));
+                }
+            }
+        }
+        return object_ext.mergeDeep.apply(object_ext, __spreadArray([target], __read(sources), false));
+    };
+    return object_ext;
+}());
+Object.prototype.merge = function () {
+    var others = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        others[_i] = arguments[_i];
+    }
+    return object_ext.mergeDeep.apply(object_ext, __spreadArray([this], __read(others), false));
+};
+if (typeof window != 'undefined' && window instanceof Window) {
+    window.object_join = object_ext.object_join;
+    window.object_merge = object_ext.mergeDeep;
+    window.isObject = object_ext.isObject;
 }
-/**
- * Extend Object
- * @param arg1
- * @param arg2
- * @returns
- */
-function extend_object(arg1, arg2) {
-    var result = {};
-    for (var prop in arg1) {
-        if (arg1.hasOwnProperty(prop)) {
-            // error when using --strictNullChecks
-            result[prop] = arg1[prop];
-        }
-    }
-    for (var prop in arg2) {
-        if (arg2.hasOwnProperty(prop)) {
-            // error when using --strictNullChecks
-            result[prop] = arg2[prop];
-        }
-    }
-    return result;
+else if (typeof global == 'object') {
+    global.object_join = object_ext.object_join;
+    global.object_merge = object_ext.mergeDeep;
+    global.isObject = object_ext.isObject;
+}
+if (typeof module != 'undefined' && typeof module == 'object') {
+    module.exports = object_ext;
+    module.exports = {
+        object_join: object_ext.object_join,
+        object_merge: object_ext.mergeDeep,
+        isObject: object_ext.isObject,
+    };
 }

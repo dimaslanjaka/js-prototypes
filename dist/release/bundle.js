@@ -1,3 +1,9 @@
+if (typeof module.exports != 'undefined') {
+    module.exports = null;
+    module.exports = {
+        any: null,
+    };
+}
 
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
@@ -56,7 +62,7 @@ Array.prototype.last = function (n) {
 };
 Array.prototype.trim = function () {
     return this.map(function (str) {
-        if (typeof str == "string")
+        if (typeof str == 'string')
             return str.trim();
     });
 };
@@ -127,7 +133,7 @@ Array.prototype.contains = function (obj) {
     return false;
 };
 Array.prototype.hasIndex = function (n) {
-    return typeof this[n] != "undefined";
+    return typeof this[n] != 'undefined';
 };
 Array.prototype.first = function (n) {
     if (!n) {
@@ -172,11 +178,11 @@ Array.prototype.unset = function (value) {
     return this;
 };
 Array.prototype.exists = function (n) {
-    return typeof this[n] !== "undefined";
+    return typeof this[n] !== 'undefined';
 };
-if (!Array.prototype.hasOwnProperty("every")) {
+if (!Array.prototype.hasOwnProperty('every')) {
     Array.prototype.every = function (fun /*, thisp */) {
-        "use strict";
+        'use strict';
         var t = Object(this);
         var len = t.length >>> 0;
         var i;
@@ -184,7 +190,7 @@ if (!Array.prototype.hasOwnProperty("every")) {
         if (this == null) {
             throw new TypeError();
         }
-        if (typeof fun !== "function") {
+        if (typeof fun !== 'function') {
             throw new TypeError();
         }
         for (i = 0; i < len; i++) {
@@ -219,201 +225,289 @@ Array.prototype.removeEmpties = function () {
         // make sure element is not null
         el != null &&
             // make sure element is not undefined
-            typeof el != "undefined";
+            typeof el != 'undefined';
         // if element is string, make sure string length not zero
-        if (typeof el == "string") {
+        if (typeof el == 'string') {
             return notnull && el.trim().length > 0;
         }
         return notnull;
     });
-    return this;
+    return filter;
 };
-function array_filter(array) {
-    return array.filter(function (el) {
-        return el != null;
-    });
-}
-/**
- * pick random from array
- * @param {Array<any>} arrays
- * @param {boolean} unique Unique the arrays
- */
-function array_rand(arrays, unique) {
-    if (unique) {
-        arrays = array_unique(arrays);
+var array_ext = /** @class */ (function () {
+    function array_ext() {
     }
-    var index = Math.floor(Math.random() * arrays.length);
-    return {
-        index: index,
-        value: arrays[index]
+    array_ext.array_filter = function (array) {
+        return array.filter(function (el) {
+            return el != null;
+        });
     };
-}
-/**
- * Array unique
- * @param {Array<any>} arrays
- */
-function array_unique(arrays) {
-    return arrays.filter(function (item, pos, self) {
-        return self.indexOf(item) == pos;
-    });
-}
-/**
- * Unset array
- * @param {Array<any>} arrayName
- * @param {String|number} key
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function array_unset(arrayName, key) {
-    var x;
-    var tmpArray = [];
-    for (x in arrayName) {
-        if (x != key) {
-            tmpArray[x] = arrayName[x];
+    /**
+     * pick random from array
+     * @param {Array<any>} arrays
+     * @param {boolean} unique Unique the arrays
+     */
+    array_ext.array_rand = function (arrays, unique) {
+        if (unique) {
+            arrays = array_ext.array_unique(arrays);
         }
-    }
-    return tmpArray;
-}
-/**
- * PHP shuffle array equivalent
- * @param array
- * @example
- * var arr = [2, 11, 37, 42];
- * shuffle(arr);
- * console.log(arr); //return random
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array;
-}
-function arrayCompare(a1, a2) {
-    if (a1.length != a2.length)
-        return false;
-    var length = a2.length;
-    for (var i = 0; i < length; i++) {
-        if (a1[i] !== a2[i])
+        var index = Math.floor(Math.random() * arrays.length);
+        return {
+            index: index,
+            value: arrays[index],
+        };
+    };
+    /**
+     * Array unique
+     * @param {Array<any>} arrays
+     */
+    array_ext.array_unique = function (arrays) {
+        return arrays.filter(function (item, pos, self) {
+            return self.indexOf(item) == pos;
+        });
+    };
+    /**
+     * Unset array
+     * @param {Array<any>} arrayName
+     * @param {String|number} key
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    array_ext.array_unset = function (arrayName, key) {
+        var x;
+        var tmpArray = [];
+        for (x in arrayName) {
+            if (x != key) {
+                tmpArray[x] = arrayName[x];
+            }
+        }
+        return tmpArray;
+    };
+    /**
+     * PHP shuffle array equivalent
+     * @param array
+     * @example
+     * var arr = [2, 11, 37, 42];
+     * shuffle(arr);
+     * console.log(arr); //return random
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    array_ext.shuffle = function (array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    };
+    array_ext.arrayCompare = function (a1, a2) {
+        if (a1.length != a2.length)
             return false;
-    }
-    return true;
-}
-/**
- * in_array PHP equivalent
- * @param needle string etc
- * @param haystack
- */
-function inArray(needle, haystack) {
-    var length = haystack.length;
-    for (var i = 0; i < length; i++) {
-        if (typeof haystack[i] == "object") {
-            if (arrayCompare(haystack[i], needle))
-                return true;
+        var length = a2.length;
+        for (var i = 0; i < length; i++) {
+            if (a1[i] !== a2[i])
+                return false;
         }
-        else {
-            if (haystack[i] == needle)
-                return true;
+        return true;
+    };
+    /**
+     * in_array PHP equivalent
+     * @param needle string etc
+     * @param haystack
+     */
+    array_ext.inArray = function (needle, haystack) {
+        var length = haystack.length;
+        for (var i = 0; i < length; i++) {
+            if (typeof haystack[i] == 'object') {
+                if (array_ext.arrayCompare(haystack[i], needle))
+                    return true;
+            }
+            else {
+                if (haystack[i] == needle)
+                    return true;
+            }
         }
-    }
-    return false;
-}
-/**
- * in_array PHP equivalent
- * @param needle string etc
- * @param haystack
- */
-function in_array(needle, haystack) {
-    return inArray(needle, haystack);
-}
-/**
- * get all keys
- * @param haystack string etc
- */
-function array_keys(haystack) {
-    return Object.keys(haystack);
-}
-/**
- * Shuffles array in place.
- * @param a items An array containing the items.
- */
-function array_shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
-}
-/**
- * Deep merge two or more objects into the first.
- * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
- * @param objects  The objects to merge together
- * @returns Merged values of defaults and options
- */
-function deepAssign() {
-    var objects = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        objects[_i] = arguments[_i];
-    }
-    // Make sure there are objects to merge
-    var len = objects.length;
-    if (len < 1)
-        return;
-    if (len < 2)
-        return objects[0];
-    // Merge all objects into first
-    for (var i = 1; i < len; i++) {
-        for (var key in objects[i]) {
-            if (objects[i].hasOwnProperty(key)) {
-                // If it's an object, recursively merge
-                // Otherwise, push to key
-                if (Object.prototype.toString.call(objects[i][key]) === "[object Object]") {
-                    objects[0][key] = deepAssign(objects[0][key] || {}, objects[i][key]);
-                }
-                else {
-                    objects[0][key] = objects[i][key];
+        return false;
+    };
+    /**
+     * in_array PHP equivalent
+     * @param needle string etc
+     * @param haystack
+     */
+    array_ext.in_array = function (needle, haystack) {
+        return array_ext.inArray(needle, haystack);
+    };
+    /**
+     * get all keys
+     * @param haystack string etc
+     */
+    array_ext.array_keys = function (haystack) {
+        return Object.keys(haystack);
+    };
+    /**
+     * Shuffles array in place.
+     * @param a items An array containing the items.
+     */
+    array_ext.array_shuffle = function (a) {
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    };
+    /**
+     * Deep merge two or more objects into the first.
+     * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+     * @param objects  The objects to merge together
+     * @returns Merged values of defaults and options
+     */
+    array_ext.deepAssign = function () {
+        var objects = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            objects[_i] = arguments[_i];
+        }
+        // Make sure there are objects to merge
+        var len = objects.length;
+        if (len < 1)
+            return;
+        if (len < 2)
+            return objects[0];
+        // Merge all objects into first
+        for (var i = 1; i < len; i++) {
+            for (var key in objects[i]) {
+                if (objects[i].hasOwnProperty(key)) {
+                    // If it's an object, recursively merge
+                    // Otherwise, push to key
+                    if (Object.prototype.toString.call(objects[i][key]) === '[object Object]') {
+                        objects[0][key] = array_ext.deepAssign(objects[0][key] || {}, objects[i][key]);
+                    }
+                    else {
+                        objects[0][key] = objects[i][key];
+                    }
                 }
             }
         }
-    }
-    return arguments[0];
+        return arguments[0];
+    };
+    /**
+     * Remove item from array
+     * @param arr
+     * @param value
+     * @returns
+     */
+    array_ext.removeItem = function (arr, value) {
+        var index = arr.indexOf(value);
+        if (index > -1) {
+            arr.splice(index, 1);
+        }
+        return arr;
+    };
+    return array_ext;
+}());
+if (typeof window != 'undefined' && window instanceof Window) {
+    window.array_shuffle = array_ext.array_shuffle;
+    window.array_filter = array_ext.array_filter;
+    window.array_keys = array_ext.array_keys;
+    window.array_rand = array_ext.array_rand;
+    window.array_unique = array_ext.array_unique;
+    window.array_unset = array_ext.array_unset;
+    window.inArray = array_ext.inArray;
+    window.in_array = array_ext.in_array;
 }
+else if (typeof global == 'object') {
+    global.array_shuffle = array_ext.array_shuffle;
+    global.array_filter = array_ext.array_filter;
+    global.array_keys = array_ext.array_keys;
+    global.array_rand = array_ext.array_rand;
+    global.array_unique = array_ext.array_unique;
+    global.array_unset = array_ext.array_unset;
+    global.inArray = array_ext.inArray;
+    global.in_array = array_ext.in_array;
+}
+// export node module
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = array_ext;
+}
+
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
- * Remove item from array
- * @param arr
- * @param value
+ * Get all method from class
+ * @param toCheck
  * @returns
  */
-function removeItem(arr, value) {
-    var index = arr.indexOf(value);
-    if (index > -1) {
-        arr.splice(index, 1);
+var getAllMethods = function (toCheck) {
+    if (!toCheck)
+        return [];
+    try {
+        var props = [];
+        var obj = toCheck;
+        do {
+            props.push.apply(props, __spreadArray([], __read(Object.getOwnPropertyNames(obj)), false));
+        } while ((obj = Object.getPrototypeOf(obj)));
+        return props
+            .sort()
+            .filter(function (e, i, arr_fname) {
+            var c = toCheck[e];
+            var fname = arr_fname[i + 1];
+            if (e != fname && typeof c == 'function')
+                return true;
+        })
+            .filter(function (fname) {
+            return ![
+                '__defineGetter__',
+                '__defineSetter__',
+                '__lookupGetter__',
+                '__lookupSetter__',
+                'constructor',
+                'hasOwnProperty',
+                'isPrototypeOf',
+                'propertyIsEnumerable',
+                'toLocaleString',
+                'toString',
+                'valueOf',
+            ].includes(fname);
+        });
     }
-    return arr;
-}
-if (typeof module !== "undefined" && module.exports) {
-    module.exports = {
-        array_shuffle: array_shuffle,
-        array_keys: array_keys,
-        in_array: in_array,
-        deepAssign: deepAssign,
-        removeItem: removeItem
-    };
-}
-
+    catch (e) {
+        return Object.getOwnPropertyNames(toCheck).filter(function (prop) { return typeof toCheck[prop] === 'function'; });
+    }
+};
 
 Date.prototype.isHourAgo = function (hour) {
-    var hour = hour * 60 * 1000; /* ms */
+    hour = hour * 60 * 1000; /* ms */
     var hourago = Date.now() - hour;
     return hour > hourago;
 };
@@ -431,25 +525,42 @@ Date.prototype.addHours2 = function (hrs) {
     this.setHours(this.getHours() + hrs);
     return this;
 };
-function datetime_local(date) {
-    return new Date(date).toJSON().slice(0, 19);
+var date_ext = /** @class */ (function () {
+    function date_ext() {
+    }
+    date_ext.datetime_local = function (date) {
+        return new Date(date).toJSON().slice(0, 19);
+    };
+    return date_ext;
+}());
+if (typeof window != 'undefined' && window instanceof Window) {
+    window.datetime_local = date_ext.datetime_local;
+}
+else if (typeof global == 'object') {
+    global.datetime_local = date_ext.datetime_local;
+}
+if (typeof module != 'undefined' && typeof module == 'object') {
+    module.exports = date_ext;
+    module.exports = {
+        datetime_local: date_ext.datetime_local,
+    };
 }
 
-if (typeof document != "undefined") {
+if (typeof document != 'undefined') {
     Document.prototype.listen = function (eventType, listener, options) {
         if (options === void 0) { options = {}; }
         if (this.addEventListener) {
             this.addEventListener(eventType, listener, options);
         }
         else if (this.attachEvent) {
-            this.attachEvent("on" + eventType, listener, options);
+            this.attachEvent('on' + eventType, listener, options);
         }
     };
 }
 
-if (!("toJSON" in Error.prototype)) {
+if (!('toJSON' in Error.prototype)) {
     // https://stackoverflow.com/a/18391400/6404439
-    Object.defineProperty(Error.prototype, "toJSON", {
+    Object.defineProperty(Error.prototype, 'toJSON', {
         value: function () {
             var alt = {};
             Object.getOwnPropertyNames(this).forEach(function (key) {
@@ -458,14 +569,18 @@ if (!("toJSON" in Error.prototype)) {
             return alt;
         },
         configurable: true,
-        writable: true
+        writable: true,
     });
 }
 
+"use strict";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/// <reference no-default-lib="true"/>
 
+Object.defineProperty(exports, "__esModule", { value: true });
 Function.prototype.once = function (param) {
     if (!this.wasCalled) {
-        this(param);
+        this.apply(param);
         this.wasCalled = true;
     }
 };
@@ -488,6 +603,17 @@ function runOnce(fn) {
         }
     };
 }
+if (typeof module.exports != 'undefined') {
+    module.exports = {
+        runOnce: runOnce,
+    };
+}
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/*declare let Navigator: {
+  prototype: Navigator;
+  new (): Navigator;
+};*/
 
 Number.prototype.getMS = function (type) {
     var self = this;
@@ -556,9 +682,9 @@ if (typeof module.exports != 'undefined') {
     global.isFloat = isFloat;
 }
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
-
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
     if (!m) return o;
@@ -575,6 +701,15 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 Object.size = function (obj) {
     var size = 0, key;
     for (key in obj) {
@@ -586,7 +721,7 @@ Object.size = function (obj) {
 Object.child = function (str, callback) {
     var self = this;
     if (self.hasOwnProperty(str)) {
-        if (typeof callback == "function") {
+        if (typeof callback == 'function') {
             return callback(self[str]);
         }
         else {
@@ -634,46 +769,93 @@ Object.replaceKeyFrom = function (anotherObj) {
       }
     }*/
 };
-/**
- * Join object to separated string
- * @param obj Object
- * @returns Joined string
- */
-function object_join(obj) {
-    return Object.keys(obj)
-        .map(function (k) {
-        return obj[k];
-    })
-        .join(",");
+var object_ext = /** @class */ (function () {
+    function object_ext() {
+    }
+    /**
+     * Join object to separated string
+     * * [].join() equivalent
+     * @param obj Object
+     * @param separator default comma(,)
+     * @returns Joined string
+     */
+    object_ext.object_join = function (obj, separator) {
+        if (separator === void 0) { separator = ','; }
+        return Object.keys(obj)
+            .map(function (k) {
+            return obj[k];
+        })
+            .join(separator);
+    };
+    /**
+     * Simple object check.
+     * @param item
+     * @returns
+     */
+    object_ext.isObject = function (item) {
+        return item && typeof item === 'object' && !Array.isArray(item);
+    };
+    /**
+     * Deep merge two objects.
+     * @param target
+     * @param ...sources
+     */
+    object_ext.mergeDeep = function (target) {
+        var _a, _b;
+        var sources = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            sources[_i - 1] = arguments[_i];
+        }
+        if (!sources.length)
+            return target;
+        var source = sources.shift();
+        if (object_ext.isObject(target) && object_ext.isObject(source)) {
+            for (var key in source) {
+                if (object_ext.isObject(source[key])) {
+                    if (!target[key])
+                        Object.assign(target, (_a = {}, _a[key] = {}, _a));
+                    object_ext.mergeDeep(target[key], source[key]);
+                }
+                else {
+                    Object.assign(target, (_b = {}, _b[key] = source[key], _b));
+                }
+            }
+        }
+        return object_ext.mergeDeep.apply(object_ext, __spreadArray([target], __read(sources), false));
+    };
+    return object_ext;
+}());
+Object.prototype.merge = function () {
+    var others = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        others[_i] = arguments[_i];
+    }
+    return object_ext.mergeDeep.apply(object_ext, __spreadArray([this], __read(others), false));
+};
+if (typeof window != 'undefined' && window instanceof Window) {
+    window.object_join = object_ext.object_join;
+    window.object_merge = object_ext.mergeDeep;
+    window.isObject = object_ext.isObject;
 }
-/**
- * Extend Object
- * @param arg1
- * @param arg2
- * @returns
- */
-function extend_object(arg1, arg2) {
-    var result = {};
-    for (var prop in arg1) {
-        if (arg1.hasOwnProperty(prop)) {
-            // error when using --strictNullChecks
-            result[prop] = arg1[prop];
-        }
-    }
-    for (var prop in arg2) {
-        if (arg2.hasOwnProperty(prop)) {
-            // error when using --strictNullChecks
-            result[prop] = arg2[prop];
-        }
-    }
-    return result;
+else if (typeof global == 'object') {
+    global.object_join = object_ext.object_join;
+    global.object_merge = object_ext.mergeDeep;
+    global.isObject = object_ext.isObject;
+}
+if (typeof module != 'undefined' && typeof module == 'object') {
+    module.exports = object_ext;
+    module.exports = {
+        object_join: object_ext.object_join,
+        object_merge: object_ext.mergeDeep,
+        isObject: object_ext.isObject,
+    };
 }
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable prefer-rest-params */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 
-/// <reference path="globals.d.ts" />
 String.prototype.printf = function (obj) {
     /*const isNode = new Function(
       "try {return this===global;}catch(e){return false;}"
@@ -686,18 +868,18 @@ String.prototype.printf = function (obj) {
     var useArguments = false;
     var _arguments = arguments;
     var i = -1;
-    if (typeof _arguments[0] == "string") {
+    if (typeof _arguments[0] == 'string') {
         useArguments = true;
     }
     if (obj instanceof Array || useArguments) {
         return this.replace(/%s/g, function (a, b) {
             i++;
             if (useArguments) {
-                if (typeof _arguments[i] == "string") {
+                if (typeof _arguments[i] == 'string') {
                     return _arguments[i];
                 }
                 else {
-                    throw new Error("Arguments element is an invalid type");
+                    throw new Error('Arguments element is an invalid type');
                 }
             }
             return obj[i];
@@ -706,12 +888,12 @@ String.prototype.printf = function (obj) {
     else {
         return this.replace(/{([^{}]*)}/g, function (a, b) {
             var r = obj[b];
-            return typeof r === "string" || typeof r === "number" ? r : a;
+            return typeof r === 'string' || typeof r === 'number' ? r : a;
         });
     }
 };
 String.prototype.parse_url = function () {
-    var parser = document.createElement("a");
+    var parser = document.createElement('a');
     var searchObject;
     var split;
     var i;
@@ -719,9 +901,9 @@ String.prototype.parse_url = function () {
     // Let the browser do the work
     parser.href = this.toString();
     // Convert query string to object
-    queries = parser.search.replace(/^\?/, "").split("&");
+    queries = parser.search.replace(/^\?/, '').split('&');
     for (i = 0; i < queries.length; i++) {
-        split = queries[i].split("=");
+        split = queries[i].split('=');
         searchObject[split[0]] = split[1];
     }
     return {
@@ -733,23 +915,23 @@ String.prototype.parse_url = function () {
         search: parser.search,
         searchObject: searchObject,
         hash: parser.hash,
-        protohost: parser.protocol + "//" + parser.host
+        protohost: parser.protocol + '//' + parser.host,
     };
 };
 /**
  * Load css
  */
 String.prototype.CSS = function () {
-    var e = document.createElement("link");
-    e.rel = "stylesheet";
+    var e = document.createElement('link');
+    e.rel = 'stylesheet';
     e.href = this.toString();
-    var n = document.getElementsByTagName("head")[0];
+    var n = document.getElementsByTagName('head')[0];
     window.addEventListener
-        ? window.addEventListener("load", function () {
+        ? window.addEventListener('load', function () {
             n.parentNode.insertBefore(e, n);
         }, !1)
         : window.attachEvent
-            ? window.attachEvent("onload", function () {
+            ? window.attachEvent('onload', function () {
                 n.parentNode.insertBefore(e, n);
             })
             : (window.onload = function () {
@@ -757,21 +939,21 @@ String.prototype.CSS = function () {
             });
 };
 String.prototype.trim = function () {
-    return this.replace(/^\s+|\s+$/gm, "");
+    return this.replace(/^\s+|\s+$/gm, '');
 };
 String.prototype.hexE = function () {
     var hex, i;
-    var result = "";
+    var result = '';
     for (i = 0; i < this.length; i++) {
         hex = this.charCodeAt(i).toString(16);
-        result += ("000" + hex).slice(-4);
+        result += ('000' + hex).slice(-4);
     }
     return result;
 };
 String.prototype.hexD = function () {
     var j;
     var hexes = this.match(/.{1,4}/g) || [];
-    var back = "";
+    var back = '';
     for (j = 0; j < hexes.length; j++) {
         back += String.fromCharCode(parseInt(hexes[j], 16));
     }
@@ -782,7 +964,7 @@ String.prototype.capitalize = function () {
 };
 String.prototype.rot13 = function () {
     return this.replace(/[a-zA-Z]/g, function (c) {
-        return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+        return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
     });
 };
 String.prototype.truncate = function (n, useWordBoundary) {
@@ -790,10 +972,10 @@ String.prototype.truncate = function (n, useWordBoundary) {
         return this;
     }
     var subString = this.substr(0, n - 1); // the original check
-    return (useWordBoundary ? subString.substr(0, subString.lastIndexOf(" ")) : subString) + "&hellip;";
+    return (useWordBoundary ? subString.substr(0, subString.lastIndexOf(' ')) : subString) + '&hellip;';
 };
 String.prototype.isEmpty = function () {
-    if (this != null || typeof this != "undefined") {
+    if (this != null || typeof this != 'undefined') {
         return this.length === 0 || !this.trim();
     }
     return false;
@@ -809,11 +991,11 @@ String.prototype.replaceArr = function (array, replacement) {
 String.prototype.toHtmlEntities = function () {
     return this.replace(/./gm, function (s) {
         // return "&#" + s.charCodeAt(0) + ";";
-        return s.match(/[a-z0-9\s]+/i) ? s : "&#" + s.charCodeAt(0) + ";";
+        return s.match(/[a-z0-9\s]+/i) ? s : '&#' + s.charCodeAt(0) + ';';
     });
 };
 String.fromHtmlEntities = function (str) {
-    return (str + "").replace(/&#\d+;/gm, function (s) {
+    return (str + '').replace(/&#\d+;/gm, function (s) {
         var m = s.match(/\d+/gm)[0];
         return String.fromCharCode(m);
     });
@@ -822,9 +1004,9 @@ String.prototype.includesArray = function (substrings) {
     var _this = this;
     return substrings.some(function (v) { return _this.includes(v); });
 };
-if (typeof "".replaceAll != "function") {
+if (typeof ''.replaceAll != 'function') {
     String.prototype.replaceAll = function (search, replacement) {
-        var find = typeof search == "string" ? new RegExp(search, "g") : search;
+        var find = typeof search == 'string' ? new RegExp(search, 'g') : search;
         return this.replace(find, replacement);
     };
 }
