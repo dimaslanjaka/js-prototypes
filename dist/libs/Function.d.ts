@@ -1,4 +1,3 @@
-/// <reference no-default-lib="true"/>
 /// <reference path="../../src/globals.d.ts" />
 interface Callable {
     (text: string): void;

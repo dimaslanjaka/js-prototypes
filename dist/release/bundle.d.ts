@@ -467,7 +467,6 @@ declare class date_ext {
 
 
 
-/// <reference no-default-lib="true"/>
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable @typescript-eslint/ban-types */
 /// <reference types="jquery" />
