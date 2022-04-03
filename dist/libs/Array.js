@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable prefer-rest-params */
@@ -368,26 +369,27 @@ class array_ext {
         return arr;
     }
 }
+/*
 if (typeof window != 'undefined' && window instanceof Window) {
-    window.array_shuffle = array_ext.array_shuffle;
-    window.array_filter = array_ext.array_filter;
-    window.array_keys = array_ext.array_keys;
-    window.array_rand = array_ext.array_rand;
-    window.array_unique = array_ext.array_unique;
-    window.array_unset = array_ext.array_unset;
-    window.inArray = array_ext.inArray;
-    window.in_array = array_ext.in_array;
+  window.array_shuffle = array_ext.array_shuffle;
+  window.array_filter = array_ext.array_filter;
+  window.array_keys = array_ext.array_keys;
+  window.array_rand = array_ext.array_rand;
+  window.array_unique = array_ext.array_unique;
+  window.array_unset = array_ext.array_unset;
+  window.inArray = array_ext.inArray;
+  window.in_array = array_ext.in_array;
+} else if (typeof global == 'object') {
+  global.array_shuffle = array_ext.array_shuffle;
+  global.array_filter = array_ext.array_filter;
+  global.array_keys = array_ext.array_keys;
+  global.array_rand = array_ext.array_rand;
+  global.array_unique = array_ext.array_unique;
+  global.array_unset = array_ext.array_unset;
+  global.inArray = array_ext.inArray;
+  global.in_array = array_ext.in_array;
 }
-else if (typeof global == 'object') {
-    global.array_shuffle = array_ext.array_shuffle;
-    global.array_filter = array_ext.array_filter;
-    global.array_keys = array_ext.array_keys;
-    global.array_rand = array_ext.array_rand;
-    global.array_unique = array_ext.array_unique;
-    global.array_unset = array_ext.array_unset;
-    global.inArray = array_ext.inArray;
-    global.in_array = array_ext.in_array;
-}
+*/
 // export node module
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = array_ext;

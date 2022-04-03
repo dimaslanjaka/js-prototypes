@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/// <reference path="./globals.d.ts" />
 import './Error';
 import './Number';
 import './Array';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable prefer-rest-params */
@@ -582,7 +583,10 @@ class array_ext {
     return arr;
   }
 }
+declare const array_shuffle: typeof array_ext.array_shuffle;
+declare const inArray: typeof array_ext.inArray;
 
+/*
 if (typeof window != 'undefined' && window instanceof Window) {
   window.array_shuffle = array_ext.array_shuffle;
   window.array_filter = array_ext.array_filter;
@@ -602,6 +606,7 @@ if (typeof window != 'undefined' && window instanceof Window) {
   global.inArray = array_ext.inArray;
   global.in_array = array_ext.in_array;
 }
+*/
 
 // export node module
 if (typeof module !== 'undefined' && module.exports) {

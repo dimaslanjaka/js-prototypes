@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 
-/// <reference path='../src/index.d.ts' />
-import '../src';
+import 'js-prototypes';
 
-console.log(typeof array_shuffle, xxx);
+console.log(typeof global.array_shuffle);

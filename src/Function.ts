@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/// <reference no-default-lib="true"/>
 /// <reference path="./globals.d.ts" />
 
 interface Callable {

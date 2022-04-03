@@ -1,4 +1,4 @@
-/// <reference path="../../src/globals.d.ts" />
+/// <reference path="globals.d.ts" />
 /**
  * Arrays
  */

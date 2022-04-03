@@ -56,7 +56,7 @@
                 
                  
                     
-                        <a class="link user-link " href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL2RpbWFzbGFuamFrYS9qcy1wcm90b3R5cGVz">
+                        <a class="link user-link " href="https://github.com/dimaslanjaka/js-prototypes">
                             Github
                         </a>
                     
@@ -75,7 +75,7 @@
             
             <nav>
                 
-                    <h2><a href="https://webmanajemen.com/page/safelink.html?url=aW5kZXguaHRtbA==">Documentation</a></h2><div class="category"><h3>Interfaces</h3><ul><li><a href="https://webmanajemen.com/page/safelink.html?url=QXJyYXkuaHRtbA==">Array</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Y3JlYXRlRWxlbWVudE9wdC5odG1s">createElementOpt</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=RnVuY3Rpb24uaHRtbA==">Function</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=SFRNTFNjcmlwdEVsZW1lbnQuaHRtbA==">HTMLScriptElement</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=U3RyaW5nLmh0bWw=">String</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=V2luZG93Lmh0bWw=">Window</a></li></ul><h3>Global</h3><ul><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjZ2V0QWxsTWV0aG9kcw==">getAllMethods</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjaXNGbG9hdA==">isFloat</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjaXNJbnQ=">isInt</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjb2Rkb3JldmVu">oddoreven</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjcnVuT25jZQ==">runOnce</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjc3RycGFk">strpad</a></li></ul></div>
+                    <h2><a href="https://webmanajemen.com/page/safelink.html?url=aW5kZXguaHRtbA==">Documentation</a></h2><div class="category"><h3>Interfaces</h3><ul><li><a href="https://webmanajemen.com/page/safelink.html?url=QXJyYXkuaHRtbA==">Array</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Y3JlYXRlRWxlbWVudE9wdC5odG1s">createElementOpt</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Q3VzdG9tTm9kZUpzR2xvYmFsLmh0bWw=">CustomNodeJsGlobal</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=RnVuY3Rpb24uaHRtbA==">Function</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=SFRNTFNjcmlwdEVsZW1lbnQuaHRtbA==">HTMLScriptElement</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=U3RyaW5nLmh0bWw=">String</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=V2luZG93Lmh0bWw=">Window</a></li></ul><h3>Global</h3><ul><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjZ2V0QWxsTWV0aG9kcw==">getAllMethods</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjaXNGbG9hdA==">isFloat</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjaXNJbnQ=">isInt</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjb2Rkb3JldmVu">oddoreven</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjcnVuT25jZQ==">runOnce</a></li><li><a href="https://webmanajemen.com/page/safelink.html?url=Z2xvYmFsLmh0bWwjc3RycGFk">strpad</a></li></ul></div>
                 
             </nav>
         </div>
@@ -92,7 +92,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-this-alias */
+            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable prefer-rest-params */
 /* eslint-disable no-prototype-builtins */
@@ -676,7 +677,10 @@ class array_ext {
     return arr;
   }
 }
+declare const array_shuffle: typeof array_ext.array_shuffle;
+declare const inArray: typeof array_ext.inArray;
 
+/*
 if (typeof window != 'undefined' &amp;&amp; window instanceof Window) {
   window.array_shuffle = array_ext.array_shuffle;
   window.array_filter = array_ext.array_filter;
@@ -696,6 +700,7 @@ if (typeof window != 'undefined' &amp;&amp; window instanceof Window) {
   global.inArray = array_ext.inArray;
   global.in_array = array_ext.in_array;
 }
+*/
 
 // export node module
 if (typeof module !== 'undefined' &amp;&amp; module.exports) {

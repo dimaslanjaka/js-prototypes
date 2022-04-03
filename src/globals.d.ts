@@ -2,7 +2,15 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /// <reference types="jquery" />
 /// <reference lib="dom" />
-/// <reference no-default-lib="true"/>
+
+/**
+ * Custom global
+ */
+interface CustomNodeJsGlobal extends NodeJS.Global {
+  [key: string]: any;
+}
+// Tell Typescript to use this type on the globally scoped `global` variable.
+declare const global: CustomNodeJsGlobal;
 
 /**
  * Creates a new function.
