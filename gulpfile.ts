@@ -54,10 +54,11 @@ function safelink(done: (...args: any[]) => void) {
               href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com|github.com\/dimaslanjaka))/g)
             )
               return;
-            a.setAttribute(
-              'href',
-              'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
-            );
+            if (href.trim().match(/^https?:\/\//))
+              a.setAttribute(
+                'href',
+                'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
+              );
           });
       })
     )

@@ -6,7 +6,8 @@
   "types": "dist/libs/index.d.ts",
   "scripts": {
     "build": "gulp",
-    "docs": "npx jsdoc -c jsdoc.json"
+    "docs": "npx jsdoc -c jsdoc.json",
+    "docs:server": "php -S localhost:4000 -t docs"
   },
   "files": [
     "src",
