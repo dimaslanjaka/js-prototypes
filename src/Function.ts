@@ -10,7 +10,7 @@ interface Callable {
 }
 
 export interface ClassCallable extends Callable {
-  new (...args: any[]): ClassDecorator;
+  new (...args?: any[]): ClassDecorator;
 }
 
 Function.prototype.once = function (this: Callable, param?) {
