@@ -26,4 +26,4 @@ jobs:
       with:
         branch: master # The branch the action should deploy to.
         folder: . # The folder the action should deploy.
-        force: false
+        force: false # merge instead delete old files
