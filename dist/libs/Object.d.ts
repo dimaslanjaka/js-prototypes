@@ -1,3 +1,4 @@
+declare const __global: any;
 interface Object {
     length: number;
     /**
@@ -58,25 +59,23 @@ interface ObjectConstructor {
      */
     has(str: string | number): any;
 }
-declare class object_ext {
-    /**
-     * Join object to separated string
-     * * [].join() equivalent
-     * @param obj Object
-     * @param separator default comma(,)
-     * @returns Joined string
-     */
-    static object_join(obj: Record<any, unknown>, separator?: string): string;
-    /**
-     * Simple object check.
-     * @param item
-     * @returns
-     */
-    static isObject(item: any): boolean;
-    /**
-     * Deep merge two objects.
-     * @param target
-     * @param ...sources
-     */
-    static mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]): any;
-}
+/**
+ * Join object to separated string
+ * * [].join() equivalent
+ * @param obj Object
+ * @param separator default comma(,)
+ * @returns Joined string
+ */
+declare function object_join(obj: Record<any, unknown>, separator?: string): string;
+/**
+ * Simple object check.
+ * @param item
+ * @returns
+ */
+declare function isObject(item: any): boolean;
+/**
+ * Deep merge two objects.
+ * @param target
+ * @param ...sources
+ */
+declare function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]): any;

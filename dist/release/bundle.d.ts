@@ -207,6 +207,7 @@ interface Document
   ): void;
 }
 
+declare const _global: any;
 /**
  * Arrays
  */
@@ -366,7 +367,6 @@ interface Array<T> {
      */
     trim(): Array<string>;
 }
-declare const _global: any;
 declare function array_filter(array: []): never[];
 /**
  * pick random from array
@@ -459,8 +459,6 @@ interface Date {
 declare class date_ext {
     static datetime_local(date: string | number | Date): string;
 }
-
-
 
 
 
@@ -791,6 +789,7 @@ declare function isInt(n: any): boolean;
  */
 declare function isFloat(n: any): boolean;
 
+declare const __global: any;
 interface Object {
     length: number;
     /**
@@ -851,28 +850,26 @@ interface ObjectConstructor {
      */
     has(str: string | number): any;
 }
-declare class object_ext {
-    /**
-     * Join object to separated string
-     * * [].join() equivalent
-     * @param obj Object
-     * @param separator default comma(,)
-     * @returns Joined string
-     */
-    static object_join(obj: Record<any, unknown>, separator?: string): string;
-    /**
-     * Simple object check.
-     * @param item
-     * @returns
-     */
-    static isObject(item: any): boolean;
-    /**
-     * Deep merge two objects.
-     * @param target
-     * @param ...sources
-     */
-    static mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]): any;
-}
+/**
+ * Join object to separated string
+ * * [].join() equivalent
+ * @param obj Object
+ * @param separator default comma(,)
+ * @returns Joined string
+ */
+declare function object_join(obj: Record<any, unknown>, separator?: string): string;
+/**
+ * Simple object check.
+ * @param item
+ * @returns
+ */
+declare function isObject(item: any): boolean;
+/**
+ * Deep merge two objects.
+ * @param target
+ * @param ...sources
+ */
+declare function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]): any;
 
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable @typescript-eslint/ban-types */

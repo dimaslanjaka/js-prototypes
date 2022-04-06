@@ -10,7 +10,7 @@ import through from 'through2';
 import { join } from 'path';
 import { readFileSync } from 'fs';
 import sourcemaps from 'gulp-sourcemaps';
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 import jsdom from 'gulp-jsdom';
 import './src';
 
@@ -20,11 +20,17 @@ gulp.task('clean', async function () {
 });
 
 gulp.task('tsc:build', function () {
-  const tsProject = ts.createProject('tsconfig.json');
-  const tsResult = gulp.src('src/**/*.ts').pipe(tsProject());
+  //const tsProject = ts.createProject('tsconfig.json');
+  //const tsResult = gulp.src('src/**/*.ts').pipe(tsProject());
   //.pipe(gulp.dest("dist/libs"));
-  return merge([tsResult.dts.pipe(gulp.dest('dist/libs')), tsResult.js.pipe(gulp.dest('dist/libs'))]);
+  //return merge([tsResult.dts.pipe(gulp.dest('dist/libs')), tsResult.js.pipe(gulp.dest('dist/libs'))]);
+  return new Promise((resolve) => {
+    const run = execSync('tsc', { cwd: __dirname });
+    resolve(run);
+  });
 });
+
+gulp.task('test', (d) => d());
 
 function generate(done: unknown) {
   return new Promise((resolve) => {
@@ -99,7 +105,9 @@ gulp.task('browser:js', function () {
 });
 
 gulp.task('browser:min-js', function () {
-  return gulp.src(['dist/libs/*.js']).pipe(concat('bundle.min.js')).pipe(terser()).pipe(gulp.dest('./dist/release'));
+  const src = gulp.src(['dist/libs/*.js']);
+  const mergesrc = src.pipe(concat('bundle.min.js')).pipe(terser());
+  return mergesrc.pipe(gulp.dest('./dist/release'));
 });
 
 gulp.task('browser:dts', function () {
@@ -108,7 +116,7 @@ gulp.task('browser:dts', function () {
     .pipe(concat('bundle.d.ts'))
     .pipe(
       through.obj((chunk, enc, cb) => {
-        let contents = chunk.contents.toString();
+        const contents = chunk.contents.toString();
         const source = chunk.path;
         const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
         let m: RegExpExecArray;
@@ -118,8 +126,8 @@ gulp.task('browser:dts', function () {
             regex.lastIndex++;
           }
           const realpathref = join(__dirname, 'dist/libs', m[1]);
-          contents = contents.replace(m[0], readFileSync(realpathref).toString());
-          console.log(realpathref);
+          //contents = contents.replace(m[0], () => readFileSync(realpathref, 'utf-8'));
+          console.log(m[0]);
         }
         chunk.contents = Buffer.from(contents);
         cb(null, chunk);
@@ -128,5 +136,5 @@ gulp.task('browser:dts', function () {
     .pipe(gulp.dest('./dist/release'));
 });
 
-exports.browser = gulp.series('browser:js', 'browser:min-js', 'browser:dts');
-exports.default = gulp.series('tsc', exports.browser);
+gulp.task('browser', gulp.series('browser:js', 'browser:min-js', 'browser:dts'));
+exports.default = gulp.series('tsc', 'browser');

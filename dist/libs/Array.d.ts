@@ -1,4 +1,5 @@
 /// <reference path="../../src/globals.d.ts" />
+declare const _global: any;
 /**
  * Arrays
  */
@@ -158,7 +159,6 @@ interface Array<T> {
      */
     trim(): Array<string>;
 }
-declare const _global: any;
 declare function array_filter(array: []): never[];
 /**
  * pick random from array

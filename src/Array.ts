@@ -4,6 +4,7 @@
 /* eslint-disable prefer-rest-params */
 /* eslint-disable no-prototype-builtins */
 /// <reference path="./globals.d.ts" />
+const _global = (typeof window != 'undefined' ? window : global) /* node */ as any;
 
 /**
  * Arrays
@@ -402,7 +403,6 @@ Array.prototype.removeEmpties = function (this: any[]) {
   return filter;
 };
 
-const _global = (typeof window != 'undefined' ? window : global) /* node */ as any;
 function array_filter(array: []) {
   return array.filter(function (el) {
     return el != null;

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
+const __global = (typeof window != 'undefined' ? window : global) /* node */ as any;
 
 interface Object {
   length: number;
@@ -138,73 +139,56 @@ Object.replaceKeyFrom = function (anotherObj) {
   }*/
 };
 
-class object_ext {
-  /**
-   * Join object to separated string
-   * * [].join() equivalent
-   * @param obj Object
-   * @param separator default comma(,)
-   * @returns Joined string
-   */
-  static object_join(obj: Record<any, unknown>, separator = ',') {
-    return Object.keys(obj)
-      .map(function (k) {
-        return obj[k];
-      })
-      .join(separator);
-  }
-
-  /**
-   * Simple object check.
-   * @param item
-   * @returns
-   */
-  static isObject(item: any): boolean {
-    return item && typeof item === 'object' && !Array.isArray(item);
-  }
-
-  /**
-   * Deep merge two objects.
-   * @param target
-   * @param ...sources
-   */
-  static mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]) {
-    if (!sources.length) return target;
-    const source = sources.shift();
-
-    if (object_ext.isObject(target) && object_ext.isObject(source)) {
-      for (const key in source) {
-        if (object_ext.isObject(source[key])) {
-          if (!target[key]) Object.assign(target, { [key]: {} });
-          object_ext.mergeDeep(<any>target[key], <any>source[key]);
-        } else {
-          Object.assign(target, { [key]: source[key] });
-        }
-      }
-    }
-
-    return object_ext.mergeDeep(target, ...sources);
-  }
-}
-
 Object.prototype.merge = function (this: Record<any, unknown>, ...others) {
-  return object_ext.mergeDeep(this, ...others);
+  return mergeDeep(this, ...others);
 };
 
-if (typeof window != 'undefined' && window instanceof Window) {
-  window.object_join = object_ext.object_join;
-  window.object_merge = object_ext.mergeDeep;
-  window.isObject = object_ext.isObject;
-} else if (typeof global == 'object') {
-  global.object_join = object_ext.object_join;
-  global.object_merge = object_ext.mergeDeep;
-  global.isObject = object_ext.isObject;
+/**
+ * Join object to separated string
+ * * [].join() equivalent
+ * @param obj Object
+ * @param separator default comma(,)
+ * @returns Joined string
+ */
+function object_join(obj: Record<any, unknown>, separator = ',') {
+  return Object.keys(obj)
+    .map(function (k) {
+      return obj[k];
+    })
+    .join(separator);
 }
-if (typeof module != 'undefined' && typeof module == 'object') {
-  module.exports = object_ext;
-  module.exports = {
-    object_join: object_ext.object_join,
-    object_merge: object_ext.mergeDeep,
-    isObject: object_ext.isObject,
-  };
+__global.object_join = object_join;
+
+/**
+ * Simple object check.
+ * @param item
+ * @returns
+ */
+function isObject(item: any): boolean {
+  return item && typeof item === 'object' && !Array.isArray(item);
 }
+__global.isObject = isObject;
+
+/**
+ * Deep merge two objects.
+ * @param target
+ * @param ...sources
+ */
+function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        mergeDeep(<any>target[key], <any>source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return mergeDeep(target, ...sources);
+}
+__global.mergeDeep = mergeDeep;
