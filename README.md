@@ -35,3 +35,17 @@ html browser usage
   console.log(typeof [].addAll); // function
 </script>
 ```
+
+## REQUIRED
+insert below codes above all import
+```ts
+import 'js-prototypes'; // typescript
+require('js-prototypes'); // javascript
+```
+all global functions and prototypes modified and included successful.
+
+## Array Example
+full example array usages https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts
+```ts
+console.log(typeof array_shuffle); // function
+```

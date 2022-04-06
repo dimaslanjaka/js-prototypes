@@ -136,6 +136,16 @@ import "js-prototypes/dist/libs/globals";
 &lt;script&gt;
   console.log(typeof [].addAll); // function
 &lt;/script&gt;
+</code></pre>
+<h2>REQUIRED</h2>
+<p>insert below codes above all import</p>
+<pre class="prettyprint source lang-ts"><code>import 'js-prototypes'; // typescript
+require('js-prototypes'); // javascript
+</code></pre>
+<p>all global functions and prototypes modified and included successful.</p>
+<h2>Array Example</h2>
+<p>full example array usages https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts</p>
+<pre class="prettyprint source lang-ts"><code>console.log(typeof array_shuffle); // function
 </code></pre></article>
     </section>
 
