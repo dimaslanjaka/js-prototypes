@@ -1,4 +1,6 @@
-# js-prototypes
+# js-prototypes (Native Javascript Prototypes Extender Helpers)
+
+[![Build](https://github.com/dimaslanjaka/js-prototypes/actions/workflows/npm-gulp.yml/badge.svg)](https://github.com/dimaslanjaka/js-prototypes/actions/workflows/npm-gulp.yml) [![Test Multiple NodeJS Versions](https://github.com/dimaslanjaka/js-prototypes/actions/workflows/npm-test.yml/badge.svg)](https://github.com/dimaslanjaka/js-prototypes/actions/workflows/npm-test.yml)
 
 Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototypes/](https://www.webmanajemen.com/js-prototypes/)
 
