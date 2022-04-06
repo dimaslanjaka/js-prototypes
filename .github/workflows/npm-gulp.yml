@@ -9,12 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout
+    - uses: actions/checkout@v3
 
-    - name: Use Node.js 16.x
-      uses: actions/setup-node
+    - name: Use Node.js 14
+      uses: actions/setup-node@v3
       with:
-        node-version: 16.x
+        node-version: '14'
+        cache: 'npm'
 
     - name: Install dependencies
       run: npm i -g gulp-cli typescript npm ts-node && npm install
