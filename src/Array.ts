@@ -64,17 +64,21 @@ interface Array<T> {
   add(element: any): Array<T>;
 
   /**
-   * Add other array
-   * @param otherArray
+   * @summary Add another array
+   * @description Add another array to current array
+   * @param anotherArray
    * @example
    * var a = [0,1];
    * var b = ['a','b'];
-   * console.log(b.addAll(a)); //['a','b',0,1]
+   * console.log(b.addAll(a)); // ['a','b',0,1]
    * var c = ['z',10];
-   * c.add(b);
+   * c.addAll(b);
    * console.log(c); // ['z',10,'a','b',0,1]
+   * var d = ['last']:
+   * d.addAll(a,b,c);
+   * console.log(d); // ['last','a','b',0,1]
    */
-  addAll(otherArray: Array<T>): Array<T>;
+  addAll(...anotherArray: Array<any>): Array<any>;
 
   /**
    * Get element in range from array
@@ -84,7 +88,7 @@ interface Array<T> {
    * const arr = [1, 2, 3, 4, 5];
    * console.log(arr.range(1, 3));
    */
-  range(start: number, end: number): Array<T>;
+  range(start: number, end: number): Array<any>;
 
   /**
    * Returns true  if self contains no elements.
@@ -235,10 +239,12 @@ Array.prototype.add = function (element) {
   return this;
 };
 
-Array.prototype.addAll = function (others: Array<any>) {
+Array.prototype.addAll = function (...otherArrays) {
   const self = this;
-  others.forEach(function (e: any) {
-    self.push(e);
+  otherArrays.forEach(function (array) {
+    array.forEach((item) => {
+      self.push(item);
+    });
   });
   return self;
 };

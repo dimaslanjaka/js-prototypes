@@ -260,17 +260,21 @@ interface Array<T> {
      */
     add(element: any): Array<T>;
     /**
-     * Add other array
-     * @param otherArray
+     * @summary Add another array
+     * @description Add another array to current array
+     * @param anotherArray
      * @example
      * var a = [0,1];
      * var b = ['a','b'];
-     * console.log(b.addAll(a)); //['a','b',0,1]
+     * console.log(b.addAll(a)); // ['a','b',0,1]
      * var c = ['z',10];
-     * c.add(b);
+     * c.addAll(b);
      * console.log(c); // ['z',10,'a','b',0,1]
+     * var d = ['last']:
+     * d.addAll(a,b,c);
+     * console.log(d); // ['last','a','b',0,1]
      */
-    addAll(otherArray: Array<T>): Array<T>;
+    addAll(...anotherArray: Array<T>): Array<T>;
     /**
      * Get element in range from array
      * @param start start number index
