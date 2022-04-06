@@ -48,7 +48,7 @@ gulp.task('tsc:doc:gen', generate);
 
 function safelink(done: TaskCallback) {
   gulp
-    .src('**/*.html', { cwd: join(__dirname, 'tmp') })
+    .src('**/*.html', { cwd: join(__dirname, 'docs') })
     .pipe(
       jsdom(
         (document: Document) => {

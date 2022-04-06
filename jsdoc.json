@@ -47,6 +47,6 @@
   },
   "opts": {
     "template": "node_modules/better-docs",
-    "destination": "./tmp/"
+    "destination": "./docs/"
   }
 }

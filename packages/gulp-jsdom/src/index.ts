@@ -22,12 +22,11 @@ export default function gulpJSDOM(mutator: Document & any, options?: jsdom.Const
     encoding: Parameters<through.TransformFunction>[1],
     callback: Parameters<through.TransformFunction>[2]
   ) {
-    if (file.isNull()) {
+    if (file.isNull() || file.extname != '.html') {
       return callback(null, file);
     }
     if (file.isStream()) {
-      callback(new PluginError(PLUGIN_NAME, 'Streaming not supported'));
-      return;
+      return callback(new PluginError(PLUGIN_NAME, 'Streaming not supported'));
     }
 
     try {
@@ -36,7 +35,8 @@ export default function gulpJSDOM(mutator: Document & any, options?: jsdom.Const
 
         const context = {
           file: file,
-          filename: file.history[file.history.length - 1].substr(file.base.length),
+          //filename: file.history[file.history.length - 1].substr(file.base.length),
+          filename: file.history[file.history.length - 1].substring(file.base.length),
         };
         const output = mutator.call(context, dom.window.document, dom.window);
 
@@ -53,7 +53,7 @@ export default function gulpJSDOM(mutator: Document & any, options?: jsdom.Const
       this.emit('error', new PluginError(PLUGIN_NAME, err));
     }
 
-    callback();
+    callback(null, file);
   }
 
   return through.obj(transform);
