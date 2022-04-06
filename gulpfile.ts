@@ -9,7 +9,7 @@ const through2 = through;
 import { join, resolve } from 'path';
 import sourcemaps from 'gulp-sourcemaps';
 import { exec, execSync } from 'child_process';
-import jsdom from 'gulp-jsdom';
+import jsdom from 'gulp-jsdom/src/index';
 import './src';
 import { readFileSync } from 'fs';
 
@@ -48,9 +48,9 @@ function safelink(done: (...args: any[]) => void) {
   gulp
     .src('**/*.html', { cwd: join(__dirname, 'tmp') })
     .pipe(
-      jsdom((document: Document) => {
+      jsdom((document) => {
         const hyperlinks = document.querySelectorAll('a');
-        if (hyperlinks.length)
+        if (hyperlinks.length) {
           hyperlinks.forEach((a) => {
             const href = a.getAttribute('href');
             if (
@@ -65,6 +65,7 @@ function safelink(done: (...args: any[]) => void) {
                 'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
               );
           });
+        }
       })
     )
     .pipe(gulp.dest('docs'));
