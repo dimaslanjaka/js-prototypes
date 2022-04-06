@@ -24,8 +24,8 @@
     ]
   },
   "templates": {
-    "cleverLinks": true,
-    "monospaceLinks": true,
+    "cleverLinks": false,
+    "monospaceLinks": false,
     "search": true,
     "better-docs": {
       "name": "Native Javascript Prototype Extender (helper)",
@@ -53,6 +53,9 @@
   },
   "opts": {
     "template": "node_modules/better-docs",
-    "destination": "./docs/"
+    "destination": "./docs/",
+    "readme": "readme.md",
+    "recurse": true,
+    "verbose": true,
   }
 }
