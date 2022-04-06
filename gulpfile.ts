@@ -48,7 +48,10 @@ function safelink(done: (...args: any[]) => void) {
   gulp
     .src('**/*.html', { cwd: join(__dirname, 'tmp') })
     .pipe(
-      jsdom((document) => {
+      jsdom((document: Document) => {
+        // adsense
+        document.head.innerHTML += `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script>`;
+        // safelink
         const hyperlinks = document.querySelectorAll('a');
         if (hyperlinks.length) {
           hyperlinks.forEach((a) => {
