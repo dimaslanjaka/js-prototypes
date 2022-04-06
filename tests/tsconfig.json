@@ -46,12 +46,8 @@
   "buildOnSave": true,
   "compileOnSave": true,
   "exclude": [
-    "./plugins/**/*",
-    "./types/**/*",
-    "./node_modules/**/*",
-    "./libs/compiler/**/*",
-    "./src/js",
-    "./src/gulp/compress"
+    "**/dist/**",
+    "**/node_modules/**",
   ],
   "include": [
     "./*.ts"

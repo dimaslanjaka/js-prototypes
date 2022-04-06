@@ -91,7 +91,8 @@ interface Array<T> {
   range(start: number, end: number): Array<any>;
 
   /**
-   * Returns true  if self contains no elements.
+   * Returns true if self contains no elements.
+   * @see {@link Array<T>.length}
    */
   isEmpty(): boolean;
 
