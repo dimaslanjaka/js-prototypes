@@ -1,5 +1,7 @@
 # js-prototypes
 
+Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototypes/](https://www.webmanajemen.com/js-prototypes/)
+
 instalation
 
 ```shell
