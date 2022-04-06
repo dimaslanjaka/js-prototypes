@@ -29,9 +29,8 @@
     "search": true,
     "better-docs": {
       "name": "Native Javascript Prototype Extender (helper)",
-      "logo": "images/logo.png",
+      "logo": "/images/logo.png",
       "title": "js-prototypes",
-      "css": "style.css",
       "trackingCode": "<!--tracking code-->",
       "hideGenerator": false,
       "navLinks": [
