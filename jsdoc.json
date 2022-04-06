@@ -26,12 +26,13 @@
   "templates": {
     "cleverLinks": true,
     "monospaceLinks": true,
+    "search": true,
     "better-docs": {
       "name": "Native Javascript Prototype Extender (helper)",
       "logo": "images/logo.png",
       "title": "js-prototypes",
       "css": "style.css",
-      "trackingCode": "tracking-code-which-will-go-to-the-HEAD",
+      "trackingCode": "<!--tracking code-->",
       "hideGenerator": false,
       "navLinks": [
         {
