@@ -3,16 +3,15 @@
 import gulp from 'gulp';
 import concat from 'gulp-concat';
 import terser from 'gulp-terser';
-import ts from 'gulp-typescript';
-import merge from 'merge2';
 import del from 'del';
 import through from 'through2';
-import { join } from 'path';
-import { readFileSync } from 'fs';
+const through2 = through;
+import { join, resolve } from 'path';
 import sourcemaps from 'gulp-sourcemaps';
 import { exec, execSync } from 'child_process';
 import jsdom from 'gulp-jsdom';
 import './src';
+import { readFileSync } from 'fs';
 
 gulp.task('clean', async function () {
   await del('./docs');
@@ -105,9 +104,7 @@ gulp.task('browser:js', function () {
 });
 
 gulp.task('browser:min-js', function () {
-  const src = gulp.src(['dist/libs/*.js']);
-  const mergesrc = src.pipe(concat('bundle.min.js')).pipe(terser());
-  return mergesrc.pipe(gulp.dest('./dist/release'));
+  return gulp.src(['dist/libs/*.js']).pipe(concat('bundle.min.js')).pipe(terser()).pipe(gulp.dest('./dist/release'));
 });
 
 gulp.task('browser:dts', function () {
@@ -116,8 +113,8 @@ gulp.task('browser:dts', function () {
     .pipe(concat('bundle.d.ts'))
     .pipe(
       through.obj((chunk, enc, cb) => {
-        const contents = chunk.contents.toString();
-        const source = chunk.path;
+        let contents = chunk.contents.toString();
+        const sources = {};
         const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
         let m: RegExpExecArray;
         while ((m = regex.exec(contents)) !== null) {
@@ -125,9 +122,17 @@ gulp.task('browser:dts', function () {
           if (m.index === regex.lastIndex) {
             regex.lastIndex++;
           }
-          const realpathref = join(__dirname, 'dist/libs', m[1]);
-          //contents = contents.replace(m[0], () => readFileSync(realpathref, 'utf-8'));
-          console.log(m[0]);
+          const realpathref = resolve(join(__dirname, 'dist/libs', m[1]));
+          sources[m[0]] = realpathref;
+          // remove references
+          contents = contents.replace(m[0], () => '');
+        }
+        // inject detached references
+        for (const key in sources) {
+          if (Object.prototype.hasOwnProperty.call(sources, key)) {
+            const ref = sources[key];
+            contents = readFileSync(ref, 'utf-8') + '\n' + contents;
+          }
         }
         chunk.contents = Buffer.from(contents);
         cb(null, chunk);

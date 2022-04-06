@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "collections": "file:packages/collections",
-    "lodash": "file:packages/lodash"
+    "lodash": "file:packages/lodash",
+    "upath": "^2.0.1"
   }
 }
