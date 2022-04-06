@@ -33,6 +33,12 @@
       "title": "js-prototypes",
       "trackingCode": "<!--tracking code-->",
       "hideGenerator": false,
+      "component": {
+          "entry": [
+              "import 'babel-polyfill';",
+              "import 'bulma/css/bulma.css';"
+          ]
+      },
       "navLinks": [
         {
           "label": "Github",
