@@ -5,8 +5,8 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "Test",
-      "name": "ts-node index.ts",
+      "command": "ts-node index.ts",
+      "name": "Test",
       "cwd": "${workspaceFolder}/tests",
       "request": "launch",
       "type": "node-terminal"

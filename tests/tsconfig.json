@@ -1,5 +1,5 @@
 {
-  "extends": "js-prototypes/tsconfig.json",
+  //"extends": "js-prototypes/tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES5",
@@ -31,7 +31,11 @@
       "ES2020"
     ],
     "outDir": "./build",
-    "rootDir": "./",
+    "downlevelIteration": true,
+    "rootDirs": [
+      "./",
+      "../"
+    ],
     "noLib": false,
     "esModuleInterop": true,
     "importHelpers": true,
