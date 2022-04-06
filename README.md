@@ -45,7 +45,8 @@ require('js-prototypes'); // javascript
 all global functions and prototypes modified and included successful.
 
 ## Array Example
-full example array usages https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts
+- full example array usages [https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts](https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts).
+- full available apis [Prototypes Array](/Array.html).
 ```ts
 console.log(typeof array_shuffle); // function
 ```
