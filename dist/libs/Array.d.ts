@@ -65,7 +65,7 @@ interface Array<T> {
      * d.addAll(a,b,c);
      * console.log(d); // ['last','a','b',0,1]
      */
-    addAll<T extends any>(...anotherArray: Array<T>): Array<T>;
+    addAll(...anotherArray: Array<any>): Array<any>;
     /**
      * Get element in range from array
      * @param start start number index
@@ -74,7 +74,7 @@ interface Array<T> {
      * const arr = [1, 2, 3, 4, 5];
      * console.log(arr.range(1, 3));
      */
-    range(start: number, end: number): Array<T>;
+    range(start: number, end: number): Array<any>;
     /**
      * Returns true  if self contains no elements.
      */
