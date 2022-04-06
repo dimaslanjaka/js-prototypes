@@ -37,6 +37,7 @@
 	],
 	"exclude": [
 		"dist",
+		"tests",
 		"node_modules",
 		"./dist/release/*.js",
 		"./dist/**/*.js"

@@ -40,14 +40,14 @@
     "esModuleInterop": true,
     "importHelpers": true,
     "typeRoots": [
-      "./node_modules/@types"
+      "../src"
     ],
   },
   "buildOnSave": true,
   "compileOnSave": true,
   "exclude": [
     "**/dist/**",
-    "**/node_modules/**",
+    "**/node_modules/**"
   ],
   "include": [
     "./*.ts"
@@ -55,7 +55,10 @@
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs",
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "typeRoots": [
+        "../src"
+      ],
     }
   }
 }

@@ -1,8 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-empty-function */
-
 import 'js-prototypes';
-//import '../src/Array';
+
+console.log(`
+/////
+// Array
+/////
+`);
 
 console.log('is 1 function available on global scope?');
 console.log(typeof global.array_filter, typeof array_filter);
