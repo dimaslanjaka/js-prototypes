@@ -12,6 +12,7 @@ import { exec, execSync } from 'child_process';
 import jsdom from 'gulp-jsdom/src/index';
 import './src';
 import { readFileSync } from 'fs';
+import { TaskCallback } from 'undertaker';
 
 gulp.task('clean', async function () {
   await del('./docs');
@@ -43,37 +44,46 @@ function generate(done: unknown) {
     });
   });
 }
+gulp.task('tsc:doc:gen', generate);
 
-function safelink(done: (...args: any[]) => void) {
+function safelink(done: TaskCallback) {
   gulp
     .src('**/*.html', { cwd: join(__dirname, 'tmp') })
     .pipe(
-      jsdom((document: Document) => {
-        // adsense
-        document.head.innerHTML += `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script>`;
-        // safelink
-        const hyperlinks = document.querySelectorAll('a');
-        if (hyperlinks.length) {
-          hyperlinks.forEach((a) => {
-            const href = a.getAttribute('href');
-            if (
-              !href ||
-              !href.length ||
-              href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com|github.com\/dimaslanjaka))/g)
-            )
-              return;
-            if (href.trim().match(/^https?:\/\//))
-              a.setAttribute(
-                'href',
-                'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
-              );
-          });
-        }
-      })
+      jsdom(
+        (document: Document) => {
+          // adsense
+          document.querySelectorAll(
+            'head'
+          )[0].innerHTML += `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script>`;
+          // safelink
+          const hyperlinks = document.querySelectorAll('a');
+          if (hyperlinks.length) {
+            hyperlinks.forEach((a) => {
+              const href = a.getAttribute('href');
+              if (
+                !href ||
+                !href.length ||
+                href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com|github.com\/dimaslanjaka))/g)
+              )
+                return;
+              if (href.trim().match(/^https?:\/\//))
+                a.setAttribute(
+                  'href',
+                  'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
+                );
+            });
+          }
+        },
+        {},
+        true
+      )
     )
     .pipe(gulp.dest('docs'));
   done();
 }
+
+gulp.task('tsc:doc:after', safelink);
 
 gulp.task('tsc:docs', gulp.series(generate, safelink));
 

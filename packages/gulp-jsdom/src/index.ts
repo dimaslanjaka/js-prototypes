@@ -1,9 +1,9 @@
+// https://github.com/SARFEX/gulp-jsdom/blob/master/index.js
 'use strict';
 const PLUGIN_NAME = 'gulp-jsdom';
 import through from 'through2';
 import PluginError from 'plugin-error';
 import jsdom from 'jsdom';
-import { BufferFile } from 'vinyl';
 const { JSDOM } = jsdom;
 
 /**
@@ -13,15 +13,15 @@ const { JSDOM } = jsdom;
  * @param serialize dom.serialize()
  * @returns
  */
-export default function gulpJSDOM(
-  mutator: { call: (arg0: { file: BufferFile; filename: string }, arg1: Document, arg2: jsdom.DOMWindow) => any } & any,
-  options?: jsdom.ConstructorOptions,
-  serialize?: boolean
-) {
+export default function gulpJSDOM(mutator: Document & any, options?: jsdom.ConstructorOptions, serialize?: boolean) {
   options = options || {};
   serialize = serialize || true;
 
-  return through.obj((file, encoding, callback) => {
+  function transform(
+    file: Parameters<through.TransformFunction>[0],
+    encoding: Parameters<through.TransformFunction>[1],
+    callback: Parameters<through.TransformFunction>[2]
+  ) {
     if (file.isNull()) {
       return callback(null, file);
     }
@@ -32,13 +32,12 @@ export default function gulpJSDOM(
 
     try {
       if (file.isBuffer()) {
-        const dom = new JSDOM(file.contents.toString('utf8'), options);
+        const dom = new JSDOM(file.contents.toString('utf-8'), options);
 
         const context = {
           file: file,
           filename: file.history[file.history.length - 1].substr(file.base.length),
         };
-        console.log(context);
         const output = mutator.call(context, dom.window.document, dom.window);
 
         file.contents = Buffer.from(
@@ -55,5 +54,7 @@ export default function gulpJSDOM(
     }
 
     callback();
-  });
+  }
+
+  return through.obj(transform);
 }

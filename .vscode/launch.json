@@ -5,6 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "gulp",
+      "name": "build",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
       "command": "ts-node index.ts",
       "name": "Test",
       "cwd": "${workspaceFolder}/tests",

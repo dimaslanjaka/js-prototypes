@@ -32,9 +32,8 @@ function gulpJSDOM(mutator, options, serialize) {
                 var dom = new JSDOM(file.contents.toString('utf8'), options);
                 var context = {
                     file: file,
-                    filename: file.history[file.history.length - 1].substr(file.base.length)
+                    filename: file.history[file.history.length - 1].substring(file.base.length)
                 };
-                console.log(context);
                 var output = mutator.call(context, dom.window.document, dom.window);
                 file.contents = Buffer.from(typeof output === 'string'
                     ? output
@@ -45,7 +44,9 @@ function gulpJSDOM(mutator, options, serialize) {
             }
         }
         catch (err) {
-            _this.emit('error', new plugin_error_1["default"](PLUGIN_NAME, err));
+            if (_this)
+                _this.emit('error', new plugin_error_1["default"](PLUGIN_NAME, err));
+            console.log(err);
         }
         callback();
     });
