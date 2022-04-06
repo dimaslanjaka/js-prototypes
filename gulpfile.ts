@@ -68,10 +68,14 @@ function safelink(done: TaskCallback) {
               )
                 return;
               if (href.trim().match(/^https?:\/\//))
+              {
+                a.setAttribute('target', '_blank');
+                a.setAttribute('rel', 'nofollow');
                 a.setAttribute(
                   'href',
                   'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
                 );
+              }
             });
           }
         },
