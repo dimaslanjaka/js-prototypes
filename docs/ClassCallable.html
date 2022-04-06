@@ -2,7 +2,7 @@
   </head><body class="layout small-header">tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>js-prototypes Function.ts</title>
+  <title>js-prototypes ClassCallable</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -82,74 +82,114 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>Function.ts</h1>
+                    <p>Interface</p>
+                    <h1>ClassCallable</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/no-unused-vars */
-/// &lt;reference path="./globals.d.ts" /&gt;
+        <h2>ClassCallable</h2>
+        
+    
+</header>
 
-interface Callable {
-  (text: string): void;
-  /**
-   * indicator if this function was called
-   */
-  wasCalled?: boolean;
-}
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Class Callable Decorator</p></div>
+        
 
-/**
- * Class Callable Decorator
- * @example
- * // definition for below classes
- * // can be called with `new`
- * new yourclass();
- * new yourclass(arg, arg1);
- * // can be called directly like function
- * yourclass();
- * yourclass(arg, arg1);
- */
-export interface ClassCallable extends Callable {
-  new (...args: any[]): ClassDecorator;
-  new (): ClassDecorator;
-}
+        
 
-Function.prototype.once = function (this: Callable, param?) {
-  if (!this.wasCalled) {
-    this.apply(param);
-    this.wasCalled = true;
-  }
-};
 
-/**
- * Run the function only once
- * @param fn
- * @see {@link https://stackoverflow.com/a/41000535/6404439}
- * @returns
- */
-function runOnce(fn: Callable) {
-  let done = false;
-  return function (...args: any) {
-    if (!done) {
-      done = true;
-      return fn.apply(this, args);
-    }
-  };
-}
+<dl class="details">
 
-if (typeof module.exports != 'undefined') {
-  module.exports = {
-    runOnce,
-  };
-}
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Function.ts.html" class="button">View Source</a>
+            <span>
+                <a href="Function.ts.html">Function.ts</a>, <a href="Function.ts.html#line31">line 31</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+            <h3>Example</h3>
+            
+    
+        <pre class="prettyprint"><code>// definition for below classes
+// can be called with `new`
+new yourclass();
+new yourclass(arg, arg1);
+// can be called directly like function
+yourclass();
+yourclass(arg, arg1);</code></pre>
+    
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -173,7 +213,6 @@ if (typeof module.exports != 'undefined') {
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
-
 
 
 

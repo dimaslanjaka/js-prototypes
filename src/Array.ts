@@ -402,212 +402,193 @@ Array.prototype.removeEmpties = function (this: any[]) {
   return filter;
 };
 
-class array_ext {
-  static array_filter(array: []) {
-    return array.filter(function (el) {
-      return el != null;
-    });
-  }
+const _global = (typeof window != 'undefined' ? window : global) /* node */ as any;
+function array_filter(array: []) {
+  return array.filter(function (el) {
+    return el != null;
+  });
+}
+_global.array_filter = array_filter;
 
-  /**
-   * pick random from array
-   * @param {Array<any>} arrays
-   * @param {boolean} unique Unique the arrays
-   */
-  static array_rand(arrays: any[], unique: any) {
-    if (unique) {
-      arrays = array_ext.array_unique(arrays);
+/**
+ * pick random from array
+ * @param {Array<any>} arrays
+ * @param {boolean} unique Unique the arrays
+ */
+function array_rand(arrays: any[], unique: any) {
+  if (unique) {
+    arrays = array_unique(arrays);
+  }
+  const index = Math.floor(Math.random() * arrays.length);
+  return {
+    index: index,
+    value: arrays[index],
+  };
+}
+_global.array_rand = array_rand;
+
+/**
+ * Array unique
+ * @param {Array<any>} arrays
+ */
+function array_unique(arrays: any[]) {
+  return arrays.filter(function (item: any, pos: any, self: string | any[]) {
+    return self.indexOf(item) == pos;
+  });
+}
+_global.array_unique = array_unique;
+
+/**
+ * Unset array
+ * @param {Array<any>} arrayName
+ * @param {String|number} key
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function array_unset(arrayName: { [x: string]: any }, key: any) {
+  let x: string | number;
+  const tmpArray = [];
+  for (x in arrayName) {
+    if (x != key) {
+      tmpArray[x] = arrayName[x];
     }
-    const index = Math.floor(Math.random() * arrays.length);
-    return {
-      index: index,
-      value: arrays[index],
-    };
+  }
+  return tmpArray;
+}
+_global.array_unset = array_unset;
+
+/**
+ * PHP shuffle array equivalent
+ * @param array
+ * @example
+ * var arr = [2, 11, 37, 42];
+ * shuffle(arr);
+ * console.log(arr); //return random
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function shuffle(array: Array<any>) {
+  let currentIndex = array.length,
+    temporaryValue: any,
+    randomIndex: number;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
   }
 
-  /**
-   * Array unique
-   * @param {Array<any>} arrays
-   */
-  static array_unique(arrays: any[]) {
-    return arrays.filter(function (item: any, pos: any, self: string | any[]) {
-      return self.indexOf(item) == pos;
-    });
-  }
+  return array;
+}
+_global.shuffle = shuffle;
 
-  /**
-   * Unset array
-   * @param {Array<any>} arrayName
-   * @param {String|number} key
-   */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  static array_unset(arrayName: { [x: string]: any }, key: any) {
-    let x: string | number;
-    const tmpArray = [];
-    for (x in arrayName) {
-      if (x != key) {
-        tmpArray[x] = arrayName[x];
-      }
+function arrayCompare(a1: Array<any>, a2: Array<any>) {
+  if (a1.length != a2.length) return false;
+  const length = a2.length;
+  for (let i = 0; i < length; i++) {
+    if (a1[i] !== a2[i]) return false;
+  }
+  return true;
+}
+_global.arrayCompare = arrayCompare;
+
+/**
+ * in_array PHP equivalent
+ * @param needle string etc
+ * @param haystack
+ */
+function inArray(needle: any, haystack: Array<any>) {
+  const length = haystack.length;
+  for (let i = 0; i < length; i++) {
+    if (typeof haystack[i] == 'object') {
+      if (arrayCompare(haystack[i], needle)) return true;
+    } else {
+      if (haystack[i] == needle) return true;
     }
-    return tmpArray;
   }
+  return false;
+}
 
-  /**
-   * PHP shuffle array equivalent
-   * @param array
-   * @example
-   * var arr = [2, 11, 37, 42];
-   * shuffle(arr);
-   * console.log(arr); //return random
-   */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  static shuffle(array: Array<any>) {
-    let currentIndex = array.length,
-      temporaryValue: any,
-      randomIndex: number;
+/**
+ * in_array PHP equivalent
+ * @param needle string etc
+ * @param haystack
+ */
+function in_array(needle: any, haystack: Array<any>) {
+  return inArray(needle, haystack);
+}
+_global.in_array = in_array;
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
+/**
+ * get all keys
+ * @param haystack string etc
+ */
+function array_keys(haystack: any) {
+  return Object.keys(haystack);
+}
 
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+/**
+ * Shuffles array in place.
+ * @param a items An array containing the items.
+ */
+function array_shuffle(a: Array<any>) {
+  let j: number, x: any, i: number;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
   }
+  return a;
+}
+_global.array_shuffle = array_shuffle;
 
-  static arrayCompare(a1: Array<any>, a2: Array<any>) {
-    if (a1.length != a2.length) return false;
-    const length = a2.length;
-    for (let i = 0; i < length; i++) {
-      if (a1[i] !== a2[i]) return false;
-    }
-    return true;
-  }
+/**
+ * Deep merge two or more objects into the first.
+ * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param objects  The objects to merge together
+ * @returns Merged values of defaults and options
+ */
+function deepAssign(...objects: Record<any, unknown>[]): Record<any, unknown> {
+  // Make sure there are objects to merge
+  const len = objects.length;
+  if (len < 1) return;
+  if (len < 2) return objects[0];
 
-  /**
-   * in_array PHP equivalent
-   * @param needle string etc
-   * @param haystack
-   */
-  static inArray(needle: any, haystack: Array<any>) {
-    const length = haystack.length;
-    for (let i = 0; i < length; i++) {
-      if (typeof haystack[i] == 'object') {
-        if (array_ext.arrayCompare(haystack[i], needle)) return true;
-      } else {
-        if (haystack[i] == needle) return true;
-      }
-    }
-    return false;
-  }
-
-  /**
-   * in_array PHP equivalent
-   * @param needle string etc
-   * @param haystack
-   */
-  static in_array(needle: any, haystack: Array<any>) {
-    return array_ext.inArray(needle, haystack);
-  }
-
-  /**
-   * get all keys
-   * @param haystack string etc
-   */
-  static array_keys(haystack: any) {
-    return Object.keys(haystack);
-  }
-
-  /**
-   * Shuffles array in place.
-   * @param a items An array containing the items.
-   */
-  static array_shuffle(a: Array<any>) {
-    let j: number, x: any, i: number;
-    for (i = a.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = a[i];
-      a[i] = a[j];
-      a[j] = x;
-    }
-    return a;
-  }
-
-  /**
-   * Deep merge two or more objects into the first.
-   * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
-   * @param objects  The objects to merge together
-   * @returns Merged values of defaults and options
-   */
-  static deepAssign(...objects: Record<any, unknown>[]): Record<any, unknown> {
-    // Make sure there are objects to merge
-    const len = objects.length;
-    if (len < 1) return;
-    if (len < 2) return objects[0];
-
-    // Merge all objects into first
-    for (let i = 1; i < len; i++) {
-      for (const key in objects[i]) {
-        if (objects[i].hasOwnProperty(key)) {
-          // If it's an object, recursively merge
-          // Otherwise, push to key
-          if (Object.prototype.toString.call(objects[i][key]) === '[object Object]') {
-            objects[0][key] = array_ext.deepAssign(<any>objects[0][key] || {}, <any>objects[i][key]);
-          } else {
-            objects[0][key] = objects[i][key];
-          }
+  // Merge all objects into first
+  for (let i = 1; i < len; i++) {
+    for (const key in objects[i]) {
+      if (objects[i].hasOwnProperty(key)) {
+        // If it's an object, recursively merge
+        // Otherwise, push to key
+        if (Object.prototype.toString.call(objects[i][key]) === '[object Object]') {
+          objects[0][key] = deepAssign(<any>objects[0][key] || {}, <any>objects[i][key]);
+        } else {
+          objects[0][key] = objects[i][key];
         }
       }
     }
-
-    return arguments[0];
   }
 
-  /**
-   * Remove item from array
-   * @param arr
-   * @param value
-   * @returns
-   */
-  static removeItem<T>(arr: Array<T>, value: T): Array<T> {
-    const index = arr.indexOf(value);
-    if (index > -1) {
-      arr.splice(index, 1);
-    }
-    return arr;
+  return arguments[0];
+}
+_global.deepAssign = deepAssign;
+
+/**
+ * Remove item from array
+ * @param arr
+ * @param value
+ * @returns
+ */
+function removeItem<T>(arr: Array<T>, value: T): Array<T> {
+  const index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
   }
+  return arr;
 }
-//declare const array_shuffle: typeof array_ext.array_shuffle;
-//declare const inArray: typeof array_ext.inArray;
-
-if (typeof window != 'undefined' && window instanceof Window) {
-  window.array_shuffle = array_ext.array_shuffle;
-  window.array_filter = array_ext.array_filter;
-  window.array_keys = array_ext.array_keys;
-  window.array_rand = array_ext.array_rand;
-  window.array_unique = array_ext.array_unique;
-  window.array_unset = array_ext.array_unset;
-  window.inArray = array_ext.inArray;
-  window.in_array = array_ext.in_array;
-} else if (typeof global == 'object') {
-  global.array_shuffle = array_ext.array_shuffle;
-  global.array_filter = array_ext.array_filter;
-  global.array_keys = array_ext.array_keys;
-  global.array_rand = array_ext.array_rand;
-  global.array_unique = array_ext.array_unique;
-  global.array_unset = array_ext.array_unset;
-  global.inArray = array_ext.inArray;
-  global.in_array = array_ext.in_array;
-}
-
-// export node module
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = array_ext;
-  exports = array_ext;
-}
+_global.removeItem = removeItem;

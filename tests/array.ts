@@ -4,4 +4,4 @@
 //import 'js-prototypes';
 import '../src/Array';
 
-console.log(typeof global.array_shuffle, typeof array_shuffle);
+console.log(typeof global.array_filter, typeof array_filter);

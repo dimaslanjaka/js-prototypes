@@ -366,79 +366,76 @@ interface Array<T> {
      */
     trim(): Array<string>;
 }
-declare class array_ext {
-    static array_filter(array: []): never[];
-    /**
-     * pick random from array
-     * @param {Array<any>} arrays
-     * @param {boolean} unique Unique the arrays
-     */
-    static array_rand(arrays: any[], unique: any): {
-        index: number;
-        value: any;
-    };
-    /**
-     * Array unique
-     * @param {Array<any>} arrays
-     */
-    static array_unique(arrays: any[]): any[];
-    /**
-     * Unset array
-     * @param {Array<any>} arrayName
-     * @param {String|number} key
-     */
-    static array_unset(arrayName: {
-        [x: string]: any;
-    }, key: any): any[];
-    /**
-     * PHP shuffle array equivalent
-     * @param array
-     * @example
-     * var arr = [2, 11, 37, 42];
-     * shuffle(arr);
-     * console.log(arr); //return random
-     */
-    static shuffle(array: Array<any>): any[];
-    static arrayCompare(a1: Array<any>, a2: Array<any>): boolean;
-    /**
-     * in_array PHP equivalent
-     * @param needle string etc
-     * @param haystack
-     */
-    static inArray(needle: any, haystack: Array<any>): boolean;
-    /**
-     * in_array PHP equivalent
-     * @param needle string etc
-     * @param haystack
-     */
-    static in_array(needle: any, haystack: Array<any>): boolean;
-    /**
-     * get all keys
-     * @param haystack string etc
-     */
-    static array_keys(haystack: any): string[];
-    /**
-     * Shuffles array in place.
-     * @param a items An array containing the items.
-     */
-    static array_shuffle(a: Array<any>): any[];
-    /**
-     * Deep merge two or more objects into the first.
-     * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
-     * @param objects  The objects to merge together
-     * @returns Merged values of defaults and options
-     */
-    static deepAssign(...objects: Record<any, unknown>[]): Record<any, unknown>;
-    /**
-     * Remove item from array
-     * @param arr
-     * @param value
-     * @returns
-     */
-    static removeItem<T>(arr: Array<T>, value: T): Array<T>;
-}
-declare const array_shuffle: typeof array_ext.array_shuffle;
-declare const inArray: typeof array_ext.inArray;
+declare const _global: any;
+declare function array_filter(array: []): never[];
+/**
+ * pick random from array
+ * @param {Array<any>} arrays
+ * @param {boolean} unique Unique the arrays
+ */
+declare function array_rand(arrays: any[], unique: any): {
+    index: number;
+    value: any;
+};
+/**
+ * Array unique
+ * @param {Array<any>} arrays
+ */
+declare function array_unique(arrays: any[]): any[];
+/**
+ * Unset array
+ * @param {Array<any>} arrayName
+ * @param {String|number} key
+ */
+declare function array_unset(arrayName: {
+    [x: string]: any;
+}, key: any): any[];
+/**
+ * PHP shuffle array equivalent
+ * @param array
+ * @example
+ * var arr = [2, 11, 37, 42];
+ * shuffle(arr);
+ * console.log(arr); //return random
+ */
+declare function shuffle(array: Array<any>): any[];
+declare function arrayCompare(a1: Array<any>, a2: Array<any>): boolean;
+/**
+ * in_array PHP equivalent
+ * @param needle string etc
+ * @param haystack
+ */
+declare function inArray(needle: any, haystack: Array<any>): boolean;
+/**
+ * in_array PHP equivalent
+ * @param needle string etc
+ * @param haystack
+ */
+declare function in_array(needle: any, haystack: Array<any>): boolean;
+/**
+ * get all keys
+ * @param haystack string etc
+ */
+declare function array_keys(haystack: any): string[];
+/**
+ * Shuffles array in place.
+ * @param a items An array containing the items.
+ */
+declare function array_shuffle(a: Array<any>): any[];
+/**
+ * Deep merge two or more objects into the first.
+ * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param objects  The objects to merge together
+ * @returns Merged values of defaults and options
+ */
+declare function deepAssign(...objects: Record<any, unknown>[]): Record<any, unknown>;
+/**
+ * Remove item from array
+ * @param arr
+ * @param value
+ * @returns
+ */
+declare function removeItem<T>(arr: Array<T>, value: T): Array<T>;
 
 /**
  * Get all method from class
@@ -680,8 +677,20 @@ interface Callable {
      */
     wasCalled?: boolean;
 }
+/**
+ * Class Callable Decorator
+ * @example
+ * // definition for below classes
+ * // can be called with `new`
+ * new yourclass();
+ * new yourclass(arg, arg1);
+ * // can be called directly like function
+ * yourclass();
+ * yourclass(arg, arg1);
+ */
 export interface ClassCallable extends Callable {
     new (...args: any[]): ClassDecorator;
+    new (): ClassDecorator;
 }
 export {};
 
