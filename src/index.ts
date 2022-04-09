@@ -7,6 +7,7 @@ import './Array';
 import './Object';
 import './String';
 import './Function';
+import './JSON';
 import 'collections';
 
 //declare namespace prototype {}

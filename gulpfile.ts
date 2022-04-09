@@ -67,8 +67,7 @@ function safelink(done: TaskCallback) {
                 href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com|github.com\/dimaslanjaka))/g)
               )
                 return;
-              if (href.trim().match(/^https?:\/\//))
-              {
+              if (href.trim().match(/^https?:\/\//)) {
                 a.setAttribute('target', '_blank');
                 a.setAttribute('rel', 'nofollow');
                 a.setAttribute(

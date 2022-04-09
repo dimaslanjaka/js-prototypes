@@ -493,6 +493,13 @@ export interface ClassCallable extends Callable {
 }
 export {};
 
+interface JSON {
+    /**
+     * @see {@link https://stackoverflow.com/a/61962964/6404439}
+     */
+    stringifyWithCircularRefs: (obj: any, space?: number) => string;
+}
+
 interface NavigatorAutomationInformation {
     readonly webdriver: boolean;
 }
@@ -818,4 +825,5 @@ import './Array';
 import './Object';
 import './String';
 import './Function';
+import './JSON';
 import 'collections';
