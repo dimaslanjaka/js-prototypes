@@ -467,6 +467,10 @@ declare class date_ext {
 }
 
 
+interface Element {
+    insertAfter: (el: HTMLElement) => HTMLElement;
+}
+
 
 
 interface Callable {
