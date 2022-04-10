@@ -17,6 +17,14 @@ interface String {
   truncate: (n: number, useWordBoundary: boolean | null) => string;
 
   /**
+   * Easy String Match Boolean
+   * @description String match result as boolean
+   * @param pattern regex or string
+   * @returns true or false
+   */
+  isMatch: (pattern: RegExp | string) => boolean;
+
+  /**
    * Replace all occurrences of a string
    * * Shim ES2021 prototype
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll}
@@ -329,9 +337,36 @@ String.prototype.includesArray = function (substrings) {
   return substrings.some((v) => this.includes(v));
 };
 
+const ___global = (typeof window != 'undefined' ? window : global) /* node */ as any;
+
+/**
+ * easy regex match
+ * @param str
+ * @param pattern
+ * @returns
+ */
+function strMatch(str: string, pattern: RegExp | string) {
+  let regex: RegExp;
+  if (typeof pattern == 'string') {
+    regex = new RegExp(pattern, 'gm');
+  } else {
+    regex = pattern;
+  }
+  const match = str.match(regex) || false;
+  if (Array.isArray(match)) {
+    if (match.length > 0) return true;
+  }
+  return false;
+}
+___global.strMatch = strMatch;
+
+String.prototype.isMatch = function (this: string, pattern) {
+  return strMatch(this, pattern);
+};
+
 if (typeof ''.replaceAll != 'function') {
   String.prototype.replaceAll = function (search, replacement) {
-    const find = typeof search == 'string' ? new RegExp(search, 'g') : search;
+    const find = typeof search == 'string' ? new RegExp(search, 'gm') : search;
     return this.replace(find, replacement);
   };
 }

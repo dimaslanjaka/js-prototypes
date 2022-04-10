@@ -496,6 +496,8 @@ export {};
 interface JSON {
     /**
      * @see {@link https://stackoverflow.com/a/61962964/6404439}
+     * @example
+     * console.log(JSON.stringify({a:{a:{a:{a:[{a:{hello:"world"}}]}}}}))
      */
     stringifyWithCircularRefs: (obj: any, space?: number) => string;
 }
@@ -692,6 +694,13 @@ interface String {
      */
     truncate: (n: number, useWordBoundary: boolean | null) => string;
     /**
+     * Easy String Match Boolean
+     * @description String match result as boolean
+     * @param pattern regex or string
+     * @returns true or false
+     */
+    isMatch: (pattern: RegExp | string) => boolean;
+    /**
      * Replace all occurrences of a string
      * * Shim ES2021 prototype
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll}
@@ -814,6 +823,14 @@ interface StringConstructor {
      */
     fromHtmlEntities(str: string): string;
 }
+declare const ___global: any;
+/**
+ * easy regex match
+ * @param str
+ * @param pattern
+ * @returns
+ */
+declare function strMatch(str: string, pattern: RegExp | string): boolean;
 
 
 import '.';
