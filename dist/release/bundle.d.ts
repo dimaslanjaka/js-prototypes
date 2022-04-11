@@ -688,6 +688,7 @@ declare function isObject(item: any): boolean;
  * Deep merge two objects.
  * @param target
  * @param ...sources
+ * @see {@link https://bit.ly/3v1vlXu}
  */
 declare function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]): any;
 
