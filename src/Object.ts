@@ -163,6 +163,11 @@ __global.object_join = object_join;
  * Simple object check.
  * @param item
  * @returns
+ * @example
+ * ```js
+ * console.log(isObject({a:'a'})); // true
+ * console.log(isObject(['a','b'])); // false
+ * ```
  */
 function isObject(item: any): boolean {
   return item && typeof item === 'object' && !Array.isArray(item);
