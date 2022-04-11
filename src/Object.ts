@@ -178,6 +178,7 @@ __global.isObject = isObject;
  * Deep merge two objects.
  * @param target
  * @param ...sources
+ * @see {@link https://bit.ly/3v1vlXu}
  */
 function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]) {
   if (!sources.length) return target;
