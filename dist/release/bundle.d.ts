@@ -677,6 +677,11 @@ declare function object_join(obj: Record<any, unknown>, separator?: string): str
  * Simple object check.
  * @param item
  * @returns
+ * @example
+ * ```js
+ * console.log(isObject({a:'a'})); // true
+ * console.log(isObject(['a','b'])); // false
+ * ```
  */
 declare function isObject(item: any): boolean;
 /**
