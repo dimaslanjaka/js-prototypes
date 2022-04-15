@@ -10,6 +10,7 @@
 		"removeComments": false,
 		"allowJs": true,
 		"inlineSources": true,
+		"resolveJsonModule": true,
 		"inlineSourceMap": true,
 		"downlevelIteration": true,
 		"typeRoots": [

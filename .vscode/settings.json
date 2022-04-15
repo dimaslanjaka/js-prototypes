@@ -3,6 +3,7 @@
     "**/node_modules": true
   },
   "npm.packageManager": "npm",
+  "javascript.suggestionActions.enabled": false,
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.formatOnSave": false

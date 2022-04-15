@@ -4,14 +4,14 @@
 
 Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototypes/](https://www.webmanajemen.com/js-prototypes/)
 
-instalation
+## instalation
 
 ```shell
 npm i git+https://github.com/dimaslanjaka/js-prototypes.git
 ```
 
-usage
-
+## usage
+read more: http://dimaslanjaka.github.io/js-prototypes
 ```ts
 // global automated shim to all prototypes (recommended)
 import "js-prototypes"

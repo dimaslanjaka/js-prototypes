@@ -50,7 +50,11 @@ interface Array<T> {
    */
   random: <T>() => T;
 
-  split_chunks: (size: number) => any[];
+  /**
+   * split array to chunks
+   * @param size divided array by number index
+   */
+  split_chunks: (size: number) => ReturnType<typeof array_split_chunks>;
 
   /**
    * Add Element
@@ -425,7 +429,7 @@ let ar1 = [
 // split array by 4
 console.log("Split in chunks with 4 size", splitChunks(ar1, 4)); // [[1,2,3,4], [5,6,7,8]...]
  */
-function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize: number) {
+function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize: number): T[] {
   if (chunkSize <= 0) throw 'chunkSize must be greater than 0';
   const result = [];
   for (let i = 0; i < sourceArray.length; i += chunkSize) {

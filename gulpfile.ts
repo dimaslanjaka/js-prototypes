@@ -5,14 +5,15 @@ import concat from 'gulp-concat';
 import terser from 'gulp-terser';
 import del from 'del';
 import through from 'through2';
-const through2 = through;
 import { join, resolve } from 'path';
 import sourcemaps from 'gulp-sourcemaps';
 import { exec, execSync } from 'child_process';
 import jsdom from 'gulp-jsdom/src/index';
 import './src';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { TaskCallback } from 'undertaker';
+
+const through2 = through;
 
 gulp.task('clean', async function () {
   await del('./docs');

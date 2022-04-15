@@ -1,5 +1,5 @@
 {
-  "name": "js-prototypes",
+  "name": "@dimaslanjaka/js-prototypes",
   "version": "1.1.5",
   "description": "Standard Javascript Prototype Helper",
   "main": "dist/release/bundle.js",

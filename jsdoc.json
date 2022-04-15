@@ -54,7 +54,7 @@
   "opts": {
     "template": "node_modules/better-docs",
     "destination": "./docs/",
-    "readme": "readme.md",
+    "readme": "README.md",
     "recurse": true,
     "verbose": true
   }
