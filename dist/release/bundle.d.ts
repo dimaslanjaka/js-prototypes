@@ -247,6 +247,7 @@ interface Array<T> {
      * Pick 1 random array element
      */
     random: <T>() => T;
+    split_chunks: (size: number) => any[];
     /**
      * Add Element
      * @param element
@@ -373,6 +374,13 @@ interface Array<T> {
      */
     trim(): Array<string>;
 }
+/**
+ * split array to chunks
+ * @param sourceArray
+ * @param chunkSize
+ * @returns
+ */
+declare function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize: any): any[];
 declare function array_filter(array: []): never[];
 /**
  * pick random from array

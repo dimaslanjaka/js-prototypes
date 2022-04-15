@@ -6,8 +6,8 @@ console.log(`
 /////
 `);
 
-console.log('is 1 function available on global scope?');
-console.log(typeof global.array_filter, typeof array_filter);
+console.log('is array function available on global scope?');
+console.log(typeof global.array_filter, typeof array_filter, typeof array_split_chunks);
 
 console.log('is addAll work?');
 const a = [0, 1];

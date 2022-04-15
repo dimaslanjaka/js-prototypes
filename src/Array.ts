@@ -50,6 +50,8 @@ interface Array<T> {
    */
   random: <T>() => T;
 
+  split_chunks: (size: number) => any[];
+
   /**
    * Add Element
    * @param element
@@ -408,6 +410,25 @@ Array.prototype.removeEmpties = function (this: any[]) {
     return notnull;
   });
   return filter;
+};
+
+/**
+ * split array to chunks
+ * @param sourceArray
+ * @param chunkSize
+ * @returns
+ */
+function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize) {
+  if (chunkSize <= 0) throw 'chunkSize must be greater than 0';
+  const result = [];
+  for (let i = 0; i < sourceArray.length; i += chunkSize) {
+    result[i / chunkSize] = sourceArray.slice(i, i + chunkSize);
+  }
+  return result;
+}
+_global.array_split_chunks = array_split_chunks;
+Array.prototype.split_chunks = function (size) {
+  return array_split_chunks(this, size);
 };
 
 function array_filter(array: []) {

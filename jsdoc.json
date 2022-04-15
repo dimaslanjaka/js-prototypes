@@ -34,10 +34,10 @@
       "trackingCode": "<!--tracking code-->",
       "hideGenerator": false,
       "component": {
-          "entry": [
-              "import 'babel-polyfill';",
-              "import 'bulma/css/bulma.css';"
-          ]
+        "entry": [
+          "import 'babel-polyfill';",
+          "import 'bulma/css/bulma.css';"
+        ]
       },
       "navLinks": [
         {
@@ -56,6 +56,6 @@
     "destination": "./docs/",
     "readme": "readme.md",
     "recurse": true,
-    "verbose": true,
+    "verbose": true
   }
 }
