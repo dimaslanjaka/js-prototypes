@@ -416,9 +416,16 @@ Array.prototype.removeEmpties = function (this: any[]) {
  * split array to chunks
  * @param sourceArray
  * @param chunkSize
+ * @see {@link https://stackoverflow.com/a/71483760/6404439}
  * @returns
+ * @example
+let ar1 = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+];
+// split array by 4
+console.log("Split in chunks with 4 size", splitChunks(ar1, 4)); // [[1,2,3,4], [5,6,7,8]...]
  */
-function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize) {
+function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize: number) {
   if (chunkSize <= 0) throw 'chunkSize must be greater than 0';
   const result = [];
   for (let i = 0; i < sourceArray.length; i += chunkSize) {

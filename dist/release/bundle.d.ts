@@ -378,9 +378,16 @@ interface Array<T> {
  * split array to chunks
  * @param sourceArray
  * @param chunkSize
+ * @see {@link https://stackoverflow.com/a/71483760/6404439}
  * @returns
+ * @example
+let ar1 = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+];
+// split array by 4
+console.log("Split in chunks with 4 size", splitChunks(ar1, 4)); // [[1,2,3,4], [5,6,7,8]...]
  */
-declare function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize: any): any[];
+declare function array_split_chunks<T extends any[]>(sourceArray: T, chunkSize: number): any[];
 declare function array_filter(array: []): never[];
 /**
  * pick random from array
