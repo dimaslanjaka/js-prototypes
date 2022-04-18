@@ -168,6 +168,10 @@ interface Array<T> {
      * trim array of strings
      */
     trim(): Array<string>;
+    /**
+     * same as Array<any>['forEach']
+     */
+    each: Array<any>['forEach'];
 }
 /**
  * split array to chunks

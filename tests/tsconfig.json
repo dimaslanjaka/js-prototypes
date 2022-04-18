@@ -42,6 +42,9 @@
     "typeRoots": [
       "../src"
     ],
+    "types": [
+      "node"
+    ]
   },
   "buildOnSave": true,
   "compileOnSave": true,

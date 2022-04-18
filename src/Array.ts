@@ -195,7 +195,16 @@ interface Array<T> {
    * trim array of strings
    */
   trim(): Array<string>;
+
+  /**
+   * same as Array<any>['forEach']
+   */
+  each: Array<any>['forEach']; //T[]['forEach'];
 }
+
+Array.prototype.each = function (this: Array<any>) {
+  return this.forEach;
+};
 
 Array.prototype.shuffle = function () {
   let i = this.length,
