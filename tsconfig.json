@@ -4,11 +4,15 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"outDir": "dist/libs",
-		"rootDir": "src",
+		"rootDirs": [
+			"src",
+			"packages"
+		],
 		"moduleResolution": "Node",
 		"declaration": true,
 		"removeComments": false,
 		"allowJs": true,
+		"checkJs": false,
 		"inlineSources": true,
 		"resolveJsonModule": true,
 		"inlineSourceMap": true,

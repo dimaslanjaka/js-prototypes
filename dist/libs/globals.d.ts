@@ -1,2 +1,2 @@
-/// <reference path="../../src/globals.d.ts" />
+/// <reference types="globals" />
 import '.';

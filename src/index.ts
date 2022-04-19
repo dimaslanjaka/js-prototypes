@@ -8,7 +8,7 @@ import './Object';
 import './String';
 import './Function';
 import './JSON';
-import 'collections';
+//import '../packages/collections/collections.js';
 
 //declare namespace prototype {}
 
