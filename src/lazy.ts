@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/**
- * @namespace lazyload
- */
+
+interface LazyObject {
+  [key: string]: any;
+}
+
+interface Window {
+  lazyload: lazyload;
+}
+const lazyglobal = (window /* browser */ || global) /* node */ as any;
 class lazyload {
-  lazyloads = {};
+  lazyloads: { [key: string]: boolean } = {};
   /**
    * @typedef {Object}
    * @property {Object<string, ()=> any>}
@@ -33,7 +39,7 @@ class lazyload {
               if (typeof self.lazycallbacks[src] == 'function') script.onload = self.lazycallbacks[src];
               var firstScript = document.getElementsByTagName('script')[0];
               // insert after first script
-              firstScript.parentNode.insertBefore(script, firstScript);
+              firstScript.parentNode?.insertBefore(script, firstScript);
               lazy[src] = true;
             }
           }
@@ -43,4 +49,8 @@ class lazyload {
     );
   }
 }
-
+declare var module: any;
+lazyglobal.lazyload = lazyload;
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = lazyload;
+}

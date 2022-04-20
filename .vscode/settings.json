@@ -1,0 +1,5 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "npm.packageManager": "yarn",
+  "typescript.preferences.includePackageJsonAutoImports": "on"
+}

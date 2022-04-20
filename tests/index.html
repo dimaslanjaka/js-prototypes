@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LazyLoad.js Test</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <main class="container-fluid">
+      <section class="m-5">
+        <h5>Variable Debug</h5>
+        <pre id="debug"></pre>
+        <script src="../dist/lazy.js"></script>
+        <script>
+          function isClass(asset) {
+            const is_fn = typeof asset === 'function';
+            return (
+              is_fn &&
+              (() => {
+                try {
+                  asset();
+                  return false;
+                } catch {
+                  return true;
+                }
+              })()
+            );
+          }
+          (function () {
+            const lazy = new lazyload();
+            lazy.add('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js');
+            const result = document.querySelector('#debug');
+            result.innerHTML += '<b>is class lazyload:</b> ' + isClass(lazyload) + '\n';
+            result.innerHTML += '<b>is class window.lazyload:</b> ' + isClass(window.lazyload) + '\n';
+            result.innerHTML +=
+              `<b>new lazyload().add('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js'):</b> ` +
+              JSON.stringify(lazy, null, 4) +
+              '\n';
+          })();
+        </script>
+      </section>
+    </main>
+  </body>
+</html>
