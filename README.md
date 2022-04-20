@@ -5,11 +5,14 @@
 Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototypes/](https://www.webmanajemen.com/js-prototypes/)
 
 ## instalation
-
+npm
 ```shell
 npm i git+https://github.com/dimaslanjaka/js-prototypes.git
-
-yarn add git+ssh://git@github.com:dimaslanjaka/js-prototypes.git
+```
+yarn
+```bash
+git config --global url."https://".insteadOf ssh://
+yarn add git+https://github.com/dimaslanjaka/js-prototypes.git
 ```
 
 ## usage
