@@ -19,16 +19,20 @@ yarn add git+https://github.com/dimaslanjaka/js-prototypes.git
 read more: http://dimaslanjaka.github.io/js-prototypes
 
 custom source: [src](./src)
+
+### typescript
 ```ts
 // global automated shim to all prototypes (recommended)
 import "js-prototypes"
 
-// import custom prototypes (typescript)
+// import custom prototypes
 import "js-prototypes/src/String";
 import "js-prototypes/src/Array";
 import "js-prototypes/src/Object";
-
-// import custom prototypes (javascript)
+```
+### javascript
+```js
+// import custom prototypes
 require("js-prototypes/dist/String");
 require("js-prototypes/dist/Array");
 // es6 supported
