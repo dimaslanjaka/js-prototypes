@@ -85,10 +85,6 @@
     "upath": "^2.0.1"
   },
   "dependencies": {},
-  "resolutions": {
-    "@types/node": "^16.11.4",
-    "typescript": "4.6.2"
-  },
   "peerDependencies": {
     "@types/through2": "git+https://github.com/dimaslanjaka/nodejs-package-types.git#through2"
   }
