@@ -18,13 +18,13 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: '14'
-        cache: 'yarn'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: npm i -g gulp-cli typescript npm ts-node && yarn
+      run: npm i -g gulp-cli typescript npm ts-node && npm install
 
     - name: Build
-      run: yarn run build
+      run: npm run build
 
     - run: rm -rf node_modules
     - run: cp -rfi . modified
