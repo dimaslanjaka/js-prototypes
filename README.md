@@ -17,6 +17,8 @@ yarn add git+https://github.com/dimaslanjaka/js-prototypes.git
 
 ## usage
 read more: http://dimaslanjaka.github.io/js-prototypes
+
+custom source: [src](./src)
 ```ts
 // global automated shim to all prototypes (recommended)
 import "js-prototypes"
@@ -27,12 +29,10 @@ import "js-prototypes/src/Array";
 import "js-prototypes/src/Object";
 
 // import custom prototypes (javascript)
-import "js-prototypes/dist/String";
-import "js-prototypes/dist/Array";
+require("js-prototypes/dist/String");
+require("js-prototypes/dist/Array");
+// es6 supported
 import "js-prototypes/dist/Object";
-
-// import global prototypes (javascript)
-import "js-prototypes/dist/libs/globals";
 ```
 
 html browser usage
