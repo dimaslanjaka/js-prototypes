@@ -1,9 +1,0 @@
-node_modules
-tmp
-private.md
-*.log
-*.tgz
-*.gz
-*.zip
-*.rar
-yarn.lock

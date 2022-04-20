@@ -1,0 +1,9 @@
+{
+  "analytics": {
+    "enable": true,
+    "tagmanager": "GTM-NJNNXSR",
+    "GA4": "G-BG75CLNJZ1",
+    "GA3": "UA-106238155-1",
+    "cloudflare": "2157c0f3b9e74a92badffe39156166b9"
+  }
+}
