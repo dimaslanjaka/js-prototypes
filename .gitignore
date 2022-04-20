@@ -9,4 +9,4 @@ private.md
 *.xz
 *.tar
 #yarn.lock
-package-lock.json
+#package-lock.json

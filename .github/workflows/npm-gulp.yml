@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: npm run build
 
-    - run: rm -rf node_modules
+    - run: rm -rf node_modules tmp
     - run: cp -rfi . modified
     - run: rm -rf modified/yarn.lock
 
