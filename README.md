@@ -30,11 +30,16 @@ import "js-prototypes/src/String";
 import "js-prototypes/src/Array";
 import "js-prototypes/src/Object";
 ```
+
 ### javascript
 ```js
+// global shim
+require("js-prototypes");
+
 // import custom prototypes
 require("js-prototypes/dist/String");
 require("js-prototypes/dist/Array");
+
 // es6 supported
 import "js-prototypes/dist/Object";
 ```
