@@ -6,5 +6,7 @@ private.md
 *.gz
 *.zip
 *.rar
+*.xz
+*.tar
 #yarn.lock
 package-lock.json
