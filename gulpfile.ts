@@ -60,15 +60,11 @@ function safelink(done: TaskCallback) {
           if (hyperlinks.length) {
             hyperlinks.forEach((a) => {
               const href = a.getAttribute('href');
-              if (
-                !href ||
-                !href.length ||
-                href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com|github.com\/dimaslanjaka))/g)
-              )
-                return;
+              if (!href || !href.length || href.match(/^(\/|#|javascript:|https?:\/\/.*(webmanajemen.com))/g)) return;
               if (href.trim().match(/^https?:\/\//)) {
                 a.setAttribute('target', '_blank');
                 a.setAttribute('rel', 'nofollow');
+                /// github.com\/dimaslanjaka
                 a.setAttribute(
                   'href',
                   'https://webmanajemen.com/page/safelink.html?url=' + Buffer.from(href).toString('base64')
