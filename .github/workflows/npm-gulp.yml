@@ -13,13 +13,13 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: '14'
-        cache: 'npm'
+        cache: 'yarn'
 
-    - name: Install dependencies
-      run: npm i -g gulp-cli typescript npm ts-node && npm install
+    #- name: Install dependencies
+      #run: npm i -g gulp-cli typescript npm ts-node && npm install
 
     - name: Build
-      run: npm run build
+      run: yarn run build
 
     - name: Re-deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
