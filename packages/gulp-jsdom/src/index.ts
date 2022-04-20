@@ -47,7 +47,7 @@ export default function gulpJSDOM(mutator: Document & any, options?: jsdom.Const
             ? dom.serialize()
             : dom.window.document.documentElement.outerHTML
         );
-        this.push(file);
+        if (this) this.push(file);
       }
     } catch (err) {
       this.emit('error', new PluginError(PLUGIN_NAME, err));

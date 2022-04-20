@@ -8,12 +8,10 @@ import through from 'through2';
 import { join, resolve } from 'path';
 import sourcemaps from 'gulp-sourcemaps';
 import { exec, execSync } from 'child_process';
-import jsdom from 'gulp-jsdom/src/index';
+import jsdom from './packages/gulp-jsdom/src/index';
 import './src';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { TaskCallback } from 'undertaker';
-
-const through2 = through;
 
 gulp.task('clean', async function () {
   await del('./docs');
@@ -103,7 +101,6 @@ gulp.task('browser:js', function () {
     .pipe(
       through.obj((chunk, enc, cb) => {
         let contents = chunk.contents.toString();
-        const source = chunk.path;
         const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
         let m: RegExpExecArray;
         while ((m = regex.exec(contents)) !== null) {

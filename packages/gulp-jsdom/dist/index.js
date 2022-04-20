@@ -1,3 +1,4 @@
+// https://github.com/SARFEX/gulp-jsdom/blob/master/index.js
 'use strict';
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -16,22 +17,21 @@ var JSDOM = jsdom_1["default"].JSDOM;
  * @returns
  */
 function gulpJSDOM(mutator, options, serialize) {
-    var _this = this;
     options = options || {};
     serialize = serialize || true;
-    return through2_1["default"].obj(function (file, encoding, callback) {
-        if (file.isNull()) {
+    function transform(file, encoding, callback) {
+        if (file.isNull() || file.extname != '.html') {
             return callback(null, file);
         }
         if (file.isStream()) {
-            callback(new plugin_error_1["default"](PLUGIN_NAME, 'Streaming not supported'));
-            return;
+            return callback(new plugin_error_1["default"](PLUGIN_NAME, 'Streaming not supported'));
         }
         try {
             if (file.isBuffer()) {
-                var dom = new JSDOM(file.contents.toString('utf8'), options);
+                var dom = new JSDOM(file.contents.toString('utf-8'), options);
                 var context = {
                     file: file,
+                    //filename: file.history[file.history.length - 1].substr(file.base.length),
                     filename: file.history[file.history.length - 1].substring(file.base.length)
                 };
                 var output = mutator.call(context, dom.window.document, dom.window);
@@ -40,15 +40,15 @@ function gulpJSDOM(mutator, options, serialize) {
                     : serialize === true
                         ? dom.serialize()
                         : dom.window.document.documentElement.outerHTML);
-                _this.push(file);
+                if (this)
+                    this.push(file);
             }
         }
         catch (err) {
-            if (_this)
-                _this.emit('error', new plugin_error_1["default"](PLUGIN_NAME, err));
-            console.log(err);
+            this.emit('error', new plugin_error_1["default"](PLUGIN_NAME, err));
         }
-        callback();
-    });
+        callback(null, file);
+    }
+    return through2_1["default"].obj(transform);
 }
 exports["default"] = gulpJSDOM;

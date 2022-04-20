@@ -1,9 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <!--tracking code-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,10 +17,10 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
 
   
-</head>
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script></head>
 
 
 
@@ -55,26 +50,17 @@
         <div class="menu">
             
             <div class="navigation">
-                <a
-                    href="index.html"
-                    class="link"
-                >
+                <a href="index.html" class="link">
                     Documentation
                 </a>
                 
                  
                     
-                        <a
-                            class="link user-link "
-                            href="https://github.com/dimaslanjaka/js-prototypes"
-                        >
+                        <a class="link user-link " href="https://github.com/dimaslanjaka/js-prototypes">
                             Github
                         </a>
                     
-                        <a
-                            class="link user-link "
-                            href="https://webmanajemen.com"
-                        >
+                        <a class="link user-link " href="https://webmanajemen.com">
                             Blog
                         </a>
                     
@@ -85,10 +71,7 @@
     </div>
 </div>
     <div id="main">
-        <div
-            class="sidebar "
-            id="sidebarNav"
-        >
+        <div class="sidebar " id="sidebarNav">
             
                 <div class="search-wrapper">
                     <input id="search" type="text" placeholder="Search docs..." class="input">
@@ -129,7 +112,7 @@ interface Object {
   /**
    * Merge this object with another object
    */
-  merge: (...other: Record&lt;any, unknown>[]) => Record&lt;any, unknown>;
+  merge: (...other: Record&lt;any, unknown&gt;[]) =&gt; Record&lt;any, unknown&gt;;
 
   /**
    * Iterate Object
@@ -140,7 +123,7 @@ interface Object {
    *  console.log(el); //a, n each iteration
    * })
    */
-  each(callback: (arg0: any) => any): any;
+  each(callback: (arg0: any) =&gt; any): any;
 
   /**
    * Check is empty
@@ -159,7 +142,7 @@ interface ObjectConstructor {
   /**
    * Count size length of object
    */
-  size: (obj: any) => number;
+  size: (obj: any) =&gt; number;
 
   //[pair: string|number]: any;
 
@@ -173,15 +156,15 @@ interface ObjectConstructor {
    * check if has child and go for callback
    * @param str  match child property
    * @param callback function callback
-   * @author Dimas Lanjaka &lt;dimaslanjaka@gmail.com>
+   * @author Dimas Lanjaka &lt;dimaslanjaka@gmail.com&gt;
    */
-  child(str: string | number, callback: (arg: any) => any): any;
+  child(str: string | number, callback: (arg: any) =&gt; any): any;
 
   /**
    * check object has child, if not exist return alternative value
    * @param str match child property
    * @param alternative default value callback
-   * @author Dimas Lanjaka &lt;dimaslanjaka@gmail.com>
+   * @author Dimas Lanjaka &lt;dimaslanjaka@gmail.com&gt;
    */
   alt(str: any, alternative: string | number | boolean): any;
 
@@ -239,7 +222,7 @@ Object.isEmpty = function () {
 };
 
 Object.replaceKeyFrom = function (anotherObj) {
-  return Object.entries(this).reduce((op, [key, value]) => {
+  return Object.entries(this).reduce((op, [key, value]) =&gt; {
     const newKey = anotherObj[key];
     op[newKey || key] = value;
     return op;
@@ -254,7 +237,7 @@ Object.replaceKeyFrom = function (anotherObj) {
   }*/
 };
 
-Object.prototype.merge = function (this: Record&lt;any, unknown>, ...others) {
+Object.prototype.merge = function (this: Record&lt;any, unknown&gt;, ...others) {
   return mergeDeep(this, ...others);
 };
 
@@ -265,7 +248,7 @@ Object.prototype.merge = function (this: Record&lt;any, unknown>, ...others) {
  * @param separator default comma(,)
  * @returns Joined string
  */
-function object_join(obj: Record&lt;any, unknown>, separator = ',') {
+function object_join(obj: Record&lt;any, unknown&gt;, separator = ',') {
   return Object.keys(obj)
     .map(function (k) {
       return obj[k];
@@ -295,7 +278,7 @@ __global.isObject = isObject;
  * @param ...sources
  * @see {@link https://bit.ly/3v1vlXu}
  */
-function mergeDeep(target: Record&lt;any, unknown>, ...sources: Record&lt;any, unknown>[]) {
+function mergeDeep(target: Record&lt;any, unknown&gt;, ...sources: Record&lt;any, unknown&gt;[]) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -303,7 +286,7 @@ function mergeDeep(target: Record&lt;any, unknown>, ...sources: Record&lt;any, u
     for (const key in source) {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(&lt;any>target[key], &lt;any>source[key]);
+        mergeDeep(&lt;any&gt;target[key], &lt;any&gt;source[key]);
       } else {
         Object.assign(target, { [key]: source[key] });
       }
@@ -324,10 +307,10 @@ __global.mergeDeep = mergeDeep;
             
             <footer class="footer">
                 <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
+                    <p>Documentation generated by <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL2pzZG9jMy9qc2RvYw==" target="_blank" rel="nofollow">JSDoc 3.6.10</a></p>
                     <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                        <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL1NvZnR3YXJlQnJvdGhlcnMvYmV0dGVyLWRvY3M=" target="_blank" rel="nofollow">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cDovL3NvZnR3YXJlYnJvdGhlcnMuY28=" target="_blank" rel="nofollow">SoftwareBrothers - JavaScript Development Agency</a>
                     </p>
                 </div>
             </footer>
@@ -343,5 +326,6 @@ __global.mergeDeep = mergeDeep;
 <script src="scripts/search.js"> </script>
 
 
-</body>
-</html>
+
+
+</body></html>
