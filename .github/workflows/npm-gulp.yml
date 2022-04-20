@@ -26,9 +26,13 @@ jobs:
     - name: Build
       run: yarn run build
 
+    - run: rm -rf node_modules
+    - run: cp -rfi . tmp
+    - run: rm -rf tmp/yarn.lock
+
     - name: Re-deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
       with:
         branch: master # The branch the action should deploy to.
-        folder: . # The folder the action should deploy.
+        folder: tmp # The folder the action should deploy.
         force: false # merge instead delete old files
