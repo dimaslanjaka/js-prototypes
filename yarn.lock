@@ -2195,7 +2195,7 @@
     "map-visit" "^1.0.0"
     "object-visit" "^1.0.0"
 
-"collections@^5.1.3", "collections@~5.1.x", "collections@file:/media/dimaslanjaka/DATA/Repositories/js-prototypes/packages/collections":
+"collections@^5.1.3", "collections@~5.1.x", "collections@file:/home/runner/work/js-prototypes/js-prototypes/packages/collections":
   "resolved" "file:packages/collections"
   "version" "5.1.13"
   dependencies:
@@ -4357,7 +4357,7 @@
     "through2" "^2.0.0"
     "vinyl" "^2.0.0"
 
-"gulp-jsdom@file:/media/dimaslanjaka/DATA/Repositories/js-prototypes/packages/gulp-jsdom":
+"gulp-jsdom@file:/home/runner/work/js-prototypes/js-prototypes/packages/gulp-jsdom":
   "resolved" "file:packages/gulp-jsdom"
   "version" "1.1.0"
   dependencies:
@@ -5403,7 +5403,7 @@
     "glob" "^7.1.3"
     "nopt" "^5.0.0"
 
-"js-prototypes@file:/media/dimaslanjaka/DATA/Repositories/js-prototypes":
+"js-prototypes@file:/home/runner/work/js-prototypes/js-prototypes":
   "resolved" "file:"
   "version" "1.1.6"
 
@@ -6068,7 +6068,7 @@
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.20.tgz"
   "version" "4.17.20"
 
-"lodash@file:/media/dimaslanjaka/DATA/Repositories/js-prototypes/packages/lodash":
+"lodash@file:/home/runner/work/js-prototypes/js-prototypes/packages/lodash":
   "resolved" "file:packages/lodash"
   "version" "5.0.0"
 
