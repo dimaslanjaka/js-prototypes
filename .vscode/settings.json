@@ -2,7 +2,8 @@
   "files.exclude": {
     "**/node_modules": true
   },
-  "npm.packageManager": "npm",
+  "npm.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
   "javascript.suggestionActions.enabled": false,
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features",

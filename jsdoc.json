@@ -12,7 +12,8 @@
     "excludePattern": "(^|\\/|\\\\)_",
     "include": [
       "src",
-      "README.md"
+      "README.md",
+      "README-JSDOC.md"
     ]
   },
   "sourceType": "module",
