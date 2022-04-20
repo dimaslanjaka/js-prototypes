@@ -15,8 +15,7 @@
     "dist",
     "*.{json,md}",
     "packages",
-    "gulpfile.ts",
-    "workspace.json"
+    "gulpfile.ts"
   ],
   "repository": {
     "type": "git",
