@@ -20,6 +20,14 @@ read more: http://dimaslanjaka.github.io/js-prototypes
 
 custom source: [src](./src)
 
+### Standard
+insert below codes above all import
+```ts
+import 'js-prototypes'; // typescript
+require('js-prototypes'); // javascript
+```
+all global functions and prototypes modified and included successful.
+
 ### typescript
 ```ts
 // global automated shim to all prototypes (recommended)
@@ -51,14 +59,6 @@ html browser usage
   console.log(typeof [].addAll); // function
 </script>
 ```
-
-## REQUIRED
-insert below codes above all import
-```ts
-import 'js-prototypes'; // typescript
-require('js-prototypes'); // javascript
-```
-all global functions and prototypes modified and included successful.
 
 ## Array Example
 - full example array usages [https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts](https://github.com/dimaslanjaka/js-prototypes/blob/master/tests/array.ts).
