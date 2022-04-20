@@ -20,8 +20,9 @@ jobs:
         node-version: '14'
         cache: 'yarn'
 
-    #- name: Install dependencies
+    - name: Install dependencies
       #run: npm i -g gulp-cli typescript npm ts-node && npm install
+      run: yarn add gulp-cli typescript ts-node --global
 
     - name: Build
       run: yarn run build
