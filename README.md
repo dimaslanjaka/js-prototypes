@@ -8,6 +8,8 @@ Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototy
 
 ```shell
 npm i git+https://github.com/dimaslanjaka/js-prototypes.git
+
+yarn add git+ssh://git@github.com:dimaslanjaka/js-prototypes.git
 ```
 
 ## usage
