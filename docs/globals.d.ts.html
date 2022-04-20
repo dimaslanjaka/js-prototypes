@@ -1,4 +1,9 @@
-<!DOCTYPE html><html lang="en"><head>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <!--tracking code-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,10 +22,10 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="">
-  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
   
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script></head>
+</head>
 
 
 
@@ -50,17 +55,26 @@
         <div class="menu">
             
             <div class="navigation">
-                <a href="index.html" class="link">
+                <a
+                    href="index.html"
+                    class="link"
+                >
                     Documentation
                 </a>
                 
                  
                     
-                        <a class="link user-link " href="https://github.com/dimaslanjaka/js-prototypes">
+                        <a
+                            class="link user-link "
+                            href="https://github.com/dimaslanjaka/js-prototypes"
+                        >
                             Github
                         </a>
                     
-                        <a class="link user-link " href="https://webmanajemen.com">
+                        <a
+                            class="link user-link "
+                            href="https://webmanajemen.com"
+                        >
                             Blog
                         </a>
                     
@@ -71,7 +85,10 @@
     </div>
 </div>
     <div id="main">
-        <div class="sidebar " id="sidebarNav">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
             
                 <div class="search-wrapper">
                     <input id="search" type="text" placeholder="Search docs..." class="input">
@@ -98,8 +115,8 @@
         <article>
             <pre class="prettyprint source linenums"><code>/* eslint-disable @typescript-eslint/triple-slash-reference */
 /* eslint-disable @typescript-eslint/ban-types */
-/// &lt;reference types="jquery" /&gt;
-/// &lt;reference lib="dom" /&gt;
+/// &lt;reference types="jquery" />
+/// &lt;reference lib="dom" />
 
 /**
  * Custom global
@@ -117,9 +134,9 @@ interface Function {
   /**
    * Run function once
    * @example
-   * (()=&gt; console.log).once('hello'); // run console.log('hello') once
+   * (()=> console.log).once('hello'); // run console.log('hello') once
    */
-  once: (param?: anyOf) =&gt; any;
+  once: (param?: anyOf) => any;
   /**
    * Calls the function, substituting the specified object for the this value of the function, and the specified array for the arguments of the function.
    * @param thisArg The object to be used as the this object.
@@ -158,7 +175,7 @@ interface Function {
 type jQuery = JQuery;
 
 interface XMLHttpRequest extends XMLHttpRequestEventTarget {
-  responseJSON: Array&lt;any&gt; | Record&lt;string, unknown&gt; | null;
+  responseJSON: Array&lt;any> | Record&lt;string, unknown> | null;
 }
 
 interface EventTarget {
@@ -181,8 +198,8 @@ interface HTMLElement
     ElementContentEditable,
     GlobalEventHandlers,
     HTMLOrSVGElement {
-  mozMatchesSelector: (selectors: string) =&gt; boolean;
-  msMatchesSelector: (selectors: string) =&gt; boolean;
+  mozMatchesSelector: (selectors: string) => boolean;
+  msMatchesSelector: (selectors: string) => boolean;
 
   [attachEvent: string]: any;
 }
@@ -284,15 +301,15 @@ interface Document
   /**
    * @see {@link Document.addEventListener}
    */
-  listen&lt;K extends keyof DocumentEventMap&gt;(
+  listen&lt;K extends keyof DocumentEventMap>(
     type: K,
-    listener: (this: Document, ev: DocumentEventMap[K]) =&gt; any,
+    listener: (this: Document, ev: DocumentEventMap[K]) => any,
     options?: boolean | AddEventListenerOptions
   ): void;
   listen(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-  removeListener&lt;K extends keyof DocumentEventMap&gt;(
+  removeListener&lt;K extends keyof DocumentEventMap>(
     type: K,
-    listener: (this: Document, ev: DocumentEventMap[K]) =&gt; any,
+    listener: (this: Document, ev: DocumentEventMap[K]) => any,
     options?: boolean | EventListenerOptions
   ): void;
   removeListener(
@@ -312,10 +329,10 @@ interface Document
             
             <footer class="footer">
                 <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL2pzZG9jMy9qc2RvYw==" target="_blank" rel="nofollow">JSDoc 3.6.10</a></p>
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
                     <p class="sidebar-created-by">
-                        <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL1NvZnR3YXJlQnJvdGhlcnMvYmV0dGVyLWRvY3M=" target="_blank" rel="nofollow">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
-                        <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cDovL3NvZnR3YXJlYnJvdGhlcnMuY28=" target="_blank" rel="nofollow">SoftwareBrothers - JavaScript Development Agency</a>
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
                     </p>
                 </div>
             </footer>
@@ -331,6 +348,5 @@ interface Document
 <script src="scripts/search.js"> </script>
 
 
-
-
-</body></html>
+</body>
+</html>

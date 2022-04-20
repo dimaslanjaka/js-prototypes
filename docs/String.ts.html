@@ -1,4 +1,9 @@
-<!DOCTYPE html><html lang="en"><head>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <!--tracking code-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,10 +22,10 @@
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
   <link type="text/css" rel="stylesheet" href="">
-  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
   
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script></head>
+</head>
 
 
 
@@ -50,17 +55,26 @@
         <div class="menu">
             
             <div class="navigation">
-                <a href="index.html" class="link">
+                <a
+                    href="index.html"
+                    class="link"
+                >
                     Documentation
                 </a>
                 
                  
                     
-                        <a class="link user-link " href="https://github.com/dimaslanjaka/js-prototypes">
+                        <a
+                            class="link user-link "
+                            href="https://github.com/dimaslanjaka/js-prototypes"
+                        >
                             Github
                         </a>
                     
-                        <a class="link user-link " href="https://webmanajemen.com">
+                        <a
+                            class="link user-link "
+                            href="https://webmanajemen.com"
+                        >
                             Blog
                         </a>
                     
@@ -71,7 +85,10 @@
     </div>
 </div>
     <div id="main">
-        <div class="sidebar " id="sidebarNav">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
             
                 <div class="search-wrapper">
                     <input id="search" type="text" placeholder="Search docs..." class="input">
@@ -100,7 +117,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable prefer-rest-params */
 /* eslint-disable @typescript-eslint/triple-slash-reference */
-/// &lt;reference path="globals.d.ts" /&gt;
+/// &lt;reference path="globals.d.ts" />
 
 /**
  * Strings
@@ -112,7 +129,7 @@ interface String {
    * @param useWordBoundary true ? subString.substr(0, subString.lastIndexOf(" "))
    * @see https://stackoverflow.com/questions/1199352/smart-way-to-truncate-long-strings
    */
-  truncate: (n: number, useWordBoundary: boolean | null) =&gt; string;
+  truncate: (n: number, useWordBoundary: boolean | null) => string;
 
   /**
    * Easy String Match Boolean
@@ -120,14 +137,14 @@ interface String {
    * @param pattern regex or string
    * @returns true or false
    */
-  isMatch: (pattern: RegExp | string) =&gt; boolean;
+  isMatch: (pattern: RegExp | string) => boolean;
 
   /**
    * Replace all occurrences of a string
    * * Shim ES2021 prototype
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll}
    */
-  replaceAll: (search: string | RegExp, replacement: string) =&gt; string;
+  replaceAll: (search: string | RegExp, replacement: string) => string;
 
   /**
    * Printf
@@ -135,7 +152,7 @@ interface String {
    * @example
    * console.log("Hello I am " + "%s %s".printf(["foo", "bar"]));
    */
-  printf: (obj: any[] | string) =&gt; string;
+  printf: (obj: any[] | string) => string;
 
   /**
    * Matches a string an object that supports being matched against, and returns an array containing the results of
@@ -164,9 +181,9 @@ interface String {
    */
   replace(
     searchValue: {
-      [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) =&gt; string): string;
+      [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string;
     },
-    replacer: (substring: string, ...args: any[]) =&gt; string
+    replacer: (substring: string, ...args: any[]) => string
   ): string;
 
   /**
@@ -192,7 +209,7 @@ interface String {
     port: string;
     pathname: string;
     search: string;
-    searchObject: Record&lt;any, any&gt;;
+    searchObject: Record&lt;any, any>;
     hash: string;
     protohost: string;
   };
@@ -306,8 +323,8 @@ String.prototype.parse_url = function () {
   } else if (typeof document != 'undefined') {
     parser = document.createElement('a');
   }
-  const searchObject: Array&lt;Record&lt;any, any&gt; | any&gt; = [];
-  let split: Array&lt;Record&lt;any, any&gt; | any&gt; = [];
+  const searchObject: Array&lt;Record&lt;any, any> | any> = [];
+  let split: Array&lt;Record&lt;any, any> | any> = [];
   let queries: string[] = [];
   // Let the browser do the work
   parser.href = this.toString();
@@ -389,7 +406,7 @@ String.prototype.capitalize = function () {
 
 String.prototype.rot13 = function () {
   return this.replace(/[a-zA-Z]/g, function (c: any) {
-    return String.fromCharCode((c &lt;= 'Z' ? 90 : 122) &gt;= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+    return String.fromCharCode((c &lt;= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
   });
 };
 
@@ -411,7 +428,7 @@ String.prototype.isEmpty = function () {
 String.prototype.replaceArr = function (this: string, array: string[], replacement: string) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   let ori = this;
-  array.map((str) =&gt; {
+  array.map((str) => {
     ori = ori.replace(str, replacement);
   });
   return ori;
@@ -427,12 +444,12 @@ String.prototype.toHtmlEntities = function () {
 String.fromHtmlEntities = function (str) {
   return (str + '').replace(/&amp;#\d+;/gm, function (s) {
     const m = s.match(/\d+/gm)[0];
-    return String.fromCharCode(&lt;any&gt;m);
+    return String.fromCharCode(&lt;any>m);
   });
 };
 
 String.prototype.includesArray = function (substrings) {
-  return substrings.some((v) =&gt; this.includes(v));
+  return substrings.some((v) => this.includes(v));
 };
 
 const ___global = (typeof window != 'undefined' ? window : global) /* node */ as any;
@@ -452,7 +469,7 @@ function strMatch(str: string, pattern: RegExp | string) {
   }
   const match = str.match(regex) || false;
   if (Array.isArray(match)) {
-    if (match.length &gt; 0) return true;
+    if (match.length > 0) return true;
   }
   return false;
 }
@@ -479,10 +496,10 @@ if (typeof ''.replaceAll != 'function') {
             
             <footer class="footer">
                 <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL2pzZG9jMy9qc2RvYw==" target="_blank" rel="nofollow">JSDoc 3.6.10</a></p>
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
                     <p class="sidebar-created-by">
-                        <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL1NvZnR3YXJlQnJvdGhlcnMvYmV0dGVyLWRvY3M=" target="_blank" rel="nofollow">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
-                        <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cDovL3NvZnR3YXJlYnJvdGhlcnMuY28=" target="_blank" rel="nofollow">SoftwareBrothers - JavaScript Development Agency</a>
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
                     </p>
                 </div>
             </footer>
@@ -498,6 +515,5 @@ if (typeof ''.replaceAll != 'function') {
 <script src="scripts/search.js"> </script>
 
 
-
-
-</body></html>
+</body>
+</html>
