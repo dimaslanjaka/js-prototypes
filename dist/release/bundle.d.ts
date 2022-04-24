@@ -315,18 +315,6 @@ export interface ClassCallable extends Callable {
 }
 export {};
 
-/// <reference types="globals" />
-import '.';
-
-/// <reference types="globals" />
-import './Error';
-import './Number';
-import './Array';
-import './Object';
-import './String';
-import './Function';
-import './JSON';
-
 interface JSON {
     /**
      * @see {@link https://stackoverflow.com/a/61962964/6404439}
@@ -671,3 +659,15 @@ declare const ___global: any;
  * @returns
  */
 declare function strMatch(str: string, pattern: RegExp | string): boolean;
+
+/// <reference types="globals" />
+import '.';
+
+/// <reference types="globals" />
+import './Error';
+import './Number';
+import './Array';
+import './Object';
+import './String';
+import './Function';
+import './JSON';
