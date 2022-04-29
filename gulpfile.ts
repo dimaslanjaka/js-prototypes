@@ -10,7 +10,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import { exec, execSync } from 'child_process';
 import jsdom from './packages/gulp-jsdom/src/index';
 import './src';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync, rmSync } from 'fs';
 import { TaskCallback } from 'undertaker';
 
 gulp.task('clean', async function () {
@@ -32,6 +32,12 @@ gulp.task('tsc:build', function () {
 gulp.task('test', (d) => d());
 
 function generate(done: unknown) {
+  ['node_modules', 'tmp', 'build']
+    .map((dir) => join(__dirname, 'tests', dir))
+    .filter(existsSync)
+    .forEach((path) => {
+      rmSync(path, { recursive: true });
+    });
   return new Promise((resolve) => {
     exec('npm run docs', { cwd: __dirname }, (err, stdout, stderr) => {
       if (err) {
