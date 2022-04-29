@@ -483,6 +483,13 @@ interface ObjectConstructor {
     has(str: string | number): any;
 }
 /**
+ * is Object Writable?
+ * @param obj
+ * @param key
+ * @returns
+ */
+declare function isObjectWritable<T extends Record<any, unknown>>(obj: T, key: keyof T): boolean;
+/**
  * Join object to separated string
  * * [].join() equivalent
  * @param obj Object
@@ -507,7 +514,7 @@ declare function isObject(item: any): boolean;
  * @param ...sources
  * @see {@link https://bit.ly/3v1vlXu}
  */
-declare function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]): any;
+declare function mergeDeep(target: Record<any, any>, ...sources: Record<any, any>[]): any;
 
 /// <reference types="globals" />
 /**
