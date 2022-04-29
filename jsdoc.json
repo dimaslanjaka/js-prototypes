@@ -12,8 +12,7 @@
     "excludePattern": "(^|\\/|\\\\)_",
     "include": [
       "src",
-      "README.md",
-      "README-JSDOC.md"
+      "README.md"
     ]
   },
   "sourceType": "module",
@@ -53,10 +52,11 @@
     }
   },
   "opts": {
-    "template": "node_modules/better-docs",
+    "template": "node_modules/tui-jsdoc-template",
     "destination": "./docs/",
+    "encoding": "utf8",
     "readme": "README.md",
     "recurse": true,
-    "verbose": true
+    "tutorials": "./tests"
   }
 }

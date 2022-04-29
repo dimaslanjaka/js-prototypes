@@ -244,7 +244,7 @@ declare function array_keys(haystack: any): string[];
 declare function array_shuffle(a: Array<any>): any[];
 /**
  * Deep merge two or more objects into the first.
- * (c) 2021 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * (c) 2021 Chris Ferdinandi, MIT License, {@link https://gomakethings.com}
  * @param objects  The objects to merge together
  * @returns Merged values of defaults and options
  */
