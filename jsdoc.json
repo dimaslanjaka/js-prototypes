@@ -9,7 +9,7 @@
   "recurseDepth": 10,
   "source": {
     "includePattern": "\\.(jsx|js|ts|tsx)$",
-    "excludePattern": "(^|\\/|\\\\)_",
+    "excludePattern": "(^|\\/|\\\\)_|node_modules",
     "include": [
       "src",
       "README.md"
@@ -56,7 +56,6 @@
     "destination": "./docs/",
     "encoding": "utf8",
     "readme": "README.md",
-    "recurse": true,
-    "tutorials": "./tests"
+    "recurse": true
   }
 }

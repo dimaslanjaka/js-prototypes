@@ -1,1045 +1,1038 @@
 <!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Interface: String | Interface: String</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
 
-  <title>
-      String - Documentation
-  </title>
-
-  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-  
-
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-  
-
-  <!-- start Mixpanel -->
-  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
-  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
-  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
-  <!-- end Mixpanel -->
+    
 <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1165447249910969" crossorigin="anonymous"></script></head>
-
 <body>
-  <svg style="display: none;">
-    <defs>
-      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path>
-      </symbol>
-    </defs>
-  </svg>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">Interface: String</a></h1>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Interfaces</h3><ul><li><a href="Array.html">Array</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Array_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Array.html#add">add</a></li><li><a href="Array.html#addAll">addAll</a></li><li><a href="Array.html#compact">compact</a></li><li><a href="Array.html#contains">contains</a></li><li><a href="Array.html#deleteAt">deleteAt</a></li><li><a href="Array.html#each">each</a></li><li><a href="Array.html#exists">exists</a></li><li><a href="Array.html#first">first</a></li><li><a href="Array.html#hapusItemDariArrayLain">hapusItemDariArrayLain</a></li><li><a href="Array.html#hasIndex">hasIndex</a></li><li><a href="Array.html#isEmpty">isEmpty</a></li><li><a href="Array.html#last">last</a></li><li><a href="Array.html#move">move</a></li><li><a href="Array.html#random">random</a></li><li><a href="Array.html#range">range</a></li><li><a href="Array.html#removeEmpties">removeEmpties</a></li><li><a href="Array.html#shuffle">shuffle</a></li><li><a href="Array.html#split_chunks">split_chunks</a></li><li><a href="Array.html#trim">trim</a></li><li><a href="Array.html#unique">unique</a></li><li><a href="Array.html#uniqueObjectKey">uniqueObjectKey</a></li><li><a href="Array.html#uniqueStringArray">uniqueStringArray</a></li><li><a href="Array.html#unset">unset</a></li></ul></div></li><li><a href="ClassCallable.html">ClassCallable</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ClassCallable_sub"></div></li><li><a href="createElementOpt.html">createElementOpt</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="createElementOpt_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="createElementOpt.html#attributes">attributes</a></li><li><a href="createElementOpt.html#className">className</a></li><li><a href="createElementOpt.html#html">html</a></li><li><a href="createElementOpt.html#options">options</a></li><li><a href="createElementOpt.html#tagName">tagName</a></li><li><a href="createElementOpt.html#text">text</a></li></ul></div></li><li><a href="CustomNodeJsGlobal.html">CustomNodeJsGlobal</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="CustomNodeJsGlobal_sub"></div></li><li><a href="Function.html">Function</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Function_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Function.html#apply">apply</a></li><li><a href="Function.html#bind">bind</a></li><li><a href="Function.html#call">call</a></li><li><a href="Function.html#once">once</a></li><li><a href="Function.html#toString">toString</a></li></ul></div></li><li><a href="HTMLScriptElement.html">HTMLScriptElement</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="HTMLScriptElement_sub"></div></li><li><a href="String.html">String</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="String_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="String.html#capitalize">capitalize</a></li><li><a href="String.html#CSS">CSS</a></li><li><a href="String.html#hexD">hexD</a></li><li><a href="String.html#hexE">hexE</a></li><li><a href="String.html#includesArray">includesArray</a></li><li><a href="String.html#isEmpty">isEmpty</a></li><li><a href="String.html#isMatch">isMatch</a></li><li><a href="String.html#match">match</a></li><li><a href="String.html#parse_url">parse_url</a></li><li><a href="String.html#printf">printf</a></li><li><a href="String.html#replace">replace</a></li><li><a href="String.html#replace">replace</a></li><li><a href="String.html#replaceAll">replaceAll</a></li><li><a href="String.html#replaceArr">replaceArr</a></li><li><a href="String.html#rot13">rot13</a></li><li><a href="String.html#search">search</a></li><li><a href="String.html#split">split</a></li><li><a href="String.html#toHtmlEntities">toHtmlEntities</a></li><li><a href="String.html#truncate">truncate</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="String.html#CSS">CSS</a></li></ul></div></li><li><a href="Window.html">Window</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Window_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Window.html#opera">opera</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Global</h3><ul><li><a href="global.html#array_keys">array_keys</a></li><li><a href="global.html#array_rand">array_rand</a></li><li><a href="global.html#array_shuffle">array_shuffle</a></li><li><a href="global.html#array_split_chunks">array_split_chunks</a></li><li><a href="global.html#array_unique">array_unique</a></li><li><a href="global.html#array_unset">array_unset</a></li><li><a href="global.html#deepAssign">deepAssign</a></li><li><a href="global.html#getAllMethods">getAllMethods</a></li><li><a href="global.html#in_array">in_array</a></li><li><a href="global.html#inArray">inArray</a></li><li><a href="global.html#isFloat">isFloat</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isObjectWritable">isObjectWritable</a></li><li><a href="global.html#mergeDeep">mergeDeep</a></li><li><a href="global.html#object_join">object_join</a></li><li><a href="global.html#oddoreven">oddoreven</a></li><li><a href="global.html#removeItem">removeItem</a></li><li><a href="global.html#runOnce">runOnce</a></li><li><a href="global.html#shuffle">shuffle</a></li><li><a href="global.html#strMatch">strMatch</a></li><li><a href="global.html#strpad">strpad</a></li></ul></div>
+</nav>
+<div id="resizer"></div>
 
-  <input type="checkbox" id="nav-trigger" class="nav-trigger">
-  <label for="nav-trigger" class="navicon-button x">
-    <div class="navicon"></div>
-  </label>
-
-  <label for="nav-trigger" class="overlay"></label>
-
-  <div class="top-nav-wrapper">
-    <ul>
-      <li>
-        <a href="index.html">
-          
-            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
-              <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-          
-          
-        </a>
-      </li>
-
-      
-      <li>
-        <div class="search-wrapper">
-          <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-            <path d="M0 0h24v24H0z" fill="none"></path>
-
-          </svg>
-          <input type="text" placeholder="Search" class="search-input">
-        </div>
-      </li>
-      
-
-    </ul>
-  </div>
-
-  <nav>
-    <h3 class="reference-title">
-      Braintree SDK Client Reference
-    </h3>
-
+<div class="main" id="main">
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#array_keys">array_keys</a></li><li><a href="global.html#array_rand">array_rand</a></li><li><a href="global.html#array_shuffle">array_shuffle</a></li><li><a href="global.html#array_split_chunks">array_split_chunks</a></li><li><a href="global.html#array_unique">array_unique</a></li><li><a href="global.html#array_unset">array_unset</a></li><li><a href="global.html#deepAssign">deepAssign</a></li><li><a href="global.html#getAllMethods">getAllMethods</a></li><li><a href="global.html#in_array">in_array</a></li><li><a href="global.html#inArray">inArray</a></li><li><a href="global.html#isFloat">isFloat</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isObjectWritable">isObjectWritable</a></li><li><a href="global.html#mergeDeep">mergeDeep</a></li><li><a href="global.html#object_join">object_join</a></li><li><a href="global.html#oddoreven">oddoreven</a></li><li><a href="global.html#removeItem">removeItem</a></li><li><a href="global.html#runOnce">runOnce</a></li><li><a href="global.html#shuffle">shuffle</a></li><li><a href="global.html#strMatch">strMatch</a></li><li><a href="global.html#strpad">strpad</a></li></ul>
-  </nav>
 
-  <div id="main">
-    
-      <h1 class="page-title">
-        String
-      </h1>
-    
 
-    
 
 <section>
-  <header>
+
+<header>
     
-      <h2>
+        <h2>String</h2>
         
-        String
-        
-      </h2>
-
-      
     
-  </header>
+</header>
 
-  <article>
-    <div class="container-overview">
-      
+<article>
+    
+        <div class="container-overview">
         
-            <div class="description">
-              <p>Strings</p>
-            </div>
-        
+            
+                <div class="description"><p>Strings</p></div>
+            
 
-        
+            
+
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line188">line 188</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+            
         
-      
-    </div>
-
+        </div>
     
 
     
 
     
 
-     
+    
+
+    
+
+    
 
     
 
     
         <h3 class="subsection-title">Members</h3>
 
-        
+        <dl>
             
 
+<dt>
 <h4 class="name" id="capitalize">
-  <span class="type-signature"></span>capitalize<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>capitalize<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line287">line 287</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Capitalize all first character string</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Capitalize all first character string</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line287">line 287</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>[PHP] ucwords($string)</code></pre>
 
+    
+</dd>
 
-  <h5>Example</h5>
-  
-
-  <pre class="prettyprint"><code>[PHP] ucwords($string)</code></pre>
-
-
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="CSS">
-  <span class="type-signature"></span>CSS<span class="type-signature"> :void</span>
+    <span class="type-signature"></span>CSS<span class="type-signature"> :void</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line272">line 272</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Call css from url/path</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">void</span>
 
 
-  <div class="description">
-    <p>Call css from url/path</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line272">line 272</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="hexD">
-  <span class="type-signature"></span>hexD<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>hexD<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line282">line 282</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Hex Decrypt</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Hex Decrypt</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line282">line 282</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="hexE">
-  <span class="type-signature"></span>hexE<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>hexE<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line277">line 277</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Hex encrypt</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Hex encrypt</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line277">line 277</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="includesArray">
-  <span class="type-signature"></span>includesArray<span class="type-signature"> :boolean</span>
+    <span class="type-signature"></span>includesArray<span class="type-signature"> :boolean</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line319">line 319</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Check if string contains some text from array of substrings</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
 
 
-  <div class="description">
-    <p>Check if string contains some text from array of substrings</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line319">line 319</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
-
-  
+    
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
-      <ul>
-        
-          <li>
-            <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9hLzU1ODI2MjE=" target="_blank" rel="nofollow">https://stackoverflow.com/a/5582621</a>
-          </li>
-        
-      </ul>
+        <ul>
+            <li><a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9hLzU1ODI2MjE=" target="_blank" rel="nofollow">https://stackoverflow.com/a/5582621</a></li>
+        </ul>
     </dd>
-  
+    
 
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="isEmpty">
-  <span class="type-signature"></span>isEmpty<span class="type-signature"> :boolean</span>
+    <span class="type-signature"></span>isEmpty<span class="type-signature"> :boolean</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line298">line 298</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Check if string empty or blank</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
 
 
-  <div class="description">
-    <p>Check if string empty or blank</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line298">line 298</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="isMatch">
-  <span class="type-signature"></span>isMatch<span class="type-signature"> :function</span>
+    <span class="type-signature"></span>isMatch<span class="type-signature"> :function</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line200">line 200</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>String match result as boolean</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">function</span>
 
 
-  <div class="description">
-    <p>String match result as boolean</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line200">line 200</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="match">
-  <span class="type-signature"></span>match<span class="type-signature"> :RegExpMatchArray|null</span>
+    <span class="type-signature"></span>match<span class="type-signature"> :RegExpMatchArray|null</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line223">line 223</a></code>
+    </div>
+    
 </h4>
 
 
-
-
-  <div class="description">
-    <p>Matches a string an object that supports being matched against, and returns an array containing the results of
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Matches a string an object that supports being matched against, and returns an array containing the results of
 that search.</p>
-  </div>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">RegExpMatchArray</span>
+|
+
+<span class="param-type">null</span>
 
 
+            </li>
+        </ul>
+    
+    -->
+
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line223">line 223</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="parse_url">
-  <span class="type-signature"></span>parse_url<span class="type-signature"> :object</span>
+    <span class="type-signature"></span>parse_url<span class="type-signature"> :object</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line258">line 258</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Parse url into part object</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
-  <div class="description">
-    <p>Parse url into part object</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
+
+    
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
-
-  <h5 class="subsection-title">Properties:</h5>
-
-  
+    
 
 <table class="props">
-  <thead>
+    <thead>
     <tr>
-      
+        
         <th>Name</th>
-      
+        
 
-      <th>Type</th>
+        <th>Type</th>
 
-      
+        
 
-      
+        
 
-      <th class="last">Description</th>
+        <th class="last">Description</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     
 
-    <tr>
-      
-        <td class="name"><code>protocol</code></td>
-      
+        <tr>
+            
+                <td class="name"><code>protocol</code></td>
+            
 
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
-        
-      </td>
+            
+            </td>
 
-        
+            
 
-        
+            
 
-        <td class="description last">
-          
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>host</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>host</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>hostname</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>hostname</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>port</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>port</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>pathname</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>pathname</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>search</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>search</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>searchObject</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      Record.&lt;any, any&gt;
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>searchObject</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">Record.&lt;any, any&gt;</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>hash</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>hash</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
+            
 
-    <tr>
-      
-        <td class="name"><code>protohost</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
+            <td class="description last"></td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>protohost</code></td>
+            
 
-        
-      </td>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
-        
 
-        
+            
+            </td>
 
-        <td class="description last">
-          
-          </td>
-    </tr>
+            
 
-  
-  </tbody>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
 </table>
 
 
@@ -1047,921 +1040,1003 @@ that search.</p>
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line258">line 258</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="printf">
-  <span class="type-signature"></span>printf<span class="type-signature"> :function</span>
+    <span class="type-signature"></span>printf<span class="type-signature"> :function</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line215">line 215</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Printf</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">function</span>
 
 
-  <div class="description">
-    <p>Printf</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line215">line 215</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
-
-  
+    
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
-      <ul>
-        
-          <li>
-            <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9hLzQ2MDc4Mzc1" target="_blank" rel="nofollow">https://stackoverflow.com/a/46078375</a>
-          </li>
-        
-      </ul>
+        <ul>
+            <li><a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9hLzQ2MDc4Mzc1" target="_blank" rel="nofollow">https://stackoverflow.com/a/46078375</a></li>
+        </ul>
     </dd>
-  
+    
 
-  
+    
 </dl>
 
 
+    
 
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log("Hello I am " + "%s %s".printf(["foo", "bar"]));</code></pre>
 
+    
+</dd>
 
-  <h5>Example</h5>
-  
-
-  <pre class="prettyprint"><code>console.log("Hello I am " + "%s %s".printf(["foo", "bar"]));</code></pre>
-
-
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="replace">
-  <span class="type-signature"></span>replace<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>replace<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line230">line 230</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Replaces text in a string, using an object that supports replacement within a string.</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Replaces text in a string, using an object that supports replacement within a string.</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line230">line 230</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="replace">
-  <span class="type-signature"></span>replace<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>replace<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line238">line 238</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Replaces text in a string, using an object that supports replacement within a string.</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Replaces text in a string, using an object that supports replacement within a string.</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line238">line 238</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="replaceAll">
-  <span class="type-signature"></span>replaceAll<span class="type-signature"> :function</span>
+    <span class="type-signature"></span>replaceAll<span class="type-signature"> :function</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line208">line 208</a></code>
+    </div>
+    
 </h4>
 
 
-
-
-  <div class="description">
-    <p>Replace all occurrences of a string</p>
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Replace all occurrences of a string</p>
 <ul>
 <li>Shim ES2021 prototype</li>
 </ul>
-  </div>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">function</span>
 
 
+            </li>
+        </ul>
+    
+    -->
+
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line208">line 208</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
-
-  
+    
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
-      <ul>
-        
-          <li>
-            <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvU3RyaW5nL3JlcGxhY2VBbGw=" target="_blank" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll</a>
-          </li>
-        
-      </ul>
+        <ul>
+            <li><a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvU3RyaW5nL3JlcGxhY2VBbGw=" target="_blank" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll</a></li>
+        </ul>
     </dd>
-  
+    
 
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="replaceArr">
-  <span class="type-signature"></span>replaceArr<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>replaceArr<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line303">line 303</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Replace string by array pattern</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Replace string by array pattern</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line303">line 303</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="rot13">
-  <span class="type-signature"></span>rot13<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>rot13<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line293">line 293</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>PHP str_rot13 equivalent</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>PHP str_rot13 equivalent</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line293">line 293</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="search">
-  <span class="type-signature"></span>search<span class="type-signature"> :number</span>
+    <span class="type-signature"></span>search<span class="type-signature"> :number</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line245">line 245</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Finds the first substring match in a regular expression search.</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
 
 
-  <div class="description">
-    <p>Finds the first substring match in a regular expression search.</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line245">line 245</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="split">
-  <span class="type-signature"></span>split<span class="type-signature"> :<a href="Array.html">Array</a></span>
+    <span class="type-signature"></span>split<span class="type-signature"> :<a href="Array.html">Array</a></span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line251">line 251</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Split a string into substrings using the specified separator and return them as an array.</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Array.html">Array</a></span>
 
 
-  <div class="description">
-    <p>Split a string into substrings using the specified separator and return them as an array.</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line251">line 251</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="toHtmlEntities">
-  <span class="type-signature"></span>toHtmlEntities<span class="type-signature"> :string</span>
+    <span class="type-signature"></span>toHtmlEntities<span class="type-signature"> :string</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line310">line 310</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Convert a string to HTML entities</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
-  <div class="description">
-    <p>Convert a string to HTML entities</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line310">line 310</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
-
-  
+    
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
-      <ul>
-        
-          <li>
-            <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9hLzI3MDIwMzAw" target="_blank" rel="nofollow">https://stackoverflow.com/a/27020300</a>
-          </li>
-        
-      </ul>
+        <ul>
+            <li><a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9hLzI3MDIwMzAw" target="_blank" rel="nofollow">https://stackoverflow.com/a/27020300</a></li>
+        </ul>
     </dd>
-  
+    
 
-  
+    
 </dl>
 
 
+    
 
-
-
-  <h5>Example</h5>
-  
-
-  <pre class="prettyprint"><code>"Test´†®¥¨©˙∫ø…ˆƒ∆÷∑™ƒ∆æøπ£¨ ƒ™en tést".toHtmlEntities();
+    
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>"Test´†®¥¨©˙∫ø…ˆƒ∆÷∑™ƒ∆æøπ£¨ ƒ™en tést".toHtmlEntities();
 console.log("Entities:", str);</code></pre>
 
+    
+</dd>
 
-
-
-          
         
             
 
+<dt>
 <h4 class="name" id="truncate">
-  <span class="type-signature"></span>truncate<span class="type-signature"> :function</span>
+    <span class="type-signature"></span>truncate<span class="type-signature"> :function</span>
+    
+    <div class="container-source members">
+        <code><a href="String.ts.html">String.ts</a></code>,
+        <code><a href="String.ts.html#line192">line 192</a></code>
+    </div>
+    
 </h4>
 
 
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Truncate string</p>
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">function</span>
 
 
-  <div class="description">
-    <p>Truncate string</p>
-  </div>
+            </li>
+        </ul>
+    
+    -->
 
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line192">line 192</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
-
-  
+    
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
-      <ul>
-        
-          <li>
-            <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTE5OTM1Mi9zbWFydC13YXktdG8tdHJ1bmNhdGUtbG9uZy1zdHJpbmdz" target="_blank" rel="nofollow">https://stackoverflow.com/questions/1199352/smart-way-to-truncate-long-strings</a>
-          </li>
-        
-      </ul>
+        <ul>
+            <li><a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTE5OTM1Mi9zbWFydC13YXktdG8tdHJ1bmNhdGUtbG9uZy1zdHJpbmdz" target="_blank" rel="nofollow">https://stackoverflow.com/questions/1199352/smart-way-to-truncate-long-strings</a></li>
+        </ul>
     </dd>
-  
+    
 
-  
+    
 </dl>
 
 
-
-
-
-
-          
-        
     
 
     
-      <h3 class="subsection-title">Methods</h3>
+</dd>
 
-      
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+                
+
+<dt>
+    
+        <h4 class="name" id="CSS">
+            
+                <span class="type-signature"></span>CSS<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="String.ts.html">String.ts</a></code>,
+                <code><a href="String.ts.html#line73">line 73</a></code>
+            </div>
+            
+        </h4>
+
         
+    
+</dt>
+<dd>
 
+    
+    <div class="description">
+        <p>Load css</p>
+    </div>
+    
 
-  
+    
 
-  <span class="name-container">
-    <a class="link-icon" href="#CSS">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="CSS">
-      <span class="type-signature"></span>CSS<span class="signature">()</span><span class="type-signature"></span>
-    </h4>
-  </span>
+    
 
-  
+    
 
+    
 
+    
 
-  <div class="description">
-    <p>Load css</p>
-  </div>
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
+    
 
 
 <dl class="details">
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
+    
 
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="String.ts.html">String.ts</a>, <a href="String.ts.html#line73">line 73</a>
-        </li>
-      </ul>
-    </dd>
-  
+    
 
-  
+    
 
-  
-
-  
+    
 </dl>
 
 
+    
 
+</dd>
 
-
-
-
-
-
-
-
-
-
-
-      
+            </dl>
     
 
     
 
     
-  </article>
+</article>
+
 </section>
 
 
 
 
-  </div>
+</div>
 
-  <br class="clear">
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
 
-  <footer>
-    Documentation generated by <a href="https://webmanajemen.com/page/safelink.html?url=aHR0cHM6Ly9naXRodWIuY29tL2pzZG9jMy9qc2RvYw==" target="_blank" rel="nofollow">JSDoc 3.6.10</a>
-  </footer>
+    <script>
+        var id = 'String_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
 
-  <script src="scripts/linenumber.js"></script>
-  <script src="scripts/pagelocation.js"></script>
-
-  
-  <script>
-    $(function () {
-      window.docsearch({
-        apiKey: '',
-        indexName: 'braintree',
-        inputSelector: '.search-input',
-        debug: false, // Set debug to true if you want to inspect the dropdown
-        algoliaOptions: {
-          hitsPerPage: 7
-        }
-      });
-    });
-  </script>
-  
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
 
 
 </body></html>

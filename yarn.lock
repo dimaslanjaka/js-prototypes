@@ -6151,10 +6151,9 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-tui-jsdoc-template@^1.2.2:
+"tui-jsdoc-template@git+https://github.com/nhn/tui.jsdoc-template.git":
   version "1.2.2"
-  resolved "https://registry.yarnpkg.com/tui-jsdoc-template/-/tui-jsdoc-template-1.2.2.tgz#e382e2c99e457aa9df14d6fc036331046d4acee7"
-  integrity sha512-oqw0IYaot86VJ2owKBozJnilgta0Z55x8r9PeHj7vb+jDoSvJGRUQUcgs56SZh9HE20fx54Pe75p84X85/ygLA==
+  resolved "git+https://github.com/nhn/tui.jsdoc-template.git#13a8d08b4d1f01f41e46922549250eaed7e93733"
   dependencies:
     cheerio "^0.22.0"
 
