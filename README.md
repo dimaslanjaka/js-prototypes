@@ -4,6 +4,9 @@
 
 Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototypes/](https://www.webmanajemen.com/js-prototypes/)
 
+## Incompatible With These Dependencies
+- [knex](https://www.npmjs.com/package/knex) conflict with [Object.ts](./src/Object.ts)
+
 ## instalation
 npm
 ```shell

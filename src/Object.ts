@@ -140,8 +140,24 @@ Object.replaceKeyFrom = function (anotherObj) {
 };
 
 Object.prototype.merge = function (this: Record<any, unknown>, ...others) {
-  return mergeDeep(this, ...others);
+  const hasReadOnlyProp = Object.keys(this).some((property) => {
+    return isObjectWritable(this, property);
+  });
+  if (!hasReadOnlyProp) return mergeDeep(this, ...others);
+  return Object.assign({ ...this }, ...others);
 };
+
+/**
+ * is Object Writable?
+ * @param obj
+ * @param key
+ * @returns
+ */
+function isObjectWritable<T extends Record<any, unknown>>(obj: T, key: keyof T) {
+  const desc = Object.getOwnPropertyDescriptor(obj, key) || {};
+  return Boolean(desc.writable);
+}
+__global.isObjectWritable = isObjectWritable;
 
 /**
  * Join object to separated string
@@ -180,7 +196,7 @@ __global.isObject = isObject;
  * @param ...sources
  * @see {@link https://bit.ly/3v1vlXu}
  */
-function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown>[]) {
+function mergeDeep(target: Record<any, any>, ...sources: Record<any, any>[]) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -188,9 +204,12 @@ function mergeDeep(target: Record<any, unknown>, ...sources: Record<any, unknown
     for (const key in source) {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(<any>target[key], <any>source[key]);
+        mergeDeep(target[key], <any>source[key]);
       } else {
+        // @fixme writable property
         Object.assign(target, { [key]: source[key] });
+        // @fixme readonly property
+        //target = { ...target, [key]: source[key] };
       }
     }
   }
