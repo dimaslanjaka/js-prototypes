@@ -4,15 +4,14 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "npm i -D ../ && ts-node ."
+    "test": "ts-node ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.24",
-    "eslint": "^8.13.0",
-    "js-prototypes": "file:.."
+    "eslint": "^8.13.0"
   },
   "dependencies": {
     "upath": "^2.0.1"

@@ -4,16 +4,6 @@
   "description": "Standard Javascript Prototype Helper",
   "main": "dist/release/bundle.js",
   "types": "dist/libs/index.d.ts",
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "./"
-    ],
-    "nohoist": [
-      "**/html-minifier-terser"
-    ]
-  },
   "scripts": {
     "build": "gulp",
     "docs": "npx jsdoc -c jsdoc.json",
@@ -84,8 +74,5 @@
     "undertaker": "^1.3.0",
     "upath": "^2.0.1"
   },
-  "dependencies": {},
-  "peerDependencies": {
-    "@types/through2": "git+https://github.com/dimaslanjaka/nodejs-package-types.git#through2"
-  }
+  "dependencies": {}
 }
