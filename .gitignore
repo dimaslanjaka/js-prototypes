@@ -8,5 +8,6 @@ private.md
 *.rar
 *.xz
 *.tar
+.yarn
 #yarn.lock
 #package-lock.json
