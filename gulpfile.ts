@@ -22,9 +22,10 @@ async function del(file: string) {
   }
 }
 
-gulp.task('clean', async function () {
+gulp.task('clean', async function (done) {
   await del('./docs');
-  return await del('./dist');
+  await del('./dist');
+  return done();
 });
 
 gulp.task('tsc:build', function () {
