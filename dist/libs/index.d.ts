@@ -1,4 +1,4 @@
-/// <reference types="globals" />
+/// <reference path="../../src/globals.d.ts" />
 import './Error';
 import './Number';
 import './Array';

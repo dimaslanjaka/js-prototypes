@@ -3,7 +3,6 @@
 import gulp from 'gulp';
 import concat from 'gulp-concat';
 import terser from 'gulp-terser';
-import del from 'del';
 import through from 'through2';
 import { join, resolve } from 'path';
 import sourcemaps from 'gulp-sourcemaps';
@@ -12,6 +11,16 @@ import jsdom from './packages/gulp-jsdom/src/index';
 import './src';
 import { existsSync, readFileSync, rmSync } from 'fs';
 import { TaskCallback } from 'undertaker';
+
+/**
+ * delete folder or file (rm -rf file)
+ * @param file
+ */
+async function del(file: string) {
+  if (existsSync(file)) {
+    rmSync(file, { recursive: true, force: true });
+  }
+}
 
 gulp.task('clean', async function () {
   await del('./docs');
@@ -102,17 +111,21 @@ gulp.task('browser:js', function () {
     .pipe(concat('bundle.js'))
     .pipe(
       through.obj((chunk, enc, cb) => {
-        let contents = chunk.contents.toString();
-        const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
-        let m: RegExpExecArray;
-        while ((m = regex.exec(contents)) !== null) {
-          // This is necessary to avoid infinite loops with zero-width matches
-          if (m.index === regex.lastIndex) {
-            regex.lastIndex++;
+        if (chunk.isNull()) return cb();
+
+        if (chunk.isBuffer()) {
+          let contents = chunk.contents.toString();
+          const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
+          let m: RegExpExecArray | null;
+          while ((m = regex.exec(contents)) !== null) {
+            // This is necessary to avoid infinite loops with zero-width matches
+            if (m.index === regex.lastIndex) {
+              regex.lastIndex++;
+            }
+            contents = contents.replace(m[0], '');
           }
-          contents = contents.replace(m[0], '');
+          chunk.contents = Buffer.from(contents);
         }
-        chunk.contents = Buffer.from(contents);
         cb(null, chunk);
       })
     )
@@ -130,28 +143,31 @@ gulp.task('browser:dts', function () {
     .pipe(concat('bundle.d.ts'))
     .pipe(
       through.obj((chunk, enc, cb) => {
-        let contents = chunk.contents.toString();
-        const sources = {};
-        const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
-        let m: RegExpExecArray;
-        while ((m = regex.exec(contents)) !== null) {
-          // This is necessary to avoid infinite loops with zero-width matches
-          if (m.index === regex.lastIndex) {
-            regex.lastIndex++;
+        if (chunk.isNull()) return cb();
+        if (chunk.isBuffer()) {
+          let contents = chunk.contents.toString();
+          const sources = {};
+          const regex = /\/\/\/.*<reference path=\"(.*)\".*\/>/gm;
+          let m: RegExpExecArray | null;
+          while ((m = regex.exec(contents)) !== null) {
+            // This is necessary to avoid infinite loops with zero-width matches
+            if (m.index === regex.lastIndex) {
+              regex.lastIndex++;
+            }
+            const realpathref = resolve(join(__dirname, 'dist/libs', m[1]));
+            sources[m[0]] = realpathref;
+            // remove references
+            contents = contents.replace(m[0], () => '');
           }
-          const realpathref = resolve(join(__dirname, 'dist/libs', m[1]));
-          sources[m[0]] = realpathref;
-          // remove references
-          contents = contents.replace(m[0], () => '');
-        }
-        // inject detached references
-        for (const key in sources) {
-          if (Object.prototype.hasOwnProperty.call(sources, key)) {
-            const ref = sources[key];
-            contents = readFileSync(ref, 'utf-8') + '\n' + contents;
+          // inject detached references
+          for (const key in sources) {
+            if (Object.prototype.hasOwnProperty.call(sources, key)) {
+              const ref = sources[key];
+              contents = readFileSync(ref, 'utf-8') + '\n' + contents;
+            }
           }
+          chunk.contents = Buffer.from(contents);
         }
-        chunk.contents = Buffer.from(contents);
         cb(null, chunk);
       })
     )

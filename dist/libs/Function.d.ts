@@ -1,4 +1,4 @@
-/// <reference types="globals" />
+/// <reference path="../../src/globals.d.ts" />
 interface Callable {
     (text: string): void;
     /**
