@@ -9,13 +9,22 @@ Read documentation and full api guide [https://dimaslanjaka.github.io/js-prototy
 
 ## instalation
 npm
-```shell
+```bash
 npm i git+https://github.com/dimaslanjaka/js-prototypes.git
 ```
+npm without git
+```bash
+npm i https://github.com/dimaslanjaka/js-prototypes/tarball/master
+```
+
 yarn
 ```bash
 git config --global url."https://".insteadOf ssh://
 yarn add git+https://github.com/dimaslanjaka/js-prototypes.git
+```
+yarn without git
+```bash
+yarn add https://github.com/dimaslanjaka/js-prototypes/tarball/master
 ```
 
 ## usage
