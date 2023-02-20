@@ -31,7 +31,7 @@ jobs:
       run: |
         # rm -rf package-lock.json
         # rm -rf node_modules
-        npm update @types/through2 cross-spawn nodejs-package-types
+        npm update @types/through2 cross-spawn nodejs-package-types tui-jsdoc-template
 
     - name: Build
       run: npm run build 
