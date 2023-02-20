@@ -26,12 +26,14 @@ jobs:
     - run: npm install
       continue-on-error: true
       id: install
-    - run: |
+      name: install
+    - if: steps.install.conclusion != 'success'
+      shell: bash
+      name: clean install
+      run: |
         rm -rf package-lock.json
         rm -rf node_modules
         npm install
-      if: steps.install.conclusion != 'success'
-      shell: bash
 
     - name: Build
       run: npm run build
