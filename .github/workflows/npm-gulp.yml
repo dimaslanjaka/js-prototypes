@@ -25,7 +25,7 @@ jobs:
       run: npm i -g gulp-cli typescript npm ts-node && npm install
       continue-on-error: true
       id: install
-    - if: steps.install.conclusion == 'failure'
+    - if: steps.install.outcome == 'failure'
       shell: bash
       name: clean install
       run: |
