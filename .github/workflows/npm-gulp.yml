@@ -20,13 +20,10 @@ jobs:
         node-version: '14'
         cache: 'npm'
 
-    - name: Install dependencies
+    - name: install dependencies
       run: npm i -g gulp-cli typescript npm ts-node && npm install
-      
-    - run: npm install
       continue-on-error: true
       id: install
-      name: install
     - if: steps.install.conclusion != 'success'
       shell: bash
       name: clean install
