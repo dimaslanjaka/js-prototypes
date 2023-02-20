@@ -25,7 +25,7 @@ jobs:
       run: npm i -g gulp-cli typescript npm ts-node && npm install
       continue-on-error: true
       id: install
-    - if: steps.install.conclusion != 'success'
+    - if: steps.install.conclusion == 'failure'
       shell: bash
       name: clean install
       run: |
@@ -34,11 +34,7 @@ jobs:
         npm install
 
     - name: Build
-      run: npm run build
-
-    #- run: rm -rf node_modules tmp
-    #- run: cp -rfi . modified
-    #- run: rm -rf modified/yarn.lock
+      run: npm run build 
 
     - name: Re-deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
