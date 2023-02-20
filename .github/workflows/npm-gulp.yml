@@ -29,9 +29,9 @@ jobs:
       shell: bash
       name: clean install
       run: |
-        rm -rf package-lock.json
-        rm -rf node_modules
-        npm install
+        # rm -rf package-lock.json
+        # rm -rf node_modules
+        npm update @types/through2 cross-spawn nodejs-package-types
 
     - name: Build
       run: npm run build 
