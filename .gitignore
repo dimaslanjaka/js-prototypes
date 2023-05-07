@@ -8,6 +8,12 @@ private.md
 *.rar
 *.xz
 *.tar
-.yarn
-#yarn.lock
-#package-lock.json
+**/node_modules/
+**/.yarn/cache
+**/.yarn/versions
+**/.yarn/unplug*
+**/.yarn/*.gz
+**/tmp/
+*.log
+.idea/
+**/package-lock.json
