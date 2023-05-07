@@ -20,9 +20,10 @@ jobs:
       with:
         node-version: '14'
         cache: 'npm'
-
+    - run: corepack enable
+    - run: yarn dlx npm i -g npm
     - name: install dependencies
-      run: npm i -g gulp-cli typescript npm ts-node && npm install
+      run: npm i -g gulp-cli typescript ts-node && yarn install
       continue-on-error: true
       id: install
     - if: steps.install.outcome == 'failure'
@@ -34,7 +35,7 @@ jobs:
         npm update @types/through2 cross-spawn nodejs-package-types tui-jsdoc-template
 
     - name: Build
-      run: npm run build 
+      run: npm run build
 
     - name: Re-deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
