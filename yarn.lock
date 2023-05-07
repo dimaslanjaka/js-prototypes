@@ -4558,12 +4558,12 @@ __metadata:
 
 "gulp-jsdom@file:packages/gulp-jsdom::locator=js-prototypes%40workspace%3A.":
   version: 1.1.0
-  resolution: "gulp-jsdom@file:packages/gulp-jsdom#packages/gulp-jsdom::hash=ead63a&locator=js-prototypes%40workspace%3A."
+  resolution: "gulp-jsdom@file:packages/gulp-jsdom#packages/gulp-jsdom::hash=854a13&locator=js-prototypes%40workspace%3A."
   dependencies:
     jsdom: ^15.1.0
     plugin-error: ^1.0.1
     through2: ^3.0.1
-  checksum: 7dd67f986ac5aa0472e4509e69cdc3e69713a4898a01efe539f33c5eafb49d2bc922b68bc86fcd81cde58c185d49efe29e9e3fa455a0d5676a5009f440cc24f4
+  checksum: 236f6a400b5ccd3845e8afe10334ad18dc7ea4ccfede58d91e2f02425af70b319acd4cc0163e38f654b44e4eb6ed0d638e5ceb7c17b0dafce25712dd570c08b1
   languageName: node
   linkType: hard
 
@@ -9658,7 +9658,7 @@ __metadata:
   resolution: "tui-jsdoc-template@https://github.com/nhn/tui.jsdoc-template.git#commit=13a8d08b4d1f01f41e46922549250eaed7e93733"
   dependencies:
     cheerio: ^0.22.0
-  checksum: 7901c0de539180d14cff977239f71f982c46e4ae1ffe8215dfca8a8486636d1e666f7e6b7322101a546fd06da7e6f5e1ff6cc37094976e43cd53a5c03676cc1e
+  checksum: 7d78d5aa9454906a0e358a33c0d2d3f76e344a79255bbb692f29e43e13c418f2dd70c40ed6eead54baa5d715af4e221ece49c2a573fe260101037b543bae001a
   languageName: node
   linkType: hard
 

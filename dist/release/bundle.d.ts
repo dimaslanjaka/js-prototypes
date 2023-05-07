@@ -521,18 +521,6 @@ export interface ClassCallable extends Callable {
 }
 export {};
 
-
-import '.';
-
-
-import './Error';
-import './Number';
-import './Array';
-import './Object';
-import './String';
-import './Function';
-import './JSON';
-
 interface JSON {
     /**
      * @see {@link https://stackoverflow.com/a/61962964/6404439}
@@ -734,7 +722,7 @@ declare function isObject(item: any): boolean;
  */
 declare function mergeDeep(target: Record<any, any>, ...sources: Record<any, any>[]): any;
 
-/// <reference path="../../src/globals.d.ts" />
+
 /**
  * Strings
  */
@@ -884,3 +872,15 @@ declare const ___global: any;
  * @returns
  */
 declare function strMatch(str: string, pattern: RegExp | string): boolean;
+
+
+import '.';
+
+/// <reference path="../../src/globals.d.ts" />
+import './Error';
+import './Number';
+import './Array';
+import './Object';
+import './String';
+import './Function';
+import './JSON';
